@@ -1,0 +1,18 @@
+@import "@/styles/tokens.css";
+
+.viewport {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: auto;
+  padding: 24px;
+}
+
+.canvas {
+  width: var(--canvas-width);
+  height: var(--canvas-height);
+  background: var(--canvas-bg);
+  flex: 0 0 auto;
+  position: relative;
+}

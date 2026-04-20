@@ -1,0 +1,11 @@
+/**
+ * 커스텀 폰트: 파일은 `src/assets/fonts/`에 두고, 아래처럼 @font-face를 추가합니다.
+ *
+ * @font-face {
+ *   font-family: "YourFont";
+ *   src: url("@/assets/fonts/YourFont.woff2") format("woff2");
+ *   font-weight: 400;
+ *   font-style: normal;
+ *   font-display: swap;
+ * }
+ */

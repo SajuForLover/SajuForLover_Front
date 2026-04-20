@@ -1,0 +1,10 @@
+.root {
+  height: 100%;
+  padding: 48px;
+}
+
+.placeholder {
+  margin: 0;
+  font-size: 18px;
+  color: #6b5b63;
+}
