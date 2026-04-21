@@ -1,9 +1,12 @@
 /* 기본 배경 및 레이아웃 */
+/* 기본 배경 및 레이아웃 */
 .root {
   background-image: url("../assets/images/background1.png");
   background-repeat: no-repeat;
-  background-position: center top;
-  background-size: cover;
+  background-position: center center; /* 가운데 정렬 */
+  background-size: 100% 100%;       /* 핵심: 배경을 화면 가로세로에 100% 맞춤 */
+  background-attachment: fixed;     /* 핵심: 스크롤 해도 배경은 고정됨 */
+  
   width: 100%;
   min-height: 100vh;
   display: flex;
