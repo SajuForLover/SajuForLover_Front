@@ -1,22 +1,25 @@
 import styles from "../../styles/UserForm.module.css";
+import pinkEffect from "../../assets/images/pinkEffect.png"; // 경로 확인해주세요!
 
 export function UserForm() {
   return (
     <div className={styles.root}>
-      {/* ✅ 상단 고정 영역 */}
+      {/* 1. 상단 고정 영역: 배경 투명하게 유지 */}
       <div className={styles.headerContainer}>
         <h1 className={styles.title}>사주 정보를 입력해 주세요</h1>
         <p className={styles.notice}>*정보는 저장되지 않습니다</p>
       </div>
 
+      {/* ✅ 2. 블러 이미지 고정: 스크롤해도 화면 아래쪽에 딱 박힘 */}
+      <img src={pinkEffect} className={styles.fixedPinkEffect} alt="" />
+
+      {/* 3. 기존 폼 내용 (그대로 유지) */}
       <form id="user-info-form" className={styles.form}>
-        {/* 이름 */}
         <div className={styles.inputGroup}>
           <label className={styles.label}>이름</label>
           <input type="text" placeholder="이름을 입력해 주세요" className={styles.input} />
         </div>
 
-        {/* 성별 */}
         <div className={styles.inputGroup}>
           <label className={styles.label}>성별</label>
           <div className={styles.genderContainer}>
@@ -25,13 +28,11 @@ export function UserForm() {
           </div>
         </div>
 
-        {/* 생년월일 */}
         <div className={styles.inputGroup}>
           <label className={styles.label}>생년월일</label>
           <input type="date" className={styles.input} defaultValue="2008-07-31" />
         </div>
 
-        {/* 태어난 시간 */}
         <div className={styles.inputGroup}>
           <label className={styles.label}>태어난 시간</label>
           <select className={styles.select}>
@@ -39,17 +40,16 @@ export function UserForm() {
           </select>
         </div>
 
-        {/* 태어난 도시 */}
-        <div className={styles.inputWrapper}>
+        <div className={styles.inputGroup}>
           <label className={styles.label}>태어난 도시</label>
-          <div className={styles.inputWrapperInner}>
+          <div className={styles.inputWrapper}>
             <input type="text" placeholder="도시명을 입력해주세요" className={styles.input} />
             <span className={styles.searchIcon}>🔍</span>
           </div>
         </div>
       </form>
 
-      {/* 하단 고정 버튼 */}
+      {/* 4. 하단 고정 버튼 */}
       <div className={styles.fixedButtonContainer}>
         <button type="submit" form="user-info-form" className={styles.submitBtn}>
           입력완료

@@ -1,4 +1,3 @@
-/* 기본 배경 및 레이아웃 */
 .root {
   background-image: url("../assets/images/background1.png");
   background-repeat: no-repeat;
@@ -13,90 +12,86 @@
   position: relative;
 }
 
-/* ✅ 상단 고정 영역: 아래 글자가 비치지 않게 가림막 역할 */
+/* 상단 영역 - 배경색/이미지 제거하여 투명하게 유지 */
 .headerContainer {
   position: sticky;
   top: 0;
   width: 100%;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 100; /* 폼 요소보다 위에 있게 함 */
-  
-  /* 1. 먼저 불투명한 흰색(또는 배경 핑크색)을 깔아줍니다 */
-  background-color: #fff4f7; /* 배경 이미지의 기본 핑크톤 색상 */
-  
-  /* 2. 그 위에 전체와 연결되는 배경 이미지를 입힙니다 */
-  background-image: url("../assets/images/background1.png");
-  background-repeat: no-repeat;
-  background-position: center top;
-  background-size: cover;
-  background-attachment: fixed; 
-
-  padding-top: 116px;
-  padding-bottom: 30px;
+  pointer-events: none; /* 스크롤 방해 금지 */
 }
 
 .title {
+  margin-top: 116px;
   font-family: 'Paperlogy';
   font-weight: 600;
   font-size: 80px;
-  line-height: 100%;
   color: #5E3535;
-  margin: 0;
 }
 
 .notice {
   margin-top: 32px;
   font-family: 'Paperlogy';
-  font-weight: 400;
   font-size: 30px;
   color: rgba(94, 53, 53, 0.51);
 }
 
-/* 폼 영역 */
+/* ✅ 핑크 블러 이미지 완벽 고정 */
+.fixedPinkEffect {
+  position: fixed;
+  bottom: 0;         /* 화면 맨 밑에 딱 붙임 */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1920px;
+  z-index: 0;        /* 폼(1)보다 뒤에 */
+  pointer-events: none;
+  object-fit: contain;
+}
+
 .form {
-  margin-top: 80px; /* 고정 영역과 겹치지 않게 조절 */
+  margin-top: 126px;
   width: 546px;
   display: flex;
   flex-direction: column;
   gap: 58px;
-  padding-bottom: 250px; /* 버튼 자리를 비워둠 */
+  position: relative;
+  z-index: 1; /* 블러 이미지보다 위 */
+  padding-bottom: 250px;
 }
 
-/* 하단 고정 버튼 (피그마 수치 반영) */
+/* 입력창 및 레이아웃 (기존 유지) */
+.inputGroup { display: flex; flex-direction: column; gap: 24px; }
+.label { font-family: 'Paperlogy'; font-weight: 500; font-size: 30px; color: #5E3535; }
+.input, .select, .genderBtn {
+  width: 546px; height: 99px; border-radius: 20px; border: 2px solid #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.6); padding: 0 40px; box-sizing: border-box;
+  font-family: 'Paperlogy'; font-size: 28px; color: #484848; outline: none;
+  box-shadow: 0px 14px 75.2px -16px rgba(247, 143, 170, 0.85);
+}
+
+.genderContainer { display: flex; gap: 14px; }
+.genderBtn { width: 266px; cursor: pointer; display: flex; justify-content: center; align-items: center; }
+.genderBtn.active { background-color: rgba(255, 255, 255, 0.9); border: 2px solid #FF8DA1; color: #5E3535; }
+
+.inputWrapper { position: relative; width: 546px; }
+.searchIcon { position: absolute; right: 40px; top: 50%; transform: translateY(-50%); font-size: 30px; }
+
+/* 하단 버튼 고정 */
 .fixedButtonContainer {
   position: fixed;
   bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 110;
+  z-index: 100;
 }
 
 .submitBtn {
-  width: 651px;
-  height: 99px;
-  border-radius: 20px;
+  width: 651px; height: 99px; border-radius: 20px;
   background: linear-gradient(180deg, #F0C3DC 0%, #E78EB3 100%);
-  color: white;
-  font-family: 'Paperlogy';
-  font-size: 32px;
-  font-weight: 600;
-  border: 2px solid #FFFFFF;
-  cursor: pointer;
-  box-shadow: 0px 14px 73.6px -16px rgba(247, 143, 170, 0.85);
+  color: white; font-family: 'Paperlogy'; font-size: 32px; font-weight: 600;
+  border: 2px solid #FFFFFF; cursor: pointer;
 }
-
-/* 입력창 공통 스타일 */
-.inputGroup { display: flex; flex-direction: column; gap: 24px; }
-.label { font-family: 'Paperlogy'; font-size: 30px; color: #5E3535; }
-.input, .select, .genderBtn {
-  width: 546px; height: 99px; border-radius: 20px; border: 2px solid #FFFFFF;
-  background-color: rgba(255, 255, 255, 0.8); padding: 0 40px; box-sizing: border-box;
-  font-family: 'Paperlogy'; font-size: 28px;
-}
-.genderContainer { display: flex; gap: 14px; }
-.genderBtn { width: 266px; cursor: pointer; justify-content: center; align-items: center; display: flex; }
-.genderBtn.active { background-color: white; border: 2px solid #FF8DA1; }
-.inputWrapperInner { position: relative; width: 546px; }
-.searchIcon { position: absolute; right: 40px; top: 50%; transform: translateY(-50%); font-size: 30px; }
