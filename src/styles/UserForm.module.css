@@ -1,0 +1,140 @@
+/* 기본 배경 및 레이아웃 */
+.root {
+  background-image: url("../assets/images/background1.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-bottom: 150px;
+}
+
+/* 제목: Top 116px, 80px SemiBold */
+.title {
+  margin-top: 116px;
+  font-family: 'Paperlogy';
+  font-weight: 600;
+  font-size: 80px;
+  line-height: 100%;
+  color: #5E3535;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* 공지: Top 242px, 30px Regular */
+.notice {
+  margin-top: 32px;
+  font-family: 'Paperlogy';
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 100%;
+  color: rgba(94, 53, 53, 0.51);
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* 폼 컨테이너 */
+.form {
+  margin-top: 126px;
+  width: 546px;
+  display: flex;
+  flex-direction: column;
+  gap: 58px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* 라벨: 30px Medium */
+.label {
+  font-family: 'Paperlogy';
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 100%;
+  color: #5E3535;
+  text-align: left;
+}
+
+/* 입력창 공통 스타일 (input, select) */
+.input, .select, .genderBtn {
+  width: 546px;
+  height: 99px;
+  border-radius: 20px;
+  border: 2px solid #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 0 40px; /* 세로 중앙 정렬을 위해 padding-top 제거 후 height로 조절 */
+  box-sizing: border-box;
+  font-family: 'Paperlogy';
+  font-size: 28px;
+  color: #484848;
+  outline: none;
+  /* 피그마 그림자 수치 100% 반영 */
+  box-shadow: 0px 14px 75.2px -16px rgba(247, 143, 170, 0.85);
+}
+
+.input::placeholder {
+  color: rgba(72, 72, 72, 0.42);
+}
+
+/* 성별 버튼 레이아웃 */
+.genderContainer {
+  display: flex;
+  gap: 14px;
+}
+
+.genderBtn {
+  width: 266px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.genderBtn.active {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #5E3535;
+  border: 2px solid #FF8DA1;
+}
+
+/* 도시 검색 아이콘 래퍼 */
+.inputWrapper {
+  position: relative;
+  width: 546px;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  pointer-events: none;
+}
+
+/* 제출 버튼 */
+.submitBtn {
+  margin-top: 40px;
+  width: 546px;
+  height: 99px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #FFB5C5 0%, #FF8DA1 100%);
+  color: white;
+  font-family: 'Paperlogy';
+  font-size: 32px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 14px 75.2px -16px rgba(247, 143, 170, 0.85);
+}
+
+.submitBtn:active {
+  transform: scale(0.98);
+}

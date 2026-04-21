@@ -1,12 +1,18 @@
+import { useNavigate } from "react-router-dom"; // 1. useNavigate 불러오기
 import styles from "./HomePage.module.css";
-// 파일 경로를 실제 폴더에 있는 이름인 'MainCover.png'로 맞췄어요.
 import mainCover from "../../assets/images/MainCover.png";
 
 export function HomePage() {
+  const navigate = useNavigate(); // 2. 이동 함수 생성
+
+  const handleNextPage = () => {
+    navigate("/user-form"); // 3. 이동하고 싶은 경로 설정 (App.tsx에 정의된 path)
+  };
+
   return (
-    <main className={styles.root}>
-      {/* 이미지를 화면에 그리는 태그입니다 */}
-     <img src={mainCover} alt="메인 커버" className={styles.coverImage} />
+    // 클릭 시 handleNextPage 실행
+    <main className={styles.root} onClick={handleNextPage} style={{ cursor: 'pointer' }}>
+      <img src={mainCover} alt="메인 커버" className={styles.coverImage} />
     </main>
   );
 }
