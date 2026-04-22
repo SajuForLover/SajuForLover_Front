@@ -1,3 +1,12 @@
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .root {
   background-image: url("../assets/images/background1.png");
   background-repeat: no-repeat;
@@ -8,90 +17,324 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* 전체 요소를 수평 중앙 정렬 */
   position: relative;
+  animation: pageFadeIn 1s ease-in-out forwards; /* 페이지 진입 시 1초 동안 부드럽게 나타남 */
 }
 
 /* 상단 영역 - 배경색/이미지 제거하여 투명하게 유지 */
 .headerContainer {
-  position: sticky;
-  top: 0;
   width: 100%;
   z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
-  pointer-events: none; /* 스크롤 방해 금지 */
+  pointer-events: none;
 }
 
 .title {
-  margin-top: 116px;
-  font-family: 'Paperlogy';
-  font-weight: 600;
-  font-size: 80px;
   color: #5E3535;
+  font-family: 'Paperlogy';
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 600;
+  margin: 0;        /* 기본 여백 제거 */
+  margin-top: 116px; 
+  line-height: 1;   /* 글자 높이를 80px로 고정 */
 }
 
 .notice {
-  margin-top: 32px;
+  color: rgba(94, 53, 53, 0.51);
   font-family: 'Paperlogy';
   font-size: 30px;
-  color: rgba(94, 53, 53, 0.51);
+  font-style: normal;
+  font-weight: 400;
+  margin: 0;        /* 기본 여백 제거 */
+  /* 242(공지 위치) - 116(타이틀 위치) - 80(타이틀 높이) = 46px */
+  margin-top: 46px; 
+  line-height: 1;   /* 글자 높이를 30px로 고정 */
+  text-align: center;
+  width: auto;
 }
 
-/* ✅ 핑크 블러 이미지 완벽 고정 */
 .fixedPinkEffect {
   position: fixed;
-  bottom: 0;         /* 화면 맨 밑에 딱 붙임 */
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   max-width: 1920px;
-  z-index: 0;        /* 폼(1)보다 뒤에 */
+  z-index: 0;
   pointer-events: none;
   object-fit: contain;
 }
 
+/* 별 디자인 1 */
+.star1 {
+  position: fixed;
+  z-index: 2000; /* 모든 요소 위에 배치 */
+  pointer-events: none;
+  width: 150px;
+  height: 129px;
+  aspect-ratio: 50/43;
+  top: 830px;
+  /* 1920px 기준 좌측 572px 위치 계산 (50% - (960 - 572)) */
+  left: calc(50% - 388px);
+  background: url("../assets/images/star1.png") -13px -23px / 108.667% 126.357% no-repeat transparent;
+  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.8)); /* box-shadow 대신 사용하여 별 모양대로 빛나게 수정 */
+}
+
+/* 별 디자인 2 */
+.star2 {
+  position: fixed;
+  z-index: 2000; /* 모든 요소 위에 배치 */
+  pointer-events: none;
+  width: 106px;
+  height: 77.351px;
+  aspect-ratio: 37/27;
+  top: 930px;
+  /* 1920px 기준 좌측 1213px 위치 계산 (50% + (1213 - 960)) */
+  left: calc(50% + 253px);
+  transform: rotate(13.779deg);
+  background: url("../assets/images/star2.png") -10.519px -21.054px / 108.667% 148.654% no-repeat transparent;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.8)); /* 사각형 그림자 제거 및 별 모양 광채 적용 */
+}
+
 .form {
-  margin-top: 126px;
-  width: 546px;
+  /* 344(이름 위치) - 242(공지 위치) - 30(공지 높이) = 72px */
+  margin-top: 72px; 
+  width: 546px;      /* 1080px 디자인 기준 입력창 너비 */
   display: flex;
   flex-direction: column;
-  gap: 58px;
+  gap: 77px;         /* 선이 없어졌으므로 그룹 간 간격을 77px로 직접 설정 */
   position: relative;
-  z-index: 1; /* 블러 이미지보다 위 */
+  z-index: 1;
   padding-bottom: 250px;
 }
 
-/* 입력창 및 레이아웃 (기존 유지) */
+/* 성별 그룹의 레이블과 버튼 박스 사이의 특수 간격 유지 */
+.form > .inputGroup:nth-child(2) {
+  gap: 29px;       /* 레이블 끝(574+30=604)에서 박스 시작(633)까지의 거리 */
+}
+
 .inputGroup { display: flex; flex-direction: column; gap: 24px; }
-.label { font-family: 'Paperlogy'; font-weight: 500; font-size: 30px; color: #5E3535; }
-.input, .select, .genderBtn {
-  width: 546px; height: 99px; border-radius: 20px; border: 2px solid #FFFFFF;
-  background-color: rgba(255, 255, 255, 0.6); padding: 0 40px; box-sizing: border-box;
-  font-family: 'Paperlogy'; font-size: 28px; color: #484848; outline: none;
+.label {
+  color: #5E3535;
+  font-family: 'Paperlogy';
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.input {
+  display: inline-flex;
+  height: 99px;
+  width: 100%;     /* 부모인 .form의 너비(546px)를 따름 */
+  padding: 33px 40px; /* 오른쪽 패딩을 40px로 조정하여 텍스트 잘림 방지 */
+  align-items: center;
+  border-radius: 20px;
+  border: 2px solid #FFF;
+  background: rgba(255, 255, 255, 0.60);
+  box-shadow: 0 14px 75.2px -16px rgba(247, 143, 170, 0.85);
+  box-sizing: border-box;
+  font-family: 'Paperlogy';
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  outline: none;
+  color: rgba(72, 72, 72, 0.42);
+  transition: border 0.2s ease, color 0.2s ease;
+}
+
+/* 입력창 클릭 시 테두리 변경 */
+.input:focus {
+  border: 3px solid #E78EB3;
+}
+
+/* 정보 입력 시(플레이스홀더가 안 보일 때) 글자색 및 굵기 변경 */
+.input:not(:placeholder-shown) {
+  color: #E78EB3;
+  font-weight: 600;
+}
+
+/* 생년월일 입력 시 텍스트 스타일 전용 */
+.birthInput {
+  color: rgba(72, 72, 72, 0.42);
+}
+
+.input::placeholder {
+  color: rgba(72, 72, 72, 0.42);
+}
+
+.select {
+  width: 100%;
+  height: 99px;
+  border-radius: 20px;
+  border: 2px solid #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 0 40px;
+  box-sizing: border-box;
+  font-family: 'Paperlogy';
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: rgba(72, 72, 72, 0.42);
+  outline: none;
   box-shadow: 0px 14px 75.2px -16px rgba(247, 143, 170, 0.85);
+  appearance: none;      /* 기본 화살표 제거 */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.selectIcon {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  width: 43px;
+  height: 43px;
+  transform: translateY(-50%); /* SVG가 이미 아래 방향이므로 회전 없이 수직 중앙 정렬만 적용 */
+  transition: transform 0.2s ease;
+  aspect-ratio: 1 / 1;
+  pointer-events: none;  /* 아이콘 클릭 시에도 select가 열리도록 설정 */
+}
+
+/* 태어난 시간 클릭(포커스) 시 화살표 위로 */
+.selectIcon.rotated {
+  transform: translateY(-50%) rotate(180deg);
 }
 
 .genderContainer { display: flex; gap: 14px; }
-.genderBtn { width: 266px; cursor: pointer; display: flex; justify-content: center; align-items: center; }
-.genderBtn.active { background-color: rgba(255, 255, 255, 0.9); border: 2px solid #FF8DA1; color: #5E3535; }
+.genderBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 266px;
+  height: 99px;
+  padding: 33px 0;
+  box-sizing: border-box;
+  border-radius: 20px;
+  border: 2px solid #FFF;
+  background: rgba(255, 255, 255, 0.60);
+  box-shadow: 0 3px 67.4px -16px rgba(247, 143, 170, 0.85);
+  color: rgba(72, 72, 72, 0.42); 
+  font-family: 'Paperlogy';
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal; 
+  cursor: pointer;
+}
 
-.inputWrapper { position: relative; width: 546px; }
-.searchIcon { position: absolute; right: 40px; top: 50%; transform: translateY(-50%); font-size: 30px; }
+.genderBtn.active {
+  border: 3px solid #E78EB3;
+  color: #E78EB3;
+  font-weight: 600;
+}
 
-/* 하단 버튼 고정 */
+.inputWrapper {
+  position: relative;
+  width: 100%;
+  z-index: 5;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 43px; /* down.svg와 동일한 크기 유지 */
+  height: 43px;
+  color: rgba(72, 72, 72, 0.42);
+  pointer-events: none;
+}
+
+.cityDropdown {
+  position: absolute;
+  top: 105px;
+  left: 0;
+  width: 546px;
+  height: 285px;
+  border-radius: 20px;
+  border: 2px solid #FFFFFF;
+  background: rgba(255, 255, 255, 0.80);
+  box-sizing: border-box;
+  box-shadow: 0 14px 75.2px -16px rgba(247, 143, 170, 0.85);
+  z-index: 100; /* 검색창이 다른 입력 필드 위에 오도록 설정 */
+}
+
+/* 상단 가이드 텍스트 */
+.cityGuide {
+  position: absolute;
+  top: 33px;
+  left: 40px;
+  font-family: 'Paperlogy';
+  font-size: 28px;
+  color: rgba(72, 72, 72, 0.42);
+  font-weight: 400;
+}
+
+/* 박스 내부 구분선 */
+.innerDivider {
+  position: absolute;
+  top: 88px;
+  left: 29px; /* (546 - 488) / 2 = 29px (중앙 정렬) */
+  width: 488px;
+  height: 1px;
+  background: #D9D9D9;
+}
+
+/* 하단 안내 문구 */
+.cityNotice {
+  position: absolute;
+  top: 111px;
+  left: 40px;
+  font-family: 'Paperlogy';
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 160%;
+  color: rgba(106, 101, 101, 0.52);
+}
+
+/* 검색 결과 텍스트 (핑크색 강조) */
+.cityResult {
+  font-family: 'Paperlogy';
+  font-size: 24px;
+  color: #FF8DA1; /* 피그마의 강조색 */
+  cursor: pointer;
+}
+
 .fixedButtonContainer {
   position: fixed;
-  bottom: 40px;
+  bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 100;
+  z-index: 1000;
+  
+  /* 피그마 레이아웃 수치 적용 */
+  width: 651px; 
 }
 
 .submitBtn {
-  width: 651px; height: 99px; border-radius: 20px;
+  display: flex;
+  width: 651px;
+  padding: 30px 0 31px 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border: 2px solid #FFF;
   background: linear-gradient(180deg, #F0C3DC 0%, #E78EB3 100%);
-  color: white; font-family: 'Paperlogy'; font-size: 32px; font-weight: 600;
-  border: 2px solid #FFFFFF; cursor: pointer;
+  box-shadow: 0 0 73.6px 0 rgba(247, 143, 170, 0.85);
+  
+  /* 텍스트 스타일 */
+  color: #FFF;
+  font-family: 'Paperlogy';
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+  outline: none;
 }

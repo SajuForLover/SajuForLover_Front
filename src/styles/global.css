@@ -11,6 +11,7 @@ body,
 #root {
   height: 100%;
   margin: 0;
+  scroll-behavior: smooth; /* 모든 스크롤 이동을 부드럽게 */
 }
 
 body {
