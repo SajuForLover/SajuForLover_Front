@@ -69,37 +69,6 @@
   object-fit: contain;
 }
 
-/* 별 디자인 1 */
-.star1 {
-  position: fixed;
-  z-index: 4000; /* 요청하신 대로 드롭다운(5000) 아래, 버튼(3000) 위 */
-  pointer-events: none;
-  width: 150px;
-  height: 129px;
-  aspect-ratio: 50/43;
-  top: 830px;
-  /* 1920px 기준 좌측 572px 위치 계산 (50% - (960 - 572)) */
-  left: calc(50% - 388px);
-  background: url("../assets/images/star1.png") center/contain no-repeat;
-  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.8)); /* box-shadow 대신 사용하여 별 모양대로 빛나게 수정 */
-}
-
-/* 별 디자인 2 */
-.star2 {
-  position: fixed;
-  z-index: 4000; /* 요청하신 대로 드롭다운(5000) 아래, 버튼(3000) 위 */
-  pointer-events: none;
-  width: 106px;
-  height: 77.351px;
-  aspect-ratio: 37/27;
-  top: 930px;
-  /* 1920px 기준 좌측 1213px 위치 계산 (50% + (1213 - 960)) */
-  left: calc(50% + 253px);
-  transform: rotate(13.779deg);
-  background: url("../assets/images/star2.png") center/contain no-repeat;
-  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.8)); /* 사각형 그림자 제거 및 별 모양 광채 적용 */
-}
-
 .form {
   /* 344(이름 위치) - 242(공지 위치) - 30(공지 높이) = 72px */
   margin-top: 72px; 

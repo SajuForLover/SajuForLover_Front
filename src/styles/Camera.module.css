@@ -1,0 +1,195 @@
+.root {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative; /* 별 이미지 배치를 위한 기준점 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("../assets/images/background2.png"); /* 배경 이미지 추가 */
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  padding-top: 0; /* 상단 패딩 제거하여 타이틀 마진으로 위치 조절 */
+  box-sizing: border-box;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.title {
+  color: #5E3535;
+  font-family: 'Paperlogy';
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1;
+  margin: 126px 0 0 0; /* 상단에서 126px 떨어진 위치 */
+}
+
+.notice {
+  color: rgba(94, 53, 53, 0.51);
+  font-family: 'Paperlogy';
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  margin-top: 32px; /* 타이틀로부터 32px 하단에 배치 */
+}
+
+.cameraContainer {
+  position: relative;
+  width: 720px;
+  height: 444px;
+  aspect-ratio: 60/37;
+  background: #D9D9D9;
+  border-radius: 25px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 77px; /* (상단 345px) - (타이틀 206px) - (공지 62px) = 77px */
+}
+
+/* Filming 페이지 전용 카메라 컨테이너 */
+.filmingContainer {
+  position: relative;
+  width: 827px;
+  height: 510px;
+  aspect-ratio: 60/37;
+  background: #D9D9D9;
+  border-radius: 0; /* 네모 형태로 되돌림 */
+  border-radius: 35px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 120px; /* (상단 388px) - (타이틀 206px) - (공지 62px) = 120px */
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scaleX(-1); /* 셀카처럼 보이도록 좌우 반전 */
+}
+
+.faceGuide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 60%;
+  border: 2px dashed rgba(255, 255, 255, 0.5);
+  border-radius: 50%; /* 얼굴 위치 가이드 (타원형) */
+  pointer-events: none;
+}
+
+.buttonContainer {
+  margin-top: 78px; /* 상단으로부터 867px 위치: (126+80+32+30+77+444) + 78 = 867 */
+  width: 100%;
+  display: flex;
+  gap: 164px; /* 두 버튼 사이의 여백 164px */
+  justify-content: center;
+}
+
+.captureBtn {
+  display: flex;
+  width: 338px;
+  padding: 30px 0 31px 0; /* 박스 높이 유지를 위한 상하 패딩만 남김 */
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border: 2px solid #FFF;
+  background: linear-gradient(180deg, #F0C3DC 0%, #E78EB3 100%);
+  box-shadow: 0 0 73.6px 0 rgba(247, 143, 170, 0.60);
+  cursor: pointer;
+  transition: transform 0.1s;
+  outline: none;
+}
+
+.captureText {
+  color: #FFF;
+  font-family: 'Paperlogy';
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  white-space: nowrap; /* 글자가 한 줄로 유지되도록 강제 */
+}
+
+.captureBtn:active {
+  transform: scale(0.95);
+}
+
+.errorMessage {
+  padding: 20px;
+  text-align: center;
+  color: #ff5555;
+}
+
+/* 별 디자인 1 (Camera.tsx용) */
+.star1 {
+  position: absolute; /* fixed 대신 absolute로 변경하여 .root 내에서 위치 */
+  z-index: 10; /* 카메라 화면 위에 오도록 z-index 조정 */
+  pointer-events: none;
+  width: 150px;
+  height: 129px;
+  aspect-ratio: 50/43;
+  top: 804px; /* 요청된 위치 */
+  left: 726px; /* 요청된 위치 */
+  background: url("../assets/images/star1.png") center/contain no-repeat;
+  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.8));
+}
+
+/* 별 디자인 2 (Camera.tsx용) */
+.star2 {
+  position: absolute; /* fixed 대신 absolute로 변경하여 .root 내에서 위치 */
+  z-index: 10; /* 카메라 화면 위에 오도록 z-index 조정 */
+  pointer-events: none;
+  width: 106px;
+  height: 77.351px;
+  aspect-ratio: 37/27;
+  top: 903px; /* 요청된 위치 */
+  left: 1055px; /* 요청된 위치 */
+  transform: rotate(13.779deg);
+  background: url("../assets/images/star2.png") center/contain no-repeat;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.8));
+}
+
+.countdown {
+  position: absolute;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* 텍스트 스타일 및 효과 */
+  text-shadow: 0 0 4px #FFF;
+  -webkit-text-stroke-width: 4px;
+  -webkit-text-stroke-color: #FFF;
+  font-family: 'Paperlogy';
+  font-size: 130px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -10.4px;
+  
+  /* 그라데이션 텍스트 처리 */
+  background: linear-gradient(180deg, #F3CFE3 0%, #E78EB3 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* 레이아웃 및 회전 */
+  width: 155.217px;
+  height: 113.265px;
+  transform: rotate(13.779deg);
+  aspect-ratio: 37/27;
+  filter: drop-shadow(0 0 158.6px #FFF); /* 텍스트 주변 발광 효과 */
+}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "../../styles/UserForm.module.css";
 import pinkEffect from "../../assets/images/pinkEffect.png"; // 경로 확인해주세요!
 import inputComplete from "../../assets/images/InputComplete.png";
@@ -15,6 +16,8 @@ export function UserForm() {
   const [userName, setUserName] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [citySearch, setCitySearch] = useState("");
+
+  const navigate = useNavigate();
 
   // 드롭다운 외부 클릭 시 닫기 위한 Ref
   const timeRef = useRef<HTMLDivElement>(null);
@@ -67,6 +70,18 @@ export function UserForm() {
     city.includes(citySearch) && citySearch !== ""
   );
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // 필수 입력값 검증 (예시)
+    if (!userName || !selectedGender || !birthDate || !selectedTime || !citySearch) {
+      alert("모든 사주 정보를 입력해 주세요.");
+      return;
+    }
+
+    navigate("/camera");
+  };
+
   return (
     <div className={styles.root}>
       {/* 1. 상단 고정 영역: 배경 투명하게 유지 */}
@@ -77,11 +92,9 @@ export function UserForm() {
 
       {/* ✅ 2. 배경 장식 요소: 스크롤해도 고정됨 */}
       <img src={pinkEffect} className={styles.fixedPinkEffect} alt="" />
-      <div className={styles.star1} />
-      <div className={styles.star2} />
 
       {/* 3. 기존 폼 내용 (그대로 유지) */}
-      <form id="user-info-form" className={styles.form}>
+      <form id="user-info-form" className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.inputGroup}>
           <label className={styles.label}>이름</label>
           <input 
