@@ -6,7 +6,7 @@ export function FilmingCompleted() {
   const navigate = useNavigate();
   const location = useLocation();
   
-  // Filming 페이지에서 전달받은 이미지 데이터
+  // Filming.tsx에서 보낸 이미지 데이터 가져오기
   const capturedImage = location.state?.capturedImage;
 
   const handleRetry = () => {
@@ -20,7 +20,7 @@ export function FilmingCompleted() {
   return (
     <div className={styles.root}>
       <div className={styles.header}>
-        <h1 className={styles.title}>촬영이 완료되었습니다!</h1>
+        <h1 className={styles.title}>촬영이 완료되었습니다</h1>
         <p className={styles.notice}>*사진은 저장되지 않습니다</p>
       </div>
 
@@ -35,14 +35,14 @@ export function FilmingCompleted() {
 
       <div className={styles.buttonContainer}>
         <button onClick={handleRetry} className={styles.captureBtn}>
-          <span className={styles.captureText}>다시찍기</span>
+          <span className={styles.captureText}>다시 찍기</span>
         </button>
         <button onClick={handleNext} className={styles.captureBtn} disabled={!capturedImage}>
           <span className={styles.captureText}>다음</span>
         </button>
       </div>
-      <div className={styles.star1} />
-      <div className={styles.star2} />
+      <div className={styles.star1} /> {/* star1.png 배치 */}
+      <div className={styles.star2} /> {/* star2.png 배치 */}
     </div>
   );
 }
