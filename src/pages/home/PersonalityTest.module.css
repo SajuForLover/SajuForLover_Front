@@ -27,11 +27,11 @@
 .title {
   color: #5E3535;
   font-family: 'Paperlogy';
-  font-size: 80px; /* 수정: 60px -> 80px */
-  font-style: normal; /* 추가 */
+  font-size: 80px;
+  font-style: normal;
   font-weight: 600;
   margin: 0;
-  line-height: normal; /* 추가 */
+  line-height: normal;
 }
 
 .notice {
@@ -45,18 +45,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
+  margin-top: 143px; /* 349px(목표) - 126px(헤더여백) - 80px(타이틀높이) = 143px */
   z-index: 5;
 }
 
 .scenarioBox {
-  width: 651px;
-  padding: 45px;
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 30px;
+  display: inline-flex;
+  padding: 49px 211px 49px 212px;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.60);
+  border-radius: 20px;
   border: 2px solid #FFF;
-  box-shadow: 0 14px 75.2px -16px rgba(247, 143, 170, 0.4);
-  margin-bottom: 50px;
+  box-shadow: 0 14px 75.2px -16px rgba(247, 143, 170, 0.85);
+  margin-bottom: 132px; /* 상단 783px 위치를 위한 마진 계산: 783 - (349 + 302) = 132px */
   text-align: center;
 }
 
@@ -66,6 +68,7 @@
   font-family: 'Paperlogy';
   font-size: 34px; /* 수정: 28px -> 34px */
   font-style: normal; /* 추가 */
+  font-weight: 400;
   margin: 0;
   line-height: 200%; /* 수정: 1.6 -> 200% (68px) */
   letter-spacing: 0.68px; /* 추가 */
@@ -75,22 +78,27 @@
   display: block;
   margin-top: 15px;
   font-weight: 600;
-  color: #E78EB3;
+  color: #5E3535;
 }
 
 .buttonContainer {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  flex-direction: row; /* 가로 정렬 */
+  gap: 195px; /* 버튼 사이 간격 195px */
 }
 
 .optionBtn {
-  width: 651px;
-  padding: 25px 30px;
+  display: flex; 
+  width: 415px; /* 버튼 크기 고정 */
+  height: 170px; /* 버튼 높이 고정 */
+  padding: 0; /* 고정 크기이므로 패딩 대신 중앙 정렬 사용 */
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
   border-radius: 20px;
   border: 2px solid #FFF;
   background: linear-gradient(180deg, #F0C3DC 0%, #E78EB3 100%);
-  box-shadow: 0 0 40px 0 rgba(247, 143, 170, 0.4);
+  box-shadow: 0 0 73.6px 0 rgba(247, 143, 170, 0.60); /* 요청된 그림자 */
   cursor: pointer;
   transition: transform 0.1s;
 }
