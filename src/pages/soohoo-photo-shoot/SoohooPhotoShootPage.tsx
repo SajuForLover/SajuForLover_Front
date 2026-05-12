@@ -17,9 +17,9 @@ import {
   RESULT_PHOTO_HEIGHT,
   RESULT_PHOTO_WIDTH,
   savePhotos,
-  YOON_SEA_FRAME_SRC,
+  SOOHOO_FRAME_SRC,
 } from "./photoShootData";
-import styles from "./YoonSeaPhotoShootPage.module.css";
+import styles from "../yoon-sea-photo-shoot/YoonSeaPhotoShootPage.module.css";
 
 const COUNT_NUM_SRC: Record<5 | 4 | 3 | 2 | 1, string> = {
   5: countNum5,
@@ -38,7 +38,7 @@ function loadImage(src: string) {
   });
 }
 
-export function YoonSeaPhotoShootPage() {
+export function SoohooPhotoShootPage() {
   const navigate = useNavigate();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [cameraError, setCameraError] = useState<string | null>(null);
@@ -53,7 +53,7 @@ export function YoonSeaPhotoShootPage() {
   phaseRef.current = phase;
 
   const nextSlot = nextEmptySlot(photos);
-  const currentFrameSrc = YOON_SEA_FRAME_SRC[Math.min(nextSlot, 3)];
+  const currentFrameSrc = SOOHOO_FRAME_SRC[Math.min(nextSlot, 3)];
   const statusLabel =
     nextSlot >= 4
       ? "촬영 완료 (4/4)"
@@ -96,7 +96,7 @@ export function YoonSeaPhotoShootPage() {
 
     try {
       const frameImage = await loadImage(
-        YOON_SEA_FRAME_SRC[Math.min(slotIndex, YOON_SEA_FRAME_SRC.length - 1)]
+        SOOHOO_FRAME_SRC[Math.min(slotIndex, SOOHOO_FRAME_SRC.length - 1)]
       );
       boothCtx.drawImage(frameImage, frameLeft, frameTop, frameWidth, frameHeight);
     } catch {
@@ -150,7 +150,7 @@ export function YoonSeaPhotoShootPage() {
 
   useEffect(() => {
     if (phase !== null || nextSlot < 4) return;
-    navigate("/yoon-sea-photo-shoot/result", { replace: true });
+    navigate("/soohoo-photo-shoot/result", { replace: true });
   }, [navigate, nextSlot, phase]);
 
   /** 카메라 준비 후 각 컷이 짧은 간격으로 자동 카운트다운됩니다. */
