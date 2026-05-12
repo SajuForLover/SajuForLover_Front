@@ -1,0 +1,289 @@
+.root {
+  --frame-top: 131px;
+  --frame-accent-color: #fff;
+  --frame-color-label-top: 364px;
+  --frame-color-label-left: 898px;
+  --frame-color-label-height: 36px;
+  --frame-color-circle-gap: 34px;
+  --frame-color-circle-size: 110px;
+  --frame-color-circle-dark-width: 109px;
+  --frame-color-circle-dark-gap: 34px;
+  --frame-color-circle-pink-light-gap: 34px;
+  --frame-color-circle-pink-gap: 34px;
+  --frame-color-second-row-gap: 17px;
+  --frame-color-second-row-item-gap: 34px;
+  --photo-left: 478px;
+  --photo-top: 152.497px;
+  --photo-width: 269.998px;
+  --photo-height: 189.203px;
+  --photo-render-width: 227px;
+  --photo-render-height: 159px;
+  --photo-inner-width: 227.01px;
+  --photo-inner-height: 159.08px;
+  --photo-stack-height: 785.192px;
+  --bottom-box-gap: 131.26px;
+  --bottom-box-height: 131.561px;
+  --side-bar-length: 817.739px;
+  --side-bar-thickness: 21.497px;
+  position: relative;
+  height: 100%;
+  margin: 0;
+  background-color: #fbe6ee;
+  background-image: url("../../assets/images/background_result.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.whiteBar {
+  position: absolute;
+  top: var(--frame-top);
+  left: var(--photo-left);
+  width: var(--photo-width);
+  height: 21.497px;
+  background: var(--frame-accent-color);
+}
+
+.sideBar {
+  position: absolute;
+  top: var(--frame-top);
+  width: var(--side-bar-length);
+  height: var(--side-bar-thickness);
+  transform: rotate(90deg);
+  transform-origin: top left;
+  background: var(--frame-accent-color);
+}
+
+.sideBarLeft {
+  left: calc(
+    var(--photo-left) + ((var(--photo-width) - var(--photo-render-width)) / 2)
+  );
+}
+
+.sideBarRight {
+  left: calc(
+    var(--photo-left) + ((var(--photo-width) + var(--photo-render-width)) / 2) +
+      var(--side-bar-thickness)
+  );
+}
+
+.frameColorLabel {
+  position: absolute;
+  top: var(--frame-color-label-top);
+  left: var(--frame-color-label-left);
+  margin: 0;
+  color: #5e3535;
+  font-family: "Paperlogy", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.colorSwatch {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.frameColorCircle {
+  top: calc(
+    var(--frame-color-label-top) + var(--frame-color-label-height) +
+      var(--frame-color-circle-gap)
+  );
+  left: var(--frame-color-label-left);
+  width: var(--frame-color-circle-size);
+  height: var(--frame-color-circle-size);
+  box-sizing: border-box;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #fff;
+  filter: drop-shadow(0 0 11.3px rgb(0 0 0 / 25%));
+}
+
+.frameColorCircleDark {
+  top: calc(
+    var(--frame-color-label-top) + var(--frame-color-label-height) +
+      var(--frame-color-circle-gap)
+  );
+  left: calc(
+    var(--frame-color-label-left) + var(--frame-color-circle-size) +
+      var(--frame-color-circle-dark-gap)
+  );
+  width: var(--frame-color-circle-dark-width);
+  height: var(--frame-color-circle-size);
+  box-sizing: border-box;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #000;
+  filter: drop-shadow(0 0 11.3px rgb(108 108 108 / 25%));
+}
+
+.frameColorCirclePinkLight {
+  top: calc(
+    var(--frame-color-label-top) + var(--frame-color-label-height) +
+      var(--frame-color-circle-gap)
+  );
+  left: calc(
+    var(--frame-color-label-left) + var(--frame-color-circle-size) +
+      var(--frame-color-circle-dark-gap) + var(--frame-color-circle-dark-width) +
+      var(--frame-color-circle-pink-light-gap)
+  );
+  width: var(--frame-color-circle-size);
+  height: var(--frame-color-circle-size);
+  box-sizing: border-box;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #ffdbea;
+  filter: drop-shadow(0 0 11.3px rgb(108 108 108 / 25%));
+}
+
+.frameColorCirclePink {
+  top: calc(
+    var(--frame-color-label-top) + var(--frame-color-label-height) +
+      var(--frame-color-circle-gap)
+  );
+  left: calc(
+    var(--frame-color-label-left) + var(--frame-color-circle-size) +
+      var(--frame-color-circle-dark-gap) + var(--frame-color-circle-dark-width) +
+      var(--frame-color-circle-pink-light-gap) + var(--frame-color-circle-size) +
+      var(--frame-color-circle-pink-gap)
+  );
+  width: var(--frame-color-circle-size);
+  height: 109px;
+  box-sizing: border-box;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #ffbfda;
+  filter: drop-shadow(0 0 11.3px rgb(108 108 108 / 25%));
+}
+
+.frameColorCircleRoseLight {
+  top: calc(
+    var(--frame-color-label-top) + var(--frame-color-label-height) +
+      var(--frame-color-circle-gap) + var(--frame-color-circle-size) +
+      var(--frame-color-second-row-gap)
+  );
+  left: var(--frame-color-label-left);
+  width: var(--frame-color-circle-size);
+  height: var(--frame-color-circle-size);
+  box-sizing: border-box;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #f6afc3;
+  filter: drop-shadow(0 0 11.3px rgb(108 108 108 / 25%));
+}
+
+.frameColorCircleRose {
+  top: calc(
+    var(--frame-color-label-top) + var(--frame-color-label-height) +
+      var(--frame-color-circle-gap) + var(--frame-color-circle-size) +
+      var(--frame-color-second-row-gap)
+  );
+  left: calc(
+    var(--frame-color-label-left) + var(--frame-color-circle-size) +
+      var(--frame-color-second-row-item-gap)
+  );
+  width: 109px;
+  height: 110px;
+  box-sizing: border-box;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #e78eb3;
+  filter: drop-shadow(0 0 11.3px rgb(108 108 108 / 25%));
+}
+
+.frameColorCircleHotPink {
+  top: calc(
+    var(--frame-color-label-top) + var(--frame-color-label-height) +
+      var(--frame-color-circle-gap) + var(--frame-color-circle-size) +
+      var(--frame-color-second-row-gap) - 1px
+  );
+  left: calc(
+    var(--frame-color-label-left) + var(--frame-color-circle-size) +
+      var(--frame-color-second-row-item-gap) + 109px +
+      var(--frame-color-second-row-item-gap)
+  );
+  width: 110px;
+  height: 110px;
+  box-sizing: border-box;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #ff85b8;
+  filter: drop-shadow(0 0 11.3px rgb(108 108 108 / 25%));
+}
+
+.frameColorCircleDeepPink {
+  top: calc(
+    var(--frame-color-label-top) + var(--frame-color-label-height) +
+      var(--frame-color-circle-gap) + var(--frame-color-circle-size) +
+      var(--frame-color-second-row-gap) - 1px
+  );
+  left: calc(
+    var(--frame-color-label-left) + var(--frame-color-circle-size) +
+      var(--frame-color-second-row-item-gap) + 109px +
+      var(--frame-color-second-row-item-gap) + var(--frame-color-circle-size) +
+      var(--frame-color-second-row-item-gap)
+  );
+  width: 110px;
+  height: 110px;
+  box-sizing: border-box;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #ff5ca0;
+  filter: drop-shadow(0 0 11.3px rgb(108 108 108 / 25%));
+}
+
+.photoStack {
+  position: absolute;
+  top: var(--photo-top);
+  left: var(--photo-left);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.photoSlot {
+  display: inline-flex;
+  width: var(--photo-width);
+  padding: 0;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+}
+
+.photo {
+  display: block;
+  width: var(--photo-render-width);
+  height: var(--photo-render-height);
+  object-fit: cover;
+}
+
+.photoGapFill {
+  align-self: center;
+  width: var(--photo-render-width);
+  height: 9.46px;
+  background: var(--frame-accent-color);
+}
+
+.bottomWhiteBox {
+  position: absolute;
+  bottom: var(--bottom-box-gap);
+  left: var(--photo-left);
+  width: var(--photo-width);
+  height: var(--bottom-box-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--frame-accent-color);
+}
+
+.bottomLogo {
+  display: block;
+  width: 212px;
+  height: 53px;
+  object-fit: contain;
+}

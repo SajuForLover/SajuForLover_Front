@@ -1,13 +1,25 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import countNum1 from "@/assets/images/count_1.png";
 import countNum2 from "@/assets/images/count_2.png";
 import countNum3 from "@/assets/images/count_3.png";
 import countNum4 from "@/assets/images/count_4.png";
 import countNum5 from "@/assets/images/count_5.png";
-import yoonSeaFrame from "@/assets/images/YoonSea_1.png";
+import {
+  loadPhotos,
+  nextEmptySlot,
+  PHOTO_BOOTH_HEIGHT,
+  PHOTO_BOOTH_WIDTH,
+  PHOTO_FRAME_HEIGHT,
+  PHOTO_FRAME_LEFT,
+  PHOTO_FRAME_TOP,
+  PHOTO_FRAME_WIDTH,
+  RESULT_PHOTO_HEIGHT,
+  RESULT_PHOTO_WIDTH,
+  savePhotos,
+  YOON_SEA_FRAME_SRC,
+} from "./photoShootData";
 import styles from "./YoonSeaPhotoShootPage.module.css";
-
-const STORAGE_KEY = "yoonSeaPhotoShoot.photos.v1";
 
 const COUNT_NUM_SRC: Record<5 | 4 | 3 | 2 | 1, string> = {
   5: countNum5,
@@ -17,30 +29,17 @@ const COUNT_NUM_SRC: Record<5 | 4 | 3 | 2 | 1, string> = {
   1: countNum1,
 };
 
-function loadPhotos(): (string | null)[] {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return [null, null, null, null];
-    const parsed = JSON.parse(raw) as unknown;
-    if (!Array.isArray(parsed)) return [null, null, null, null];
-    const arr = parsed.map((x) => (typeof x === "string" ? x : null));
-    while (arr.length < 4) arr.push(null);
-    return arr.slice(0, 4) as (string | null)[];
-  } catch {
-    return [null, null, null, null];
-  }
-}
-
-function savePhotos(photos: (string | null)[]) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(photos));
-}
-
-function nextEmptySlot(photos: (string | null)[]) {
-  const i = photos.findIndex((p) => !p);
-  return i === -1 ? 4 : i;
+function loadImage(src: string) {
+  return new Promise<HTMLImageElement>((resolve, reject) => {
+    const image = new Image();
+    image.onload = () => resolve(image);
+    image.onerror = () => reject(new Error(`Failed to load image: ${src}`));
+    image.src = src;
+  });
 }
 
 export function YoonSeaPhotoShootPage() {
+  const navigate = useNavigate();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [cameraError, setCameraError] = useState<string | null>(null);
   const [streamReady, setStreamReady] = useState(false);
@@ -54,26 +53,65 @@ export function YoonSeaPhotoShootPage() {
   phaseRef.current = phase;
 
   const nextSlot = nextEmptySlot(photos);
+  const currentFrameSrc = YOON_SEA_FRAME_SRC[Math.min(nextSlot, 3)];
   const statusLabel =
     nextSlot >= 4
       ? "촬영 완료 (4/4)"
       : `촬영 중이예요 ${nextSlot + 1}/4`;
 
-  const captureFrame = useCallback((slotIndex: number) => {
+  const captureFrame = useCallback(async (slotIndex: number) => {
     const video = videoRef.current;
-    if (!video || video.videoWidth === 0) return;
+    if (!video || video.videoWidth === 0 || video.videoHeight === 0) return;
 
-    const canvas = document.createElement("canvas");
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    const outputScale = 2;
+    const boothWidth = Math.round(PHOTO_BOOTH_WIDTH * outputScale);
+    const boothHeight = Math.round(PHOTO_BOOTH_HEIGHT * outputScale);
+    const frameLeft = Math.round(PHOTO_FRAME_LEFT * outputScale);
+    const frameTop = Math.round(PHOTO_FRAME_TOP * outputScale);
+    const frameWidth = Math.round(PHOTO_FRAME_WIDTH * outputScale);
+    const frameHeight = Math.round(PHOTO_FRAME_HEIGHT * outputScale);
+    const resultWidth = Math.round(RESULT_PHOTO_WIDTH * outputScale);
+    const resultHeight = Math.round(RESULT_PHOTO_HEIGHT * outputScale);
 
-    ctx.translate(canvas.width, 0);
-    ctx.scale(-1, 1);
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    const boothCanvas = document.createElement("canvas");
+    boothCanvas.width = boothWidth;
+    boothCanvas.height = boothHeight;
+    const boothCtx = boothCanvas.getContext("2d");
+    if (!boothCtx) return;
 
-    const dataUrl = canvas.toDataURL("image/jpeg", 0.88);
+    const scale = Math.max(
+      boothWidth / video.videoWidth,
+      boothHeight / video.videoHeight
+    );
+    const drawWidth = video.videoWidth * scale;
+    const drawHeight = video.videoHeight * scale;
+    const offsetX = (boothWidth - drawWidth) / 2;
+    const offsetY = (boothHeight - drawHeight) / 2;
+
+    boothCtx.save();
+    boothCtx.translate(boothWidth, 0);
+    boothCtx.scale(-1, 1);
+    boothCtx.drawImage(video, offsetX, offsetY, drawWidth, drawHeight);
+    boothCtx.restore();
+
+    try {
+      const frameImage = await loadImage(
+        YOON_SEA_FRAME_SRC[Math.min(slotIndex, YOON_SEA_FRAME_SRC.length - 1)]
+      );
+      boothCtx.drawImage(frameImage, frameLeft, frameTop, frameWidth, frameHeight);
+    } catch {
+      // Keep the camera capture even if the frame asset fails to load.
+    }
+
+    const photoCanvas = document.createElement("canvas");
+    photoCanvas.width = resultWidth;
+    photoCanvas.height = resultHeight;
+    const photoCtx = photoCanvas.getContext("2d");
+    if (!photoCtx) return;
+
+    photoCtx.drawImage(boothCanvas, 0, 0, resultWidth, resultHeight);
+
+    const dataUrl = photoCanvas.toDataURL("image/png");
     setPhotos((prev) => {
       const next = [...prev];
       next[slotIndex] = dataUrl;
@@ -109,6 +147,11 @@ export function YoonSeaPhotoShootPage() {
 
     return () => window.clearTimeout(timer);
   }, [phase, finishCountdown]);
+
+  useEffect(() => {
+    if (phase !== null || nextSlot < 4) return;
+    navigate("/yoon-sea-photo-shoot/result", { replace: true });
+  }, [navigate, nextSlot, phase]);
 
   /** 첫 컷은 카메라 준비 후 짧게, 이후 컷은 5초 간격으로 자동 카운트다운 */
   useEffect(() => {
@@ -216,7 +259,7 @@ export function YoonSeaPhotoShootPage() {
           autoPlay
         />
         <img
-          src={yoonSeaFrame}
+          src={currentFrameSrc}
           alt=""
           className={styles.photoFrame}
           draggable={false}
