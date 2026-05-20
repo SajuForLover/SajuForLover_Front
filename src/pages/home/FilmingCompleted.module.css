@@ -30,7 +30,7 @@
   font-size: 80px;
   font-weight: 600;
   font-style: normal;
-  line-height: normal;
+  line-height: 1;
   margin: 126px 0 0 0; /* 촬영 페이지와 동일한 상단 여백 */
 }
 
@@ -40,7 +40,7 @@
   font-size: 30px; /* 촬영 페이지와 동일한 크기 */
   font-weight: 400;
   font-style: normal;
-  line-height: normal;
+  line-height: 1;
   margin-top: 46px; /* 상단 252px 위치를 위한 마진: 252 - (126 + 80) */
 }
 

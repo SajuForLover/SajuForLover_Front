@@ -21,7 +21,7 @@ export function FilmingCompleted() {
   return (
     <div className={styles.root}>
       <div className={styles.header}>
-        <h1 className={styles.title}>촬영이 완료되었습니다</h1>
+        <h1 className={styles.title}>촬영이 완료 되었어요</h1>
         <p className={styles.notice}>*사진은 저장되지 않습니다</p>
       </div>
 

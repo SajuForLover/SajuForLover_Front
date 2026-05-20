@@ -38,7 +38,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: 1;
-  margin-top: 32px; /* 타이틀로부터 32px 하단에 배치 */
+  margin-top: 46px; /* 상단 252px 위치를 위한 마진: 252 - (126 + 80) */
 }
 
 .cameraContainer {
