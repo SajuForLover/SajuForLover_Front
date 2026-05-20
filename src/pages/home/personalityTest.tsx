@@ -1,14 +1,16 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./PersonalityTest.module.css";
 
 export function PersonalityTest() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const capturedImage = location.state?.capturedImage; // FilmingCompleted에서 전달받은 이미지
 
   const handleChoice = (type: "T" | "F") => {
     console.log("선택된 성향:", type);
     // 다음 질문(2/3)으로 이동하는 로직 (라우터 설정에 따라 변경 가능)
-    // navigate("/personality/2");
+    navigate("/results", { state: { capturedImage: capturedImage } }); // CoronalResults 페이지로 이동하며 이미지 전달
   };
 
   return (

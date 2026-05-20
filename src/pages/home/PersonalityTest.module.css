@@ -1,3 +1,12 @@
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .root {
   width: 100%;
   height: 100vh;
@@ -112,11 +121,11 @@
 .star1 {
   position: absolute;
   top: 804px; left: 726px; width: 150px; height: 129px;
-  background: url("../assets/images/star1.png") center/contain no-repeat;
+  background: url("../../assets/images/star1.png") center/contain no-repeat;
 }
 
 .star2 {
   position: absolute;
   top: 903px; left: 1055px; width: 106px; height: 77px;
-  background: url("../assets/images/star2.png") center/contain no-repeat;
+  background: url("../../assets/images/star2.png") center/contain no-repeat;
 }

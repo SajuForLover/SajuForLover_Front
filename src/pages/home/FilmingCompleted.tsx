@@ -14,7 +14,8 @@ export function FilmingCompleted() {
   };
 
   const handleNext = () => {
-    navigate("/personality");
+    // 이미지 데이터를 다음 페이지인 성격 테스트로 전달해야 합니다.
+    navigate("/personality", { state: { capturedImage } });
   };
 
   return (
