@@ -94,11 +94,38 @@
   font-weight: 500;
 }
 
+.leftGuide .guideItem:nth-child(1) {
+  position: absolute;
+  top: 400.5px;
+  left: 325px;
+}
+
+.leftGuide .guideItem:nth-child(2) {
+  position: absolute;
+  top: 590.5px;
+  left: 325px;
+}
+
+.leftGuide .guideItem:nth-child(3) {
+  position: absolute;
+  top: 781.5px;
+  left: 325px;
+}
+
 .guideItem {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 22px;
+}
+
+.guideItem span {
+  color: #FF4D76;
+  font-family: 'Paperlogy';
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 147%;
+  letter-spacing: -0.5px;
 }
 
 .line {

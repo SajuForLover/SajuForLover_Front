@@ -94,9 +94,9 @@ export function CoronalResults() {
       <div className={styles.mainContent}>
         {/* 왼쪽: 얼굴 부위 구분 가이드 */}
         <div className={styles.leftGuide}>
-          <div className={styles.guideItem}><span>상정</span><div className={styles.line} /></div>
-          <div className={styles.guideItem}><span>중정</span><div className={styles.line} /></div>
-          <div className={styles.guideItem}><span>하정</span><div className={styles.line} /></div>
+          <div className={styles.guideItem}><span>상정 上程</span><div className={styles.line} /></div>
+          <div className={styles.guideItem}><span>중정 中正</span><div className={styles.line} /></div>
+          <div className={styles.guideItem}><span>하정 下程</span><div className={styles.line} /></div>
         </div>
 
         {/* 중앙: 이미지 및 포인트 오버레이 */}
