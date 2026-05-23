@@ -5,8 +5,12 @@ import { useState, useEffect } from "react";
 
 export function PersonalityTest() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [step, setStep] = useState(1);
   const [answers, setAnswers] = useState<string[]>([]);
+
+  // 이전 페이지에서 넘어온 촬영된 이미지 데이터를 가져옵니다.
+  const capturedImage = location.state?.capturedImage;
 
   const handleChoice = (type: "T" | "F") => {
     console.log("선택된 성향:", type);
@@ -16,8 +20,13 @@ export function PersonalityTest() {
     if (step < 3) {
       setStep(step + 1);
     } else {
-      // 3번째 질문까지 완료 시 결과 페이지로 이동 (추후 구현)
-      // navigate("/result", { state: { answers: newAnswers } });
+      // 마지막 질문 답변 시 결과 리포트 페이지로 이동하며 사진 데이터를 전달합니다.
+      navigate("/results", { 
+        state: { 
+          capturedImage, 
+          answers: newAnswers 
+        } 
+      });
     }
   };
 
