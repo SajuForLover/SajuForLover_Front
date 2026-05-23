@@ -89,10 +89,7 @@ export function CoronalResults() {
 
   return (
     <div className={styles.root}>
-      <div className={styles.header}>
-        <h1 className={styles.title}>관상 및 사주 분석 결과</h1>
-        <p className={styles.notice}>*이 결과는 재미로만 참고해 주세요</p>
-      </div>
+      <h1 className={styles.resultTitle}>관성 결과지</h1>
 
       <div className={styles.mainContent}>
         {/* 왼쪽: 얼굴 부위 구분 가이드 */}

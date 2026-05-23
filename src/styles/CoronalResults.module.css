@@ -12,6 +12,7 @@
   padding: 80px 40px;
   box-sizing: border-box;
   font-family: 'Paperlogy';
+  position: relative;
 }
 
 /* 로딩 화면 스타일 */
@@ -47,10 +48,20 @@
   font-weight: 500;
 }
 
-/* 메인 결과 헤더 */
-.header { text-align: center; margin-bottom: 60px; }
-.title { font-size: 60px; font-weight: 600; color: #5E3535; margin: 0; }
-.notice { font-size: 24px; color: rgba(94, 53, 53, 0.5); margin-top: 15px; }
+/* 관성 결과지 타이틀 스타일 */
+.resultTitle {
+  position: absolute;
+  top: 123px;
+  left: 157px;
+  color: #5E3535;
+  font-family: 'Paperlogy';
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 147%;
+  letter-spacing: -0.8px;
+  margin: 0;
+}
 
 /* 메인 콘텐츠 레이아웃 (3컬럼) */
 .mainContent {
