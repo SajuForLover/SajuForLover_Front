@@ -109,22 +109,31 @@
 
 /* 중앙 이미지 영역 */
 .imageWrapper {
-  flex: 0 0 500px;
+  position: absolute;
+  top: 233px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 750px;
 }
 
 .imageContainer {
   position: relative;
-  width: 100%;
-  aspect-ratio: 60 / 80;
-  border-radius: 30px;
+  width: 750px;
+  height: 738px;
+  border-radius: 25px;
+  border: 3px solid #E78EB3;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(231, 142, 179, 0.3);
-  border: 4px solid #FFF;
+  box-shadow: 0 1px 17.9px 0 rgba(255, 121, 152, 0.16);
+  background-color: lightgray;
+  background-repeat: no-repeat;
 }
 
 .capturedImg {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  width: 116.589%;
+  height: 148.053%;
+  left: -77.298px;
+  top: -138.279px;
   object-fit: cover;
 }
 
