@@ -90,6 +90,10 @@ export function CoronalResults() {
   return (
     <div className={styles.root}>
       <h1 className={styles.resultTitle}>관성 결과지</h1>
+      <div className={styles.titleLine} />
+      <div className={styles.titleLine} />
+      <div className={styles.titleLine} />
+      <div className={styles.titleLine} />
 
       <div className={styles.mainContent}>
         {/* 왼쪽: 얼굴 부위 구분 가이드 */}

@@ -63,6 +63,31 @@
   margin: 0;
 }
 
+/* 타이틀 하단 그라데이션 라인 */
+.titleLine {
+  position: absolute;
+  left: 155px;
+  width: 438px;
+  height: 1px;
+  background: linear-gradient(90deg, #FFF 0%, #F34A71 100%);
+}
+
+.titleLine:nth-of-type(1) {
+  top: 320px;
+}
+
+.titleLine:nth-of-type(2) {
+  top: 510px;
+}
+
+.titleLine:nth-of-type(3) {
+  top: 701px;
+}
+
+.titleLine:nth-of-type(4) {
+  top: 892px;
+}
+
 /* 메인 콘텐츠 레이아웃 (3컬럼) */
 .mainContent {
   display: flex;
