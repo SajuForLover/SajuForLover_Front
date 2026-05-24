@@ -89,7 +89,7 @@ export function CoronalResults() {
 
   return (
     <div className={styles.root}>
-      <h1 className={styles.resultTitle}>관성 결과지</h1>
+      <h1 className={styles.resultTitle}>관상 결과지</h1>
       <div className={styles.titleLine} />
       <div className={styles.titleLine} />
       <div className={styles.titleLine} />
@@ -98,59 +98,101 @@ export function CoronalResults() {
       <div className={styles.mainContent}>
         {/* 왼쪽: 얼굴 부위 구분 가이드 */}
         <div className={styles.leftGuide}>
-          <div className={styles.guideItem}><span>상정 上程</span><div className={styles.line} /></div>
-          <div className={styles.guideItem}><span>중정 中正</span><div className={styles.line} /></div>
-          <div className={styles.guideItem}><span>하정 下程</span><div className={styles.line} /></div>
+          <div className={styles.guideItem}><span>상정 上程</span></div>
+          <div className={styles.guideItem}><span>중정 中正</span></div>
+          <div className={styles.guideItem}><span>하정 下程</span></div>
         </div>
 
         {/* 중앙: 이미지 및 포인트 오버레이 */}
         <div className={styles.imageWrapper}>
           <div className={styles.imageContainer}>
             <img src={capturedImage} alt="분석 이미지" className={styles.capturedImg} />
-            {result?.physiognomy_result.map((item, idx) => (
-              <div 
-                key={idx} 
-                className={styles.point} 
-                style={{ top: item.top, left: item.left }}
-              >
-                <div className={styles.pointMarker}>{idx + 1}</div>
-                <div className={styles.pointLabel}>{item.label}</div>
-              </div>
-            ))}
           </div>
         </div>
-
-        {/* 오른쪽: 상세 분석 결과 카드 */}
-        <div className={styles.resultDetails}>
-          {result?.physiognomy_result.map((item, idx) => (
-            <div key={idx} className={styles.detailCard}>
-              <div className={styles.cardHeader}>
-                <span className={styles.cardIndex}>{idx + 1}</span>
-                <span className={styles.cardTitle}>{item.part} ({item.label})</span>
-              </div>
-              <p className={styles.cardDesc}>{item.desc}</p>
-            </div>
-          ))}
-        </div>
       </div>
 
-      {/* 하단: 사주 총평 섹션 */}
-      <div className={styles.summarySection}>
-        <div className={styles.summaryBox}>
-          <h3>종합 분석 및 사주 총평</h3>
-          <p className={styles.totalDesc}>{result?.description}</p>
-          <div className={styles.divider} />
-          <p className={styles.sajuDesc}>{result?.saju_result.description}</p>
+      <div style={{
+        alignSelf: "stretch",
+        color: "#FF4B74",
+        fontFamily: "Paperlogy",
+        fontSize: "30px",
+        fontStyle: "normal",
+        fontWeight: 600,
+        lineHeight: "147%",
+        letterSpacing: "-0.6px"
+      }}>
+        <div style={{ position: "absolute", top: "304px", left: "1479px" }}>1. 이마</div>
+        <div style={{
+          position: "absolute",
+          top: "362px",
+          left: "1479px",
+          alignSelf: "stretch",
+          color: "#5E3535",
+          fontFamily: "Paperlogy",
+          fontSize: "21px",
+          fontStyle: "normal",
+          fontWeight: 400,
+          lineHeight: "155%",
+          letterSpacing: "-0.42px",
+          width: "280px"
+        }}>
+          이마가 넓고 매끈한 편이며<br />
+          지혜롭고 사고가 깊은 타입
         </div>
-      </div>
-
-      <div className={styles.buttonContainer}>
-        <button className={styles.retryBtn} onClick={() => navigate("/camera")}>
-          다시 촬영하기
-        </button>
-        <button className={styles.nextBtn} onClick={() => navigate("/")}>
-          홈으로 이동
-        </button>
+        <div style={{ position: "absolute", top: "467px", left: "1479px" }}>2. 코</div>
+        <div style={{
+          position: "absolute",
+          top: "525px",
+          left: "1479px",
+          alignSelf: "stretch",
+          color: "#5E3535",
+          fontFamily: "Paperlogy",
+          fontSize: "21px",
+          fontStyle: "normal",
+          fontWeight: 400,
+          lineHeight: "155%",
+          letterSpacing: "-0.42px",
+          width: "329px"
+        }}>
+          코가 오똑하고 콧대가 번듯하여<br />
+          자존심이 강하고 목표 지향적
+        </div>
+        <div style={{ position: "absolute", top: "634px", left: "1479px" }}>3. 눈</div>
+        <div style={{
+          position: "absolute",
+          top: "692px",
+          left: "1479px",
+          alignSelf: "stretch",
+          color: "#5E3535",
+          fontFamily: "Paperlogy",
+          fontSize: "21px",
+          fontStyle: "normal",
+          fontWeight: 400,
+          lineHeight: "155%",
+          letterSpacing: "-0.42px",
+          width: "383px"
+        }}>
+          눈이 맑고 검은자가 뚜렷하여<br />
+          집중력이 좋고 감정조절을 잘하는 편
+        </div>
+        <div style={{ position: "absolute", top: "804px", left: "1479px" }}>4. 입</div>
+        <div style={{
+          position: "absolute",
+          top: "862px",
+          left: "1479px",
+          alignSelf: "stretch",
+          color: "#5E3535",
+          fontFamily: "Paperlogy",
+          fontSize: "21px",
+          fontStyle: "normal",
+          fontWeight: 400,
+          lineHeight: "155%",
+          letterSpacing: "-0.42px",
+          width: "407px"
+        }}>
+          입술이 도톰하고 입꼬리가 약간 올라가<br />
+          긍정적이고 표현력이 풍부한 성향
+        </div>
       </div>
     </div>
   );
