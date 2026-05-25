@@ -16,6 +16,7 @@ import { SajuAbilityDetailResult } from "./pages/home/SajuAbilityDetailResult";
 import { SajuCareerResult } from "./pages/home/SajuCareerResult";
 import { SajuCareerDetailResult } from "./pages/home/SajuCareerDetailResult";
 import { SajuAbilityInfoResult } from "./pages/home/SajuAbilityInfoResult";
+import { SajuOhaengInfoResult } from "./pages/home/SajuOhaengInfoResult";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/saju-career" element={<SajuCareerResult />} />
         <Route path="/saju-career-detail" element={<SajuCareerDetailResult />} />
         <Route path="/saju-ability-info" element={<SajuAbilityInfoResult />} />
+        <Route path="/saju-ohaeng-info" element={<SajuOhaengInfoResult />} />
       </Routes>
     </Router>
   );
