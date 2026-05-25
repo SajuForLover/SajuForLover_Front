@@ -84,14 +84,19 @@ export function UserForm() {
 
   return (
     <div className={styles.root}>
+      {/* 우측 구분선 */}
+      <div className={styles.rightDivider} />
+
       {/* 1. 상단 고정 영역: 배경 투명하게 유지 */}
       <div className={styles.headerContainer}>
         <h1 className={styles.title}>사주 정보를 입력해 주세요</h1>
         <p className={styles.notice}>*정보는 저장되지 않습니다</p>
       </div>
 
-      {/* ✅ 2. 배경 장식 요소: 스크롤해도 고정됨 */}
+      {/* 배경 장식 요소: 스크롤해도 고정됨 */}
       <img src={pinkEffect} className={styles.fixedPinkEffect} alt="" />
+      <img src={star1} className={styles.star1} alt="" />
+      <img src={star2} className={styles.star2} alt="" />
 
       {/* 3. 기존 폼 내용 (그대로 유지) */}
       <form id="user-info-form" className={styles.form} onSubmit={handleSubmit}>

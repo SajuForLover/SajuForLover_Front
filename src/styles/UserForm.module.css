@@ -75,14 +75,14 @@
   width: 546px;      /* 1080px 디자인 기준 입력창 너비 */
   display: flex;
   flex-direction: column;
-  gap: 77px;         /* 선이 없어졌으므로 그룹 간 간격을 77px로 직접 설정 */
+  gap: 72px;         /* 피그마 기준 그룹 간 간격 72px */
   position: relative;
   padding-bottom: 250px;
 }
 
-/* 성별 그룹의 레이블과 버튼 박스 사이의 특수 간격 유지 */
+/* 성별 그룹 간격 - 피그마 기준 24px (동일 적용) */
 .form > .inputGroup:nth-child(2) {
-  gap: 29px;       /* 레이블 끝(574+30=604)에서 박스 시작(633)까지의 거리 */
+  gap: 24px;
 }
 
 .inputGroup { 
@@ -108,7 +108,7 @@
   align-items: center;
   border-radius: 20px;
   border: 2px solid #FFF;
-  background: rgba(255, 255, 255, 0.9); /* 은은한 투명도 적용 */
+  background: rgba(255, 255, 255, 0.6); /* 피그마 기준 60% 투명도 */
   box-shadow: 0 14px 75.2px -16px rgba(247, 143, 170, 0.85);
   box-sizing: border-box;
   font-family: 'Paperlogy';
@@ -145,7 +145,7 @@
   padding: 0 40px;
   border-radius: 20px;
   border: 2px solid #FFFFFF;
-  background-color: rgba(255, 255, 255, 0.9); /* 은은한 투명도 적용 */
+  background-color: rgba(255, 255, 255, 0.6); /* 피그마 기준 60% 투명도 */
   box-sizing: border-box;
   font-family: 'Paperlogy';
   font-size: 28px;
@@ -232,7 +232,7 @@
   box-sizing: border-box;
   border-radius: 20px;
   border: 2px solid #FFF;
-  background: rgba(255, 255, 255, 0.9); /* 은은한 투명도 적용 */
+  background: rgba(255, 255, 255, 0.6); /* 피그마 기준 60% 투명도 */
   box-shadow: 0 3px 67.4px -16px rgba(247, 143, 170, 0.85);
   color: rgba(72, 72, 72, 0.42); 
   font-family: 'Paperlogy';
@@ -349,13 +349,45 @@
 
 .fixedButtonContainer {
   position: fixed;
-  bottom: 50px;
+  bottom: 88px; /* 피그마 기준: 1080-893-99=88px */
   left: 50%;
   transform: translateX(-50%);
-  z-index: 3000; /* 별(4000)보다는 아래, 일반 입력창보다는 위 */
-  
-  /* 피그마 레이아웃 수치 적용 */
-  width: 651px; 
+  z-index: 3000;
+  width: 651px;
+}
+
+/* 우측 구분선 (피그마 Rectangle 26) */
+.rightDivider {
+  position: fixed;
+  right: 22px; /* 1920-1889-9=22px */
+  top: 79px;
+  width: 9px;
+  height: 320px;
+  background: rgba(179, 167, 171, 0.8);
+  border-radius: 100px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* 스파클 별 이미지 */
+.star1 {
+  position: fixed;
+  left: 572px;
+  bottom: 121px; /* 1080-830-129=121px */
+  width: 150px;
+  height: 129px;
+  pointer-events: none;
+  z-index: 4000;
+}
+
+.star2 {
+  position: fixed;
+  left: 1231px;
+  bottom: 73px; /* 1080-930-77=73px */
+  width: 106px;
+  height: 77px;
+  pointer-events: none;
+  z-index: 4000;
 }
 
 .submitBtn {
