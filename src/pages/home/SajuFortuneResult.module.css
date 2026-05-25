@@ -1,0 +1,175 @@
+/* ============================
+   루트 캔버스 (1920x1080)
+   ============================ */
+.root {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Paperlogy';
+  background-color: #FBEBEE;
+}
+
+/* 배경 이미지 (opacity 0.48) */
+.bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1919px;
+  height: 1080px;
+  background-image: url("../../assets/images/background2.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.48;
+  z-index: 0;
+}
+
+/* 하단 핑크 그라데이션 */
+.bottomGradient {
+  position: absolute;
+  left: -4px;
+  top: 801px;
+  width: 1924px;
+  height: 279px;
+  background: linear-gradient(180deg, rgba(247, 143, 170, 0) 0%, rgba(247, 143, 170, 0.5) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================
+   로고
+   ============================ */
+.logo {
+  position: absolute;
+  top: 86px;
+  left: 79px;
+  color: #ffffff;
+  font-family: 'Paperlogy';
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  z-index: 10;
+  text-shadow: 0 2px 8px rgba(255, 100, 160, 0.4);
+}
+
+/* ============================
+   탭 네비게이션
+   ============================ */
+.tabNav {
+  position: absolute;
+  top: 84px;
+  left: 0;
+  width: 1920px;
+  height: 66px;
+  z-index: 10;
+}
+
+.tab {
+  position: absolute;
+  height: 66px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Paperlogy';
+  font-size: 28px;
+  font-weight: 500;
+  padding: 16px 27px;
+  background: transparent;
+  color: #5E3535;
+  white-space: nowrap;
+}
+
+.tab:nth-child(1) { left: 399px;  width: 170px; }
+.tab:nth-child(2) { left: 692px;  width: 172px; }
+.tab:nth-child(3) { left: 988px;  width: 170px; }
+.tab:nth-child(4) { left: 1281px; width: 171px; }
+.tab:nth-child(5) { left: 1575px; width: 211px; }
+
+.tabActive {
+  background: #ffffff;
+  color: #FF68A7;
+}
+
+/* ============================
+   섹션 타이틀
+   ============================ */
+.sectionTitle {
+  position: absolute;
+  top: 249px;
+  left: 115px;
+  margin: 0;
+  font-family: 'Paperlogy';
+  font-size: 40px;
+  font-weight: 600;
+  color: #5E3535;
+  z-index: 10;
+}
+
+/* ============================
+   차트 SVG (전체 캔버스)
+   ============================ */
+.chartSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1080px;
+  z-index: 5;
+}
+
+/* ============================
+   말풍선
+   ============================ */
+.bubble {
+  position: absolute;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 18px 32px;
+  z-index: 20;
+  box-shadow: 0 2px 12px rgba(255, 120, 166, 0.18);
+}
+
+.bubbleText {
+  font-family: 'Paperlogy';
+  font-size: 28px;
+  font-weight: 600;
+  color: #FF78A6;
+  white-space: nowrap;
+}
+
+/* 말풍선1 — 질러야 할 때! (2029 피크 위) */
+.bubble1 {
+  left: 889px;
+  top: 420px;
+}
+
+.bubble1::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 16px 12px 0 12px;
+  border-style: solid;
+  border-color: #ffffff transparent transparent transparent;
+}
+
+/* 말풍선2 — 존버해야 할 때! (2032 저점 위) */
+.bubble2 {
+  left: 1206px;
+  top: 624px;
+}
+
+.bubble2::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 16px 12px 0 12px;
+  border-style: solid;
+  border-color: #ffffff transparent transparent transparent;
+}
