@@ -77,7 +77,7 @@
   flex-direction: column;
   gap: 72px;         /* 피그마 기준 그룹 간 간격 72px */
   position: relative;
-  padding-bottom: 250px;
+  padding-bottom: 450px; /* 피그마 입력완료버전 스크롤 한계 맞춤 */
 }
 
 /* 성별 그룹 간격 - 피그마 기준 24px (동일 적용) */
@@ -145,7 +145,7 @@
   padding: 0 40px;
   border-radius: 20px;
   border: 2px solid #FFFFFF;
-  background-color: rgba(255, 255, 255, 0.6); /* 피그마 기준 60% 투명도 */
+  background-color: rgba(255, 255, 255, 0.6); /* 다른 입력창과 동일 */
   box-sizing: border-box;
   font-family: 'Paperlogy';
   font-size: 28px;
@@ -162,19 +162,34 @@
   border: 3px solid #E78EB3;
 }
 
+/* 드롭다운 열린 상태: 트리거 위 모서리만 둥글게, 불투명 배경, 그림자 제거 */
+.activeWrapper .selectTrigger {
+  border-radius: 20px 20px 0 0;
+  background-color: #FDEDF2;
+  box-shadow: none;
+}
+
+/* 도시 드롭다운 열린 상태: 입력창 위 모서리만 둥글게 */
+.activeWrapper .input {
+  border-radius: 20px 20px 0 0;
+  background: #FDEDF2;
+  box-shadow: none;
+}
+
 /* 둥둥 떠 있는 리스트박스 스타일 */
 .floatingListbox {
   position: absolute;
-  top: 105px; /* 입력창 아래에서 시작하여 다음 요소를 덮음 */
+  top: 97px; /* 트리거 높이(99px) - 하단 테두리(2px) = 97px → 틈 없이 연결 */
   left: 0;
   width: 546px;
-  height: 483px;
-  border-radius: 20px;
+  height: 384px; /* 피그마 Frame48 총 483px - 트리거 99px */
+  border-radius: 0 0 20px 20px; /* 아래 모서리만 둥글게 */
   border: 2px solid #FFF;
-  background: #FFFFFF; /* 불투명하게 하여 아래 input을 완벽히 가림 */
+  border-top: none; /* 트리거와 경계선 제거 */
+  background: #FDEDF2;
   box-shadow: 0 14px 75.2px -16px rgba(247, 143, 170, 0.85);
   box-sizing: border-box;
-  z-index: 5000;     /* 드롭다운을 최상단으로 설정 */
+  z-index: 5000;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -273,16 +288,17 @@
 
 .cityDropdown {
   position: absolute;
-  top: 105px; /* 입력창 아래에서 시작하여 다음 요소를 덮음 */
+  top: 97px;
   left: 0;
   width: 546px;
-  height: 285px;
-  border-radius: 20px;
+  height: 186px; /* 피그마 기준: 285px 전체 - 99px 입력창 = 186px */
+  border-radius: 0 0 20px 20px;
   border: 2px solid #FFFFFF;
-  background: #FFFFFF; /* 불투명하게 하여 아래 input을 완벽히 가림 */
+  border-top: none;
+  background: #FDEDF2;
   box-sizing: border-box;
   box-shadow: 0 14px 75.2px -16px rgba(247, 143, 170, 0.85);
-  z-index: 5000;     /* 드롭다운을 최상단으로 설정 */
+  z-index: 5000;
   overflow: hidden;
 }
 
