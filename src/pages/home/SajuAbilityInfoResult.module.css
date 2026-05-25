@@ -1,0 +1,211 @@
+.root {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Paperlogy';
+  background-color: #FBEBEE;
+}
+
+.bgImage {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1919px; height: 1080px;
+  background-image: url("../../assets/images/background2.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.48;
+  z-index: 0;
+}
+
+.midSection {
+  position: absolute;
+  left: 4px; top: 612px;
+  width: 1924px; height: 468px;
+  background: linear-gradient(180deg, rgba(247,143,170,0) 0%, rgba(247,143,170,0.5) 100%);
+  z-index: 1;
+}
+
+.rightDivider {
+  position: absolute;
+  left: 1879px; top: 289px;
+  width: 9px; height: 320px;
+  background: rgba(179,167,171,0.8);
+  border-radius: 100px;
+  z-index: 10;
+}
+
+/* 페이지 타이틀 */
+.pageTitle {
+  position: absolute;
+  left: 94px; top: 98px;
+  margin: 0;
+  font-family: 'Paperlogy';
+  font-size: 40px;
+  font-weight: 600;
+  color: #5E3535;
+  z-index: 10;
+}
+
+/* 돋보기 아이콘 */
+.searchIcon {
+  position: absolute;
+  left: 226px; top: 98px;
+  width: 41px; height: 41px;
+  background: #5E3535;
+  border-radius: 50%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* SVG 레이더 차트 */
+.chartSvg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1920px; height: 1080px;
+  z-index: 5;
+}
+
+/* 나의 일잘러 성향 리포트 텍스트 */
+.reportLink {
+  position: absolute;
+  left: 102px; top: 779px;
+  margin: 0;
+  font-family: 'Paperlogy';
+  font-size: 40px;
+  font-weight: 600;
+  color: #5E3535;
+  z-index: 10;
+}
+
+/* 추천 직업 바 */
+.footerBar {
+  position: absolute;
+  left: 122px; top: 906px;
+  width: 1675px; height: 80px;
+  background: rgba(255,255,255,0.82);
+  border-radius: 9999px;
+  border: 1px solid #E78EB3;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.footerLabel {
+  position: absolute;
+  left: 86px;
+  font-family: 'Paperlogy';
+  font-size: 25px;
+  font-weight: 600;
+  color: #5E3535;
+  white-space: nowrap;
+}
+
+.footerDivider {
+  position: absolute;
+  left: 304px;
+  width: 1px;
+  height: 40px;
+  background: rgba(94,53,53,0.3);
+}
+
+.footerValue {
+  position: absolute;
+  left: 856px;
+  font-family: 'Paperlogy';
+  font-size: 25px;
+  font-weight: 600;
+  color: #5E3535;
+}
+
+/* 화이트 딤 오버레이 */
+.dimOverlay {
+  position: absolute;
+  left: 0; top: 0;
+  width: 1924px; height: 1080px;
+  background: rgba(255,255,255,0.45);
+  z-index: 20;
+}
+
+/* 모달 */
+.modal {
+  position: absolute;
+  left: 270px; top: 249px;
+  width: 1380px; height: 605px;
+  background: #5E3535;
+  border-radius: 25px;
+  z-index: 30;
+}
+
+.modalInner {
+  position: absolute;
+  left: 58px; top: 54px;
+  width: 1244px; height: 500px;
+}
+
+.modalTitle {
+  margin: 0;
+  font-family: 'Paperlogy';
+  font-size: 38px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.modalSubtitle {
+  position: absolute;
+  top: 76px; left: 0;
+  margin: 0;
+  font-family: 'Paperlogy';
+  font-size: 25px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.43;
+  white-space: pre-line;
+}
+
+.modalBody {
+  position: absolute;
+  top: 183px; left: 0;
+  margin: 0;
+  font-family: 'Paperlogy';
+  font-size: 23px;
+  font-weight: 400;
+  color: #fff;
+  white-space: pre-line;
+  line-height: 1.856;
+}
+
+.modalButton {
+  position: absolute;
+  top: 433px; left: 0;
+  width: 1244px; height: 67px;
+  background: #fff;
+  border-radius: 178px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.modalButtonText {
+  font-family: 'Paperlogy';
+  font-size: 28px;
+  font-weight: 600;
+  color: #5E3535;
+}
+
+/* 닫기 버튼 */
+.closeBtn {
+  position: absolute;
+  right: 48px; top: 54px;
+  width: 30px; height: 28px;
+  color: #fff;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
