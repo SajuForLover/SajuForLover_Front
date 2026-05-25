@@ -9,6 +9,7 @@ import { CoronalResults } from "./pages/home/CoronalResults";
 import { SajuCharacterResult } from "./pages/home/SajuCharacterResult";
 import { SajuAbilityResult } from "./pages/home/SajuAbilityResult";
 import { SajuLifeResult } from "./pages/home/SajuLifeResult";
+import { SajuBoosterResult } from "./pages/home/SajuBoosterResult";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/saju-character" element={<SajuCharacterResult />} />
         <Route path="/saju-ability" element={<SajuAbilityResult />} />
         <Route path="/saju-life" element={<SajuLifeResult />} />
+        <Route path="/saju-booster" element={<SajuBoosterResult />} />
       </Routes>
     </Router>
   );
