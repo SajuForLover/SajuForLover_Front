@@ -1,6 +1,9 @@
+import { useState } from "react";
 import styles from "./SajuCareerDetailResult.module.css";
 
 export function SajuCareerDetailResult() {
+  const [showModal, setShowModal] = useState(true);
+
   return (
     <div className={styles.root}>
       {/* 배경 */}
@@ -50,26 +53,28 @@ export function SajuCareerDetailResult() {
       <div className={styles.partnerImgRight} />
       <p className={styles.partnerDescRight}>{'나를 자꾸 베어내려는 예리한 캐릭터\n(금 기운)'}</p>
 
-      {/* 화이트 딤 오버레이 */}
-      <div className={styles.dimOverlay} />
-
-      {/* 모달 */}
-      <div className={styles.modal}>
-        <div className={styles.modalInner}>
-          <h2 className={styles.modalTitle}>나의 일잘러 성향 리포트란?</h2>
-          <p className={styles.modalSubtitle}>
-            종합적인 사주 기운을 바탕으로, 실제 환경에서 내가 어떤 방식으로 일하고 타인과 어떻게 상호작용하는지 분석한 리포트입니다.
-          </p>
-          <p className={styles.modalBody}>
-            {'추천 직업 : 타고난 자산 관리 능력과 끈기, 기획력을 가장 잘 발휘할 수 있는 최적의 직무 분야를 제안합니다.\n업무 스타일 : 협업보다는 혼자서 묵묵히 목표를 달성할 때 최고의 효율을 내는 행동 성향을 분석합니다.\n주의할 점 : 주관과 고집이 강해 협업 시 팀원들이 느낄 수 있는 답답함을 미연에 방지하기 위한 조언입니다.\n파트너 궁합 : 나에게 부족한 기운을 채워주는 최고의 파트너와, 나를 자극하거나 대립하기 쉬운 기운의 조심할 파트너를 알려줍니다.'}
-          </p>
-          <div className={styles.modalButton}>
-            <span className={styles.modalButtonText}>내 사주 성향 리포트 분석 보러가기</span>
+      {/* 화이트 딤 오버레이 + 모달 */}
+      {showModal && (
+        <>
+          <div className={styles.dimOverlay} onClick={() => setShowModal(false)} />
+          <div className={styles.modal}>
+            <div className={styles.modalInner}>
+              <h2 className={styles.modalTitle}>나의 일잘러 성향 리포트란?</h2>
+              <p className={styles.modalSubtitle}>
+                종합적인 사주 기운을 바탕으로, 실제 환경에서 내가 어떤 방식으로 일하고 타인과 어떻게 상호작용하는지 분석한 리포트입니다.
+              </p>
+              <p className={styles.modalBody}>
+                {'추천 직업 : 타고난 자산 관리 능력과 끈기, 기획력을 가장 잘 발휘할 수 있는 최적의 직무 분야를 제안합니다.\n업무 스타일 : 협업보다는 혼자서 묵묵히 목표를 달성할 때 최고의 효율을 내는 행동 성향을 분석합니다.\n주의할 점 : 주관과 고집이 강해 협업 시 팀원들이 느낄 수 있는 답답함을 미연에 방지하기 위한 조언입니다.\n파트너 궁합 : 나에게 부족한 기운을 채워주는 최고의 파트너와, 나를 자극하거나 대립하기 쉬운 기운의 조심할 파트너를 알려줍니다.'}
+              </p>
+              <div className={styles.modalButton}>
+                <span className={styles.modalButtonText}>내 사주 성향 리포트 분석 보러가기</span>
+              </div>
+            </div>
+            {/* X 닫기 버튼 */}
+            <div className={styles.closeBtn} onClick={() => setShowModal(false)}>✕</div>
           </div>
-        </div>
-        {/* X 닫기 버튼 */}
-        <div className={styles.closeBtn}>✕</div>
-      </div>
+        </>
+      )}
     </div>
   );
 }

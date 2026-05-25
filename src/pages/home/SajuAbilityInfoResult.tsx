@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./SajuAbilityInfoResult.module.css";
 
 function toRad(deg: number) { return (deg * Math.PI) / 180; }
@@ -48,6 +49,8 @@ const TABLE_ROWS = [
 const ROW_YS = [319, 394, 475, 550, 626];
 
 export function SajuAbilityInfoResult() {
+  const [showModal, setShowModal] = useState(true);
+
   return (
     <div className={styles.root}>
       <div className={styles.bgImage} />
@@ -137,25 +140,27 @@ export function SajuAbilityInfoResult() {
         <span className={styles.footerValue}>부동산 자산운용가, 플랫폼 운영 기획자, 전통장인</span>
       </div>
 
-      {/* 화이트 딤 오버레이 */}
-      <div className={styles.dimOverlay} />
-
-      {/* 모달 */}
-      <div className={styles.modal}>
-        <div className={styles.modalInner}>
-          <h2 className={styles.modalTitle}>능력치란?</h2>
-          <p className={styles.modalSubtitle}>
-            {'사주 분석을 통해 도출된 타고난 기질과 역량을 5가지 다각형 차트로 시각화한 수치입니다. \n각 항목은 개인의 행동 패턴과 사회적 성향을 나타냅니다.'}
-          </p>
-          <p className={styles.modalBody}>
-            {'인내심 : 어려운 상황이나 스트레스를 묵묵히 견뎌내는 끈기와 최고 수준의 맷집을 의미합니다.\n실행력 : 목표를 정하면 주저하지 않고 끝까지 밀어붙여 결과를 만들어내는 추진력입니다.\n재물운 : 자산을 안정적으로 모으고 관리하며, 현실적인 이익을 감지하는 힘을 뜻합니다.\n사회성 : 필요에 따라 관계를 맺는 선택적 성향으로, 독립성과 대인관계의 균형을 보여줍니다.\n창의력 : 이상적인 아이디어보다는 현실적이고 실용적인 가치를 우선시하는 성향을 나타냅니다.'}
-          </p>
-          <div className={styles.modalButton}>
-            <span className={styles.modalButtonText}>내 사주 능력치 분석 보러가기</span>
+      {/* 화이트 딤 오버레이 + 모달 */}
+      {showModal && (
+        <>
+          <div className={styles.dimOverlay} onClick={() => setShowModal(false)} />
+          <div className={styles.modal}>
+            <div className={styles.modalInner}>
+              <h2 className={styles.modalTitle}>능력치란?</h2>
+              <p className={styles.modalSubtitle}>
+                {'사주 분석을 통해 도출된 타고난 기질과 역량을 5가지 다각형 차트로 시각화한 수치입니다. \n각 항목은 개인의 행동 패턴과 사회적 성향을 나타냅니다.'}
+              </p>
+              <p className={styles.modalBody}>
+                {'인내심 : 어려운 상황이나 스트레스를 묵묵히 견뎌내는 끈기와 최고 수준의 맷집을 의미합니다.\n실행력 : 목표를 정하면 주저하지 않고 끝까지 밀어붙여 결과를 만들어내는 추진력입니다.\n재물운 : 자산을 안정적으로 모으고 관리하며, 현실적인 이익을 감지하는 힘을 뜻합니다.\n사회성 : 필요에 따라 관계를 맺는 선택적 성향으로, 독립성과 대인관계의 균형을 보여줍니다.\n창의력 : 이상적인 아이디어보다는 현실적이고 실용적인 가치를 우선시하는 성향을 나타냅니다.'}
+              </p>
+              <div className={styles.modalButton}>
+                <span className={styles.modalButtonText}>내 사주 능력치 분석 보러가기</span>
+              </div>
+            </div>
+            <div className={styles.closeBtn} onClick={() => setShowModal(false)}>✕</div>
           </div>
-        </div>
-        <div className={styles.closeBtn}>✕</div>
-      </div>
+        </>
+      )}
     </div>
   );
 }
