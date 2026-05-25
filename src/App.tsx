@@ -7,6 +7,7 @@ import { FilmingCompleted } from "./pages/home/FilmingCompleted"; // FilmingComp
 import { PersonalityTest } from "./pages/home/personalityTest"; 
 import { CoronalResults } from "./pages/home/CoronalResults";
 import { SajuCharacterResult } from "./pages/home/SajuCharacterResult";
+import { SajuAbilityResult } from "./pages/home/SajuAbilityResult";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/personality" element={<PersonalityTest />} /> {/* PersonalityTest 페이지 라우트 추가 */}
         <Route path="/results" element={<CoronalResults />} /> {/* 결과 리포트 페이지 추가 */}
         <Route path="/saju-character" element={<SajuCharacterResult />} />
+        <Route path="/saju-ability" element={<SajuAbilityResult />} />
       </Routes>
     </Router>
   );
