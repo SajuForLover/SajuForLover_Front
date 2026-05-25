@@ -8,6 +8,7 @@ import { PersonalityTest } from "./pages/home/personalityTest";
 import { CoronalResults } from "./pages/home/CoronalResults";
 import { SajuCharacterResult } from "./pages/home/SajuCharacterResult";
 import { SajuAbilityResult } from "./pages/home/SajuAbilityResult";
+import { SajuLifeResult } from "./pages/home/SajuLifeResult";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/results" element={<CoronalResults />} /> {/* 결과 리포트 페이지 추가 */}
         <Route path="/saju-character" element={<SajuCharacterResult />} />
         <Route path="/saju-ability" element={<SajuAbilityResult />} />
+        <Route path="/saju-life" element={<SajuLifeResult />} />
       </Routes>
     </Router>
   );
