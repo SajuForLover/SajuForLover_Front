@@ -99,13 +99,6 @@ export function SajuAbilityInfoResult() {
           <ellipse key={i} cx={dx} cy={dy} rx={8} ry={8} fill="#FF8DAE" />
         ))}
 
-        {/* 레이블 */}
-        {LABELS.map((lb, i) => (
-          <text key={i} x={lb.x} y={lb.y + 26}
-            fontSize={25} fontFamily="Paperlogy,sans-serif"
-            fill="#5E3535" fontWeight={500}>{lb.text}</text>
-        ))}
-
         {/* 테이블 배경 */}
         <rect x={690} y={219} width={1142} height={469} fill="rgba(255,255,255,0.82)" rx={25} />
         <rect x={690} y={219} width={1142} height={79} fill="rgba(255,200,215,0.55)" />
@@ -123,9 +116,9 @@ export function SajuAbilityInfoResult() {
         {/* 데이터 행 */}
         {TABLE_ROWS.map((row, i) => (
           <g key={i}>
-            <text x={744} y={ROW_YS[i] + 8} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={600}>{row.item}</text>
-            <text x={966} y={ROW_YS[i] + 8} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535">{row.score}</text>
-            <text x={1175} y={ROW_YS[i] + 8} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={600}>{row.status}</text>
+            <text x={744} y={ROW_YS[i] + 32} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={600}>{row.item}</text>
+            <text x={966} y={ROW_YS[i] + 32} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535">{row.score}</text>
+            <text x={1175} y={ROW_YS[i] + 32} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={600}>{row.status}</text>
           </g>
         ))}
       </svg>
