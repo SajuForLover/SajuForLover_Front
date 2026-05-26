@@ -39,14 +39,14 @@ const DOTS: [number, number][] = [
 ];
 
 const TABLE_ROWS = [
-  { item: "인내심", score: "95 / 100", status: "MAX (최상급 맷집)" },
-  { item: "실행력", score: "90 / 100", status: "Hight (한번 정하면 끝까지 함)" },
-  { item: "재물운", score: "85 / 100", status: "Hight (돈을 모으는 힘)" },
-  { item: "사회성", score: "40 / 100", status: "Average (선택적 인싸)" },
-  { item: "창의력", score: "20 / 100", status: "Low (현실주의적 성향)" },
+  { item: "인내심", score: "95", status: "MAX (최상급 맷집)" },
+  { item: "실행력", score: "90", status: "Hight (한번 정하면 끝까지 함)" },
+  { item: "재물운", score: "85", status: "Hight (돈을 모으는 힘)" },
+  { item: "사회성", score: "40", status: "Average (선택적 인싸)" },
+  { item: "창의력", score: "20", status: "Low (현실주의적 성향)" },
 ];
 
-const ROW_YS = [319, 394, 475, 550, 626];
+const ROW_YS = [337, 415, 493, 571, 649];
 
 interface Props { hideBg?: boolean; }
 
@@ -112,15 +112,18 @@ export function SajuAbilityInfoResult({ hideBg = false }: Props) {
           <line key={i} x1={690} y1={y} x2={1832} y2={y} stroke="#000" strokeWidth={1} />
         ))}
         {/* 헤더 */}
-        <text x={741} y={265} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={600}>능력치 항목</text>
-        <text x={963} y={265} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={600}>점수 0/100</text>
-        <text x={1178} y={265} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={600}>상태</text>
+        <text x={741} y={258} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={600} dominantBaseline="central">능력치 항목</text>
+        <text x={963} y={258} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={600} dominantBaseline="central">점수 0/100</text>
+        <text x={1178} y={258} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={600} dominantBaseline="central">상태</text>
         {/* 데이터 행 */}
         {TABLE_ROWS.map((row, i) => (
           <g key={i}>
-            <text x={744} y={ROW_YS[i] + 32} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={600}>{row.item}</text>
-            <text x={966} y={ROW_YS[i] + 32} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535">{row.score}</text>
-            <text x={1175} y={ROW_YS[i] + 32} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={600}>{row.status}</text>
+            <text x={744} y={ROW_YS[i]} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={600} dominantBaseline="central">{row.item}</text>
+            <text x={966} y={ROW_YS[i]} fontFamily="Paperlogy,sans-serif" dominantBaseline="central">
+              <tspan fontSize={21} fill="#5E3535" fontWeight={600}>{row.score} </tspan>
+              <tspan fontSize={18} fill="#848484" fontWeight={500}>/ 100</tspan>
+            </text>
+            <text x={1175} y={ROW_YS[i]} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={600} dominantBaseline="central">{row.status}</text>
           </g>
         ))}
       </svg>

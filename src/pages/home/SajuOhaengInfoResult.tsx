@@ -35,7 +35,7 @@ const TABLE_ROWS = [
   { el: "쇠",   pct: "0 %",    trait: "표현력과 유연함 보완 필요" },
 ];
 
-const ROW_YS = [629, 699, 773, 843, 913];
+const ROW_YS = [646, 718, 790, 862, 934];
 
 interface Props { hideBg?: boolean; }
 
@@ -86,15 +86,15 @@ export function SajuOhaengInfoResult({ hideBg = false }: Props) {
         </defs>
 
         {/* 표 배경 */}
-        <rect x={696} y={537} width={1114} height={433} fill="rgba(253,253,253,1)" rx={25} />
+        <rect x={696} y={537} width={1114} height={433} fill="rgba(253,253,253,1)" rx={25} stroke="#000" strokeWidth={1} />
         {/* 표 헤더 배경 — 상단 모서리만 rx=25 */}
-        <path d="M721,537 Q696,537 696,562 L696,610 L1810,610 L1810,562 Q1810,537 1785,537 Z" fill="rgba(255,213,225,1)" />
+        <path d="M721,537 Q696,537 696,562 L696,610 L1810,610 L1810,562 Q1810,537 1785,537 Z" fill="#FFD5E1" stroke="#000" strokeWidth={1} />
         {/* 표 수직 구분선 */}
-        <line x1={903}  y1={537} x2={903}  y2={970} stroke="rgba(200,160,175,0.5)" strokeWidth={1} />
-        <line x1={1103} y1={537} x2={1103} y2={970} stroke="rgba(200,160,175,0.5)" strokeWidth={1} />
+        <line x1={903}  y1={537} x2={903}  y2={970} stroke="#000" strokeWidth={1} />
+        <line x1={1103} y1={537} x2={1103} y2={970} stroke="#000" strokeWidth={1} />
         {/* 표 수평 구분선 */}
         {[682, 754, 826, 898].map((y, i) => (
-          <line key={i} x1={696} y1={y} x2={1810} y2={y} stroke="rgba(200,160,175,0.35)" strokeWidth={1} />
+          <line key={i} x1={696} y1={y} x2={1810} y2={y} stroke="#000" strokeWidth={1} />
         ))}
         {/* 표 헤더 */}
         <text x={746}  y={578} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={500}>오행 요소</text>
@@ -103,9 +103,9 @@ export function SajuOhaengInfoResult({ hideBg = false }: Props) {
         {/* 표 데이터 */}
         {TABLE_ROWS.map((row, i) => (
           <g key={i}>
-            <text x={746}  y={ROW_YS[i] + 8} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={500}>{row.el}</text>
-            <text x={953}  y={ROW_YS[i] + 8} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={500}>{row.pct}</text>
-            <text x={1134} y={ROW_YS[i] + 8} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={500}>{row.trait}</text>
+            <text x={746}  y={ROW_YS[i]} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={500} dominantBaseline="central">{row.el}</text>
+            <text x={953}  y={ROW_YS[i]} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={500} dominantBaseline="central">{row.pct}</text>
+            <text x={1134} y={ROW_YS[i]} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={500} dominantBaseline="central">{row.trait}</text>
           </g>
         ))}
 

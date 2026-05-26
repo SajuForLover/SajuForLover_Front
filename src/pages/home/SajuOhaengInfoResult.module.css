@@ -50,6 +50,8 @@
   width: 212px; height: 205px;
   border-radius: 50%;
   background: #D9D9D9;
+  border: 5px solid #FDFDFD;
+  box-sizing: border-box;
   z-index: 10;
 }
 
@@ -108,17 +110,23 @@
 }
 
 .mbtiBadge {
-  height: 62px;
-  padding: 0 24px;
-  background: rgba(255,255,255,0.85);
-  border-radius: 100px;
   display: flex;
-  align-items: center;
+  width: 112px;
+  height: 62px;
+  padding: 10px;
   justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 100px;
+  border: 3px solid #E78EB3;
+  background: #FFF;
+  box-sizing: border-box;
   font-family: 'Paperlogy';
-  font-size: 28px;
-  font-weight: 600;
-  color: #FF68A7;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: #5E3535;
 }
 
 /* 섹션 타이틀 */
@@ -136,7 +144,7 @@
 /* 돋보기 아이콘 */
 .searchIcon {
   position: absolute;
-  left: 270px; top: 407px;
+  left: 270px; top: 404px;
   width: 41px; height: 41px;
   background: #5E3535;
   border-radius: 50%;
