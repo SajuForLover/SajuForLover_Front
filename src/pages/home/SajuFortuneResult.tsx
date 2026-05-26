@@ -1,3 +1,4 @@
+import logoImg from "../../assets/images/Group 88.png";
 import styles from "./SajuFortuneResult.module.css";
 
 // 바 데이터 (피그마 절대 좌표 기준)
@@ -41,7 +42,7 @@ export function SajuFortuneResult() {
       <div className={styles.bottomGradient} />
 
       {/* 로고 */}
-      <div className={styles.logo}>애인사주오!</div>
+      <img src={logoImg} alt="애인사주오!" className={styles.logo} />
 
       {/* 탭 네비게이션 */}
       <nav className={styles.tabNav}>

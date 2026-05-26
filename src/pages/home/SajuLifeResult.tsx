@@ -1,3 +1,4 @@
+import { ResultLayout } from "./ResultLayout";
 import styles from "./SajuLifeResult.module.css";
 
 interface JobCard {
@@ -35,33 +36,14 @@ const DEFAULT_JOBS: [JobCard, JobCard] = [
 
 export function SajuLifeResult({ jobs = DEFAULT_JOBS }: Props) {
   return (
-    <div className={styles.root}>
-      {/* 배경 이미지 */}
-      <div className={styles.bgImage} />
-
-      {/* 하단 핑크 그라데이션 */}
+    <ResultLayout activeTab="라이프">
       <div className={styles.bottomGradient} />
 
-      {/* 로고 */}
-      <div className={styles.logo}>애인사주오!</div>
-
-      {/* 탭 네비게이션 */}
-      <nav className={styles.tabNav}>
-        <button className={styles.tab}>캐릭터</button>
-        <button className={styles.tab}>능력치</button>
-        <button className={`${styles.tab} ${styles.tabActive}`}>라이프</button>
-        <button className={styles.tab}>부스터</button>
-        <button className={styles.tab}>운의 흐름</button>
-      </nav>
-
-      {/* 섹션 타이틀 */}
       <h2 className={styles.sectionTitle}>현대판 추천 직업군</h2>
 
-      {/* 직업 카드 2개 */}
       <div className={styles.cardsRow}>
         {jobs.map((job, i) => (
           <div key={i} className={styles.card}>
-            {/* 왼쪽 원형 이미지 */}
             <div className={styles.cardCircle}>
               {job.image ? (
                 <img src={job.image} alt={job.title} className={styles.cardImg} />
@@ -69,8 +51,6 @@ export function SajuLifeResult({ jobs = DEFAULT_JOBS }: Props) {
                 <div className={styles.cardImgPlaceholder} />
               )}
             </div>
-
-            {/* 오른쪽 텍스트 영역 */}
             <div className={styles.cardContent}>
               <div className={styles.jobBadge}>
                 <span className={styles.jobTitle}>{job.title}</span>
@@ -84,6 +64,6 @@ export function SajuLifeResult({ jobs = DEFAULT_JOBS }: Props) {
           </div>
         ))}
       </div>
-    </div>
+    </ResultLayout>
   );
 }

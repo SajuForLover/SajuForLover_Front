@@ -125,9 +125,9 @@ export function SajuOhaengInfoResult() {
         {ELEMENTS.map((el, i) => (
           <g key={i}>
             <circle cx={el.cx} cy={el.cy} r={72} fill="#fff" stroke="rgb(255,31,124)" strokeWidth={2} />
-            <text x={el.cx} y={el.cy - 10} textAnchor="middle" fontSize={25} fontFamily="Paperlogy,sans-serif"
+            <text x={el.cx} y={el.cy - 14} textAnchor="middle" dominantBaseline="central" fontSize={25} fontFamily="Paperlogy,sans-serif"
               fill="#5E3535" fontWeight={600}>{el.label}</text>
-            <text x={el.cx} y={el.cy + 22} textAnchor="middle" fontSize={25} fontFamily="Paperlogy,sans-serif"
+            <text x={el.cx} y={el.cy + 14} textAnchor="middle" dominantBaseline="central" fontSize={25} fontFamily="Paperlogy,sans-serif"
               fill="#5E3535" fontWeight={600}>{el.sub}</text>
           </g>
         ))}

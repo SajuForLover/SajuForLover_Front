@@ -1,3 +1,4 @@
+import logoImg from "../../assets/images/Group 88.png";
 import styles from "./SajuBoosterResult.module.css";
 
 interface ColorSwatch {
@@ -42,7 +43,7 @@ export function SajuBoosterResult({
       <div className={styles.bottomGradient} />
 
       {/* 로고 */}
-      <div className={styles.logo}>애인사주오!</div>
+      <img src={logoImg} alt="애인사주오!" className={styles.logo} />
 
       {/* 탭 네비게이션 */}
       <nav className={styles.tabNav}>

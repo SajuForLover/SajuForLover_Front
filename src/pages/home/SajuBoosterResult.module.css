@@ -41,15 +41,11 @@
    ============================ */
 .logo {
   position: absolute;
-  top: 86px;
+  top: 79px;
   left: 79px;
-  color: #ffffff;
-  font-family: 'Paperlogy';
-  font-size: 38px;
-  font-weight: 700;
-  letter-spacing: -1px;
+  width: 226px;
+  height: 58px;
   z-index: 10;
-  text-shadow: 0 2px 8px rgba(255, 100, 160, 0.4);
 }
 
 /* ============================
