@@ -78,7 +78,7 @@ export function SajuAbilityResult({ stats = DEFAULT_STATS }: Props) {
             key={i}
             points={polyPoints(CX, CY, r)}
             fill="none"
-            stroke="rgba(200,160,175,0.7)"
+            stroke="rgba(0,0,0,0.35)"
             strokeWidth="1"
             strokeDasharray="4 4"
           />
@@ -92,7 +92,7 @@ export function SajuAbilityResult({ stats = DEFAULT_STATS }: Props) {
               x1={CX} y1={CY}
               x2={CX + MAX_R * Math.cos(a)}
               y2={CY + MAX_R * Math.sin(a)}
-              stroke="rgba(200,160,175,0.5)" strokeWidth="1"
+              stroke="rgba(0,0,0,0.35)" strokeWidth="1"
               strokeDasharray="4 4"
             />
           );
