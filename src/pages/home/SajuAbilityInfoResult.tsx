@@ -74,7 +74,7 @@ export function SajuAbilityInfoResult() {
         {/* 레이더 오각형 링 */}
         {RINGS.map((r, i) => (
           <polygon key={i} points={polyPoints(CX, CY, r)}
-            fill={i === 0 ? "rgba(255,200,215,0.12)" : "none"}
+            fill={i === 0 ? "white" : "none"}
             stroke="rgba(200,160,175,0.5)" strokeWidth={1} />
         ))}
 
