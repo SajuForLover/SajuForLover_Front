@@ -62,7 +62,7 @@ export function SajuAbilityResult({ stats = DEFAULT_STATS }: Props) {
   const statValues = [stats.실행력, stats.재물운, stats.인싸력, stats.맷집, stats.논리력];
 
   return (
-    <ResultLayout activeTab="능력치">
+    <ResultLayout activeTab="능력치" bg="bg4">
       <div className={styles.bottomGradient} />
 
       {/* 반짝이 */}

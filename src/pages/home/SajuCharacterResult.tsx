@@ -15,7 +15,7 @@ export function SajuCharacterResult({
   soulColor = "황금빛 흙",
 }: Props) {
   return (
-    <ResultLayout activeTab="캐릭터">
+    <ResultLayout activeTab="캐릭터" bg="bg4">
       <div className={styles.bottomGradient} />
 
       <div className={styles.characterSection}>
