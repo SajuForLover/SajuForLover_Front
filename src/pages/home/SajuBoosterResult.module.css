@@ -64,7 +64,7 @@
   position: absolute;
   height: 66px;
   border-radius: 100px;
-  border: none;
+  border: 3px solid #5E3535;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -73,7 +73,7 @@
   font-size: 28px;
   font-weight: 500;
   padding: 16px 27px;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.00);
   color: #5E3535;
   white-space: nowrap;
 }
@@ -87,6 +87,7 @@
 .tabActive {
   background: #ffffff;
   color: #FF68A7;
+  border-color: #FF68A7;
 }
 
 /* ============================
