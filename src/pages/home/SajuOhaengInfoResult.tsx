@@ -154,7 +154,7 @@ export function SajuOhaengInfoResult({ hideBg = false }: Props) {
                 오행은 목,화,토,금,수 다섯 가지로 이루어져 있으며 비율과 조합에 따라 다양한 성향과 성격을 나타냅니다.
               </p>
               <p className={styles.modalBody}>
-                {'목  : 성장력, 추친력, 포부, 목표지향적, 낙천성\n화 : 열정, 소유욕, 모성애\n토 : 포용력, 이해심, 계산적, 실리주의\n금 : 결단력, 절제력, 이상적, 분석적\n수 : 유연함, 처세술, 임기응변, 수용적'}
+  {'• 목  : 성장력, 추친력, 포부, 목표지향적, 낙천성\n• 화 : 열정, 소유욕, 모성애\n• 토 : 포용력, 이해심, 계산적, 실리주의\n• 금 : 결단력, 절제력, 이상적, 분석적\n• 수 : 유연함, 처세술, 임기응변, 수용적'}
               </p>
               <div className={styles.modalButton}>
                 <span className={styles.modalButtonText}>내 사주 오행 분석 보러가기</span>

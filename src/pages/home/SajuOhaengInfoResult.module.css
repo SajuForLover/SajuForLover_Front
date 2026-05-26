@@ -190,33 +190,43 @@
 
 .modalTitle {
   margin: 0;
+  height: 41px;
+  align-self: stretch;
   font-family: 'Paperlogy';
   font-size: 38px;
+  font-style: normal;
   font-weight: 600;
   color: #fff;
+  line-height: normal;
 }
 
 .modalSubtitle {
   position: absolute;
   top: 82px; left: 0;
   margin: 0;
+  height: 32px;
+  align-self: stretch;
   font-family: 'Paperlogy';
   font-size: 25px;
+  font-style: normal;
   font-weight: 500;
   color: #fff;
-  line-height: 1.43;
+  line-height: normal;
 }
 
 .modalBody {
   position: absolute;
   top: 155px; left: 0;
   margin: 0;
+  width: 442px;
+  height: 197px;
   font-family: 'Paperlogy';
   font-size: 23px;
+  font-style: normal;
   font-weight: 400;
   color: #fff;
-  white-space: pre-line;
-  line-height: 1.856;
+  white-space: pre;
+  line-height: 185.6%;
 }
 
 .modalButton {
