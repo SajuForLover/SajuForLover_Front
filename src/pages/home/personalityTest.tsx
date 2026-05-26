@@ -20,12 +20,12 @@ export function PersonalityTest() {
     if (step < 3) {
       setStep(step + 1);
     } else {
-      // 마지막 질문 답변 시 결과 리포트 페이지로 이동하며 사진 데이터를 전달합니다.
-      navigate("/results", { 
-        state: { 
-          capturedImage, 
-          answers: newAnswers 
-        } 
+      // 마지막 질문 답변 시 결과 생성 로딩 페이지로 이동
+      navigate("/result-loading", {
+        state: {
+          capturedImage,
+          answers: newAnswers,
+        },
       });
     }
   };

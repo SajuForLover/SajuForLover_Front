@@ -55,50 +55,17 @@ const DIVIDER_Y     = [327, 487, 657, 827];
 export function CoronalResults() {
   const location = useLocation();
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
-  const [result, setResult] = useState<typeof MOCK_RESULTS[0] | null>(null);
-  const [loadingText, setLoadingText] = useState("AI가 얼굴 윤곽을 분석 중입니다...");
+  const [result] = useState(
+    MOCK_RESULTS[Math.floor(Math.random() * MOCK_RESULTS.length)]
+  );
 
   const capturedImage = location.state?.capturedImage;
 
   useEffect(() => {
     if (!capturedImage) {
-      alert("분석할 이미지가 없습니다.");
       navigate("/camera");
-      return;
     }
-
-    const texts = [
-      "AI가 얼굴 윤곽을 분석 중입니다...",
-      "사주 오행 데이터를 결합하고 있습니다...",
-      "관상 포인트를 추출하는 중입니다...",
-      "분석 결과지를 생성하고 있습니다...",
-    ];
-
-    const interval = setInterval(() => {
-      setLoadingText(prev => {
-        const idx = texts.indexOf(prev);
-        return texts[(idx + 1) % texts.length];
-      });
-    }, 800);
-
-    const timer = setTimeout(() => {
-      clearInterval(interval);
-      setResult(MOCK_RESULTS[Math.floor(Math.random() * MOCK_RESULTS.length)]);
-      setIsLoading(false);
-    }, 3200);
-
-    return () => { clearTimeout(timer); clearInterval(interval); };
   }, [capturedImage, navigate]);
-
-  if (isLoading) {
-    return (
-      <div className={styles.loadingRoot}>
-        <div className={styles.loadingSpinner} />
-        <p className={styles.loadingText}>{loadingText}</p>
-      </div>
-    );
-  }
 
   return (
     <div className={styles.root}>
