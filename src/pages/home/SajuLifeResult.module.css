@@ -27,14 +27,16 @@
 }
 
 .card {
-  width: 813px; height: 464px;
-  background: rgba(255, 255, 255, 0.81);
-  border-radius: 50px;
   display: flex;
-  flex-direction: row;
+  width: 813px;
+  height: 464px;
+  padding: 60px 105px 51px 94px;
   align-items: flex-start;
-  padding: 60px 94px 51px 94px;
   gap: 71px;
+  border-radius: 50px;
+  border: 2px solid #E78EB3;
+  background: rgba(255, 255, 255, 0.81);
+  box-shadow: 0px 2px 58.7px 0px rgba(231, 142, 179, 0.21);
   box-sizing: border-box;
 }
 
@@ -56,15 +58,20 @@
 }
 
 .jobBadge {
-  display: inline-flex;
-  align-items: center;
+  display: flex;
+  height: 89px;
+  padding: 10px;
   justify-content: center;
-  background: #FFD5E1;
+  align-items: center;
+  gap: 10px;
   border-radius: 144px;
-  padding: 10px 24px;
-  min-height: 89px;
+  border: 1px solid rgba(255, 79, 149, 0.64);
+  background: #FFD5E1;
   box-sizing: border-box;
 }
+
+.card:nth-child(1) .jobBadge { width: 215px; }
+.card:nth-child(2) .jobBadge { width: 314px; }
 
 .jobTitle {
   font-family: 'Paperlogy';
@@ -84,7 +91,14 @@
 .jobDesc li {
   font-family: 'Paperlogy';
   font-size: 25px;
+  font-style: normal;
   font-weight: 400;
   color: #5E3535;
-  line-height: 186%;
+  line-height: 186.584%;
+  align-self: stretch;
+  white-space: nowrap;
+}
+
+.jobDesc li::before {
+  content: "• ";
 }

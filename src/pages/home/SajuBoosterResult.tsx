@@ -1,5 +1,7 @@
 import logoImg from "../../assets/images/Group 88.png";
 import pinkEffect from "../../assets/images/pinkEffect.png";
+import vector26 from "../../assets/images/Vector 26.svg";
+import vector6 from "../../assets/images/Vector 6.svg";
 import styles from "./SajuBoosterResult.module.css";
 
 interface ColorSwatch {
