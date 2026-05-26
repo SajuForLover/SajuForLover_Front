@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("../assets/images/background2.png"); /* 배경 이미지 추가 */
+  background-image: url("../assets/images/background1.png"); /* 피그마 기준 핑크 배경 */
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -52,7 +52,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 77px; /* (상단 345px) - (타이틀 206px) - (공지 62px) = 77px */
+  margin-top: 63px; /* 피그마 기준: 345 - (252+30) = 63px */
 }
 
 /* Filming 페이지 전용 카메라 컨테이너 */
@@ -68,7 +68,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 120px; /* (상단 388px) - (타이틀 206px) - (공지 62px) = 120px */
+  margin-top: 106px; /* 피그마 기준: 388(컨테이너 y) - 252(공지 y) - 30(공지 높이) = 106px */
 }
 
 .video {
@@ -155,8 +155,8 @@
   width: 106px;
   height: 77.351px;
   aspect-ratio: 37/27;
-  top: 903px; /* 요청된 위치 */
-  left: 1055px; /* 요청된 위치 */
+  top: 903px; /* 피그마 기준 */
+  left: 1073px; /* 피그마 기준: x=1073 */
   transform: rotate(13.779deg);
   background: url("../assets/images/star2.png") center/contain no-repeat;
   filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.8));
