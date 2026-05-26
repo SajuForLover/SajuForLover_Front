@@ -25,15 +25,41 @@ const MOCK_RESULTS = [
 
 // 피그마 기준 절대 좌표 (1920x1115 프레임)
 const FACE_LABELS = [
-  { label: "타고난 성격", x: 591, y: 428, w: 163 },
-  { label: "명운",       x: 932, y: 378, w: 117 },
-  { label: "사업운",     x: 1107, y: 371, w: 117 },
-  { label: "결혼운",     x: 1166, y: 461, w: 117 },
-  { label: "재물운",     x: 1012, y: 613, w: 117 },
-  { label: "대인운",     x: 1076, y: 725, w: 117 },
-  { label: "이성운",     x: 991,  y: 852, w: 117 },
-  { label: "말년운",     x: 668,  y: 870, w: 117 },
-  { label: "건강운",     x: 707,  y: 692, w: 117 },
+  { label: "타고난 성격", x: 591,  y: 428, w: 163 },
+  { label: "명운",        x: 932,  y: 378, w: 117 },
+  { label: "사업운",      x: 1107, y: 371, w: 117 },
+  { label: "결혼운",      x: 1166, y: 461, w: 117, alt: true },
+  { label: "재물운",      x: 1012, y: 613, w: 117 },
+  { label: "대인운",      x: 1076, y: 725, w: 117 },
+  { label: "이성운",      x: 991,  y: 852, w: 117 },
+  { label: "말년운",      x: 668,  y: 870, w: 117 },
+  { label: "건강운",      x: 707,  y: 692, w: 117 },
+];
+
+// 피그마 Arrow 13~21: absoluteTransform으로 계산한 실제 시작→끝 좌표 (대각선 포함)
+const FACE_ARROWS_SVG = [
+  { x1: 736,  y1: 458, x2: 796,  y2: 508 }, // 타고난 성격 (Arrow 19)
+  { x1: 993,  y1: 400, x2: 933,  y2: 489 }, // 명운        (Arrow 18)
+  { x1: 1135, y1: 379, x2: 1049, y2: 478 }, // 사업운      (Arrow 17)
+  { x1: 1201, y1: 483, x2: 1094, y2: 546 }, // 결혼운      (Arrow 16)
+  { x1: 1026, y1: 628, x2: 923,  y2: 628 }, // 재물운      (Arrow 15, 수평)
+  { x1: 805,  y1: 714, x2: 901,  y2: 732 }, // 건강운      (Arrow 20)
+  { x1: 1129, y1: 736, x2: 1002, y2: 763 }, // 대인운      (Arrow 14)
+  { x1: 1027, y1: 869, x2: 943,  y2: 806 }, // 이성운      (Arrow 13)
+  { x1: 716,  y1: 886, x2: 816,  y2: 827 }, // 말년운      (Arrow 21)
+];
+
+// 각 연결선의 얼굴 쪽 끝점 (작은 핑크 원)
+const FACE_DOTS = [
+  { x: 796,  y: 508 }, // 타고난 성격
+  { x: 933,  y: 489 }, // 명운
+  { x: 1049, y: 478 }, // 사업운
+  { x: 1094, y: 546 }, // 결혼운
+  { x: 923,  y: 628 }, // 재물운
+  { x: 901,  y: 732 }, // 건강운
+  { x: 1002, y: 763 }, // 대인운
+  { x: 943,  y: 806 }, // 이성운
+  { x: 816,  y: 827 }, // 말년운
 ];
 
 const ANALYSIS_DOTS = [
@@ -90,21 +116,42 @@ export function CoronalResults() {
         <img src={capturedImage} alt="분석 이미지" className={styles.capturedImg} />
       </div>
 
+      {/* SVG 오버레이: 대각선 연결선 + 얼굴 끝점 도트 */}
+      <svg className={styles.arrowSvg} viewBox="0 0 1920 1115">
+        {FACE_ARROWS_SVG.map((line, i) => (
+          <line
+            key={i}
+            x1={line.x1} y1={line.y1}
+            x2={line.x2} y2={line.y2}
+            stroke="#FF7998"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+        ))}
+        {FACE_DOTS.map((dot, i) => (
+          <circle
+            key={i}
+            cx={dot.x} cy={dot.y}
+            r="5"
+            fill="#FF4B74"
+          />
+        ))}
+      </svg>
+
       {/* 얼굴 라벨 버블 */}
       {FACE_LABELS.map((item, i) => (
         <div
           key={i}
-          className={styles.faceLabel}
+          className={`${styles.faceLabel} ${item.alt ? styles.faceLabelAlt : ''}`}
           style={{ left: item.x, top: item.y, width: item.w }}
         >
           {item.label}
         </div>
       ))}
 
-      {/* 분석 번호 도트 */}
+      {/* 분석 번호 (피그마: 숫자 텍스트만, 옆 점 없음) */}
       {ANALYSIS_DOTS.map((dot, i) => (
         <div key={i} className={styles.dotGroup} style={{ left: dot.x, top: dot.y }}>
-          <div className={styles.dotCircle} />
           <span className={styles.dotNum}>{dot.num}</span>
         </div>
       ))}
