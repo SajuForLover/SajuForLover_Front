@@ -48,14 +48,16 @@ const TABLE_ROWS = [
 
 const ROW_YS = [319, 394, 475, 550, 626];
 
-export function SajuAbilityInfoResult() {
+interface Props { hideBg?: boolean; }
+
+export function SajuAbilityInfoResult({ hideBg = false }: Props) {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className={styles.root}>
-      <div className={styles.bgImage} />
-      <div className={styles.midSection} />
-      <div className={styles.rightDivider} />
+    <div className={styles.root} style={hideBg ? { backgroundColor: 'transparent' } : undefined}>
+      {!hideBg && <div className={styles.bgImage} />}
+      {!hideBg && <div className={styles.midSection} />}
+      {!hideBg && <div className={styles.rightDivider} />}
 
       {/* 페이지 타이틀 */}
       <p className={styles.pageTitle}>능력치</p>

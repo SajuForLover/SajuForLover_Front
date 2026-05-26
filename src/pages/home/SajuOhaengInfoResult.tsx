@@ -37,15 +37,17 @@ const TABLE_ROWS = [
 
 const ROW_YS = [629, 699, 773, 843, 913];
 
-export function SajuOhaengInfoResult() {
+interface Props { hideBg?: boolean; }
+
+export function SajuOhaengInfoResult({ hideBg = false }: Props) {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className={styles.root}>
-      <div className={styles.bgImage} />
-      <div className={styles.midSection} />
-      <div className={styles.bottomOverlay} />
-      <div className={styles.rightDivider} />
+    <div className={styles.root} style={hideBg ? { backgroundColor: 'transparent' } : undefined}>
+      {!hideBg && <div className={styles.bgImage} />}
+      {!hideBg && <div className={styles.midSection} />}
+      {!hideBg && <div className={styles.bottomOverlay} />}
+      {!hideBg && <div className={styles.rightDivider} />}
 
       {/* 캐릭터 아바타 */}
       <div className={styles.characterCircle} />

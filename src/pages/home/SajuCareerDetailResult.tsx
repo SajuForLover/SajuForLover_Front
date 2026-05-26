@@ -1,15 +1,17 @@
 import { useState } from "react";
 import styles from "./SajuCareerDetailResult.module.css";
 
-export function SajuCareerDetailResult() {
+interface Props { hideBg?: boolean; }
+
+export function SajuCareerDetailResult({ hideBg = false }: Props) {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className={styles.root}>
+    <div className={styles.root} style={hideBg ? { backgroundColor: 'transparent' } : undefined}>
       {/* 배경 */}
-      <div className={styles.bgImage} />
-      <div className={styles.midSection} />
-      <div className={styles.rightDivider} />
+      {!hideBg && <div className={styles.bgImage} />}
+      {!hideBg && <div className={styles.midSection} />}
+      {!hideBg && <div className={styles.rightDivider} />}
 
       {/* 섹션 타이틀 */}
       <p className={styles.sectionTitle}>나의 일잘러 성향 리포트</p>
