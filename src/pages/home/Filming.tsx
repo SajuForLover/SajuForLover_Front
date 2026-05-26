@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../../styles/Camera.module.css";
+import star2 from "../../assets/images/star2.png";
 
 export function Filming() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -106,6 +107,7 @@ export function Filming() {
             <video ref={videoRef} autoPlay playsInline className={styles.video} />
             <div className={styles.faceGuide} /> {/* 얼굴 위치 가이드 */}
             <div className={styles.countdown}>{countdown}</div>
+            <img src={star2} className={styles.countdownStar} alt="" />
           </>
         )}
       </div>
