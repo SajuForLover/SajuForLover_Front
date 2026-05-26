@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import styles from "./SajuOhaengResult.module.css";
 
 // 오행 5개 원 (절대 좌표, r=72)
@@ -37,6 +38,8 @@ const TABLE_ROWS = [
 const ROW_YS = [629, 699, 773, 843, 913];
 
 export function SajuOhaengResult() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div className={styles.root}>
       <div className={styles.bgImage} />
@@ -61,6 +64,14 @@ export function SajuOhaengResult() {
 
       {/* 오행 분석 타이틀 */}
       <p className={styles.sectionTitle}>오행 분석</p>
+
+      {/* 돋보기 아이콘 */}
+      <div className={styles.searchIcon} onClick={() => setShowModal(true)}>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="11" cy="11" r="7" stroke="white" strokeWidth="3"/>
+          <path d="M20 20L17 17" stroke="white" strokeWidth="3" strokeLinecap="round"/>
+        </svg>
+      </div>
 
       {/* SVG: 오행 오각형 다이어그램 + 표 */}
       <svg className={styles.chartSvg} viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
@@ -133,6 +144,31 @@ export function SajuOhaengResult() {
         <line x1={1689} y1={497} x2={1734} y2={497} stroke="rgba(94,53,53,0.35)" strokeWidth={2} strokeDasharray="8 5" markerEnd="url(#arrow-ke)" />
         <text x={1748} y={503} fontSize={24} fontFamily="Paperlogy,sans-serif" fill="#5E3535">극</text>
       </svg>
+
+      {/* 갈색 모달 창 (돋보기 클릭 시) */}
+      {showModal && (
+        <>
+          <div className={styles.dimOverlay} onClick={() => setShowModal(false)} />
+          <div className={styles.modal}>
+            <div className={styles.modalInner}>
+              <p className={styles.modalTitle}>오행 분석이란?</p>
+              <p className={styles.modalSubtitle}>
+                나를 상징하는 기운과 주변 기운의{"\n"}
+                조화를 분석한 결과입니다.
+              </p>
+              <p className={styles.modalBody}>
+                사주팔자는 나무(木), 불(火), 흙(土), 쇠(金), 물(水)의{"\n"}
+                다섯 가지 요소로 이루어져 있습니다.{"\n"}
+                각 요소의 비율을 통해 타고난 기질과 보완하면 좋은 기운을 알 수 있습니다.
+              </p>
+              <div className={styles.modalButton} onClick={() => setShowModal(false)}>
+                <span className={styles.modalButtonText}>확인</span>
+              </div>
+              <div className={styles.closeBtn} onClick={() => setShowModal(false)}>✕</div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

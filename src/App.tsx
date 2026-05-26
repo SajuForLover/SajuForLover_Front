@@ -36,9 +36,9 @@ function App() {
         <Route path="/saju-life" element={<SajuLifeResult />} />
         <Route path="/saju-booster" element={<SajuBoosterResult />} />
         <Route path="/saju-fortune" element={<SajuFortuneResult />} />
-        <Route path="/c" element={<SajuOhaengResult />} />
-        <Route path="/saju-ability-detail" element={<SajuAbilityDetailResult />} />
-        <Route path="/saju-career" element={<SajuCareerResult />} />
+        {/* <Route path="/c" element={<SajuOhaengResult />} /> */}
+        {/* <Route path="/saju-ability-detail" element={<SajuAbilityDetailResult />} /> */}
+        {/* <Route path="/saju-career" element={<SajuCareerResult />} /> */}
         <Route path="/saju-career-detail" element={<SajuCareerDetailResult />} />
         <Route path="/saju-ability-info" element={<SajuAbilityInfoResult />} />
         <Route path="/saju-ohaeng-info" element={<SajuOhaengInfoResult />} />

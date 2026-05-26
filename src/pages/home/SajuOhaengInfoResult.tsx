@@ -38,7 +38,7 @@ const TABLE_ROWS = [
 const ROW_YS = [629, 699, 773, 843, 913];
 
 export function SajuOhaengInfoResult() {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className={styles.root}>
@@ -64,7 +64,7 @@ export function SajuOhaengInfoResult() {
 
       {/* 오행 분석 타이틀 + 돋보기 아이콘 */}
       <p className={styles.sectionTitle}>오행 분석</p>
-      <div className={styles.searchIcon}>
+      <div className={styles.searchIcon} onClick={() => setShowModal(true)}>
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
           <circle cx="7.5" cy="7.5" r="5.5" stroke="#FCDEE6" strokeWidth="2" />
           <line x1="11.5" y1="11.5" x2="16.5" y2="16.5" stroke="#FCDEE6" strokeWidth="2" strokeLinecap="round" />

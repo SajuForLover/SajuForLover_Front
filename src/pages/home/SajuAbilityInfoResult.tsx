@@ -49,7 +49,7 @@ const TABLE_ROWS = [
 const ROW_YS = [319, 394, 475, 550, 626];
 
 export function SajuAbilityInfoResult() {
-  const [showModal, setShowModal] = useState(true);
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className={styles.root}>
@@ -61,7 +61,7 @@ export function SajuAbilityInfoResult() {
       <p className={styles.pageTitle}>능력치</p>
 
       {/* 돋보기 아이콘 */}
-      <div className={styles.searchIcon}>
+      <div className={styles.searchIcon} onClick={() => setShowModal(true)}>
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
           <circle cx="7.5" cy="7.5" r="5.5" stroke="#FCDEE6" strokeWidth="2" />
           <line x1="11.5" y1="11.5" x2="16.5" y2="16.5" stroke="#FCDEE6" strokeWidth="2" strokeLinecap="round" />
@@ -125,7 +125,7 @@ export function SajuAbilityInfoResult() {
 
       {/* 나의 일잘러 성향 리포트 텍스트 */}
       <p className={styles.reportLink}>나의 일잘러 성향 리포트</p>
-      <div className={styles.searchIcon} style={{ left: "535px", top: "780px" }}>
+      <div className={styles.searchIcon} style={{ left: "535px", top: "780px" }} onClick={() => setShowModal(true)}>
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
           <circle cx="7.5" cy="7.5" r="5.5" stroke="#FCDEE6" strokeWidth="2" />
           <line x1="11.5" y1="11.5" x2="16.5" y2="16.5" stroke="#FCDEE6" strokeWidth="2" strokeLinecap="round" />
