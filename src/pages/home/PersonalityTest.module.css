@@ -91,6 +91,7 @@
   margin-top: 15px;
   font-weight: 600;
   color: #5E3535;
+  white-space: nowrap;
 }
 
 .buttonContainer {
