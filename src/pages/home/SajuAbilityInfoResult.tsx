@@ -73,14 +73,15 @@ export function SajuAbilityInfoResult({ hideBg = false }: Props) {
       {/* SVG: 레이더 차트 + 테이블 */}
       <svg className={styles.chartSvg} viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
 
-        {/* 레이더 오각형 링 */}
+        {/* 레이더 오각형 링 — 점선 */}
         {RINGS.map((r, i) => (
           <polygon key={i} points={polyPoints(CX, CY, r)}
             fill={i === 0 ? "white" : "none"}
-            stroke="rgba(200,160,175,0.5)" strokeWidth={1} />
+            stroke="rgba(200,160,175,0.7)" strokeWidth={1}
+            strokeDasharray="4 4" />
         ))}
 
-        {/* 축선 */}
+        {/* 축선 — 점선 */}
         {[0,1,2,3,4].map(i => {
           const a = toRad(-90 + 72 * i);
           return (
@@ -88,7 +89,8 @@ export function SajuAbilityInfoResult({ hideBg = false }: Props) {
               x1={CX} y1={CY}
               x2={CX + MAX_R * Math.cos(a)}
               y2={CY + MAX_R * Math.sin(a)}
-              stroke="rgba(200,160,175,0.4)" strokeWidth={1} />
+              stroke="rgba(200,160,175,0.5)" strokeWidth={1}
+              strokeDasharray="4 4" />
           );
         })}
 
@@ -100,6 +102,14 @@ export function SajuAbilityInfoResult({ hideBg = false }: Props) {
         {DOTS.map(([dx, dy], i) => (
           <ellipse key={i} cx={dx} cy={dy} rx={8} ry={8} fill="#FF8DAE" />
         ))}
+
+        {/* 레이블 */}
+        <text x={365} y={242} textAnchor="middle" dominantBaseline="central" fontSize={25} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={500}>인내심</text>
+        <text x={578} y={406} textAnchor="start"  dominantBaseline="central" fontSize={25} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={500}>실행력</text>
+        <text x={473} y={652} textAnchor="middle" dominantBaseline="central" fontSize={25} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={500}>창의력</text>
+        <text x={257} y={652} textAnchor="middle" dominantBaseline="central" fontSize={25} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={500}>사회성</text>
+        <text x={152} y={406} textAnchor="end"    dominantBaseline="central" fontSize={25} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={500}>재물운</text>
+
 
         {/* 테이블 배경 */}
         <rect x={690} y={219} width={1142} height={469} fill="rgba(255,255,255,0.82)" rx={25} stroke="#000" strokeWidth={1} />
