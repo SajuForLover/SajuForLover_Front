@@ -100,14 +100,14 @@ export function SajuAbilityInfoResult() {
         ))}
 
         {/* 테이블 배경 */}
-        <rect x={690} y={219} width={1142} height={469} fill="rgba(255,255,255,0.82)" rx={25} />
-        <rect x={690} y={219} width={1142} height={79} fill="rgba(255,200,215,0.55)" />
+        <rect x={690} y={219} width={1142} height={469} fill="rgba(255,255,255,0.82)" rx={25} stroke="#000" strokeWidth={1} />
+        <path d="M715,219 L1807,219 Q1832,219 1832,244 L1832,298 L690,298 L690,244 Q690,219 715,219 Z" fill="#FFD5E1" stroke="#000" strokeWidth={1} />
         {/* 수직 구분선 */}
-        <line x1={914} y1={219} x2={914} y2={688} stroke="rgba(200,160,175,0.5)" strokeWidth={1} />
-        <line x1={1131} y1={219} x2={1131} y2={688} stroke="rgba(200,160,175,0.5)" strokeWidth={1} />
+        <line x1={914} y1={219} x2={914} y2={688} stroke="#000" strokeWidth={1} />
+        <line x1={1131} y1={219} x2={1131} y2={688} stroke="#000" strokeWidth={1} />
         {/* 수평 구분선 */}
         {[376, 454, 532, 610].map((y, i) => (
-          <line key={i} x1={690} y1={y} x2={1832} y2={y} stroke="rgba(200,160,175,0.35)" strokeWidth={1} />
+          <line key={i} x1={690} y1={y} x2={1832} y2={y} stroke="#000" strokeWidth={1} />
         ))}
         {/* 헤더 */}
         <text x={741} y={265} fontSize={21} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={600}>능력치 항목</text>
@@ -125,6 +125,12 @@ export function SajuAbilityInfoResult() {
 
       {/* 나의 일잘러 성향 리포트 텍스트 */}
       <p className={styles.reportLink}>나의 일잘러 성향 리포트</p>
+      <div className={styles.searchIcon} style={{ left: "535px", top: "780px" }}>
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <circle cx="7.5" cy="7.5" r="5.5" stroke="#FCDEE6" strokeWidth="2" />
+          <line x1="11.5" y1="11.5" x2="16.5" y2="16.5" stroke="#FCDEE6" strokeWidth="2" strokeLinecap="round" />
+        </svg>
+      </div>
 
       {/* 추천 직업 바 */}
       <div className={styles.footerBar}>
