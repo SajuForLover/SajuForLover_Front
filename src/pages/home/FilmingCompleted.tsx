@@ -42,8 +42,10 @@ export function FilmingCompleted() {
           <span className={styles.captureText}>다음</span>
         </button>
       </div>
-      <div className={styles.star1} /> {/* star1.png 배치 */}
-      <div className={styles.star2} /> {/* star2.png 배치 */}
+      <div className={styles.star1} />
+      <div className={styles.star2} />
+      <div className={styles.star3} />
+      <div className={styles.star4} />
     </div>
   );
 }

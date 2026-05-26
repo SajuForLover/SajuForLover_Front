@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("../../assets/images/background3.png");
+  background-image: url("../../assets/images/background2.png");
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -94,9 +94,9 @@
 }
 
 .captureBtn {
-  display: inline-flex;
-  width: auto;
-  padding: 30px 109px 31px 109px;
+  display: flex;
+  width: 338px;
+  padding: 30px 0 31px 0;
   justify-content: center;
   align-items: center;
   border-radius: 20px;
@@ -105,6 +105,7 @@
   box-shadow: 0 0 73.6px 0 rgba(247, 143, 170, 0.60);
   cursor: pointer;
   transition: transform 0.1s;
+  outline: none;
 }
 
 .captureBtn:disabled {
@@ -125,14 +126,40 @@
   line-height: normal;
 }
 
+/* 피그마 기준: 버튼 왼쪽 대형 별 (image 565) */
 .star1 {
   position: absolute;
-  top: 804px; left: 726px; width: 150px; height: 129px;
-  background: url("../assets/images/star1.png") center/contain no-repeat;
+  top: 804px; left: 475px; width: 150px; height: 129px;
+  background: url("../../assets/images/star1.png") center/contain no-repeat;
+  pointer-events: none;
+  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.8));
 }
 
+/* 피그마 기준: 버튼 오른쪽 대형 별 (image 568) */
 .star2 {
   position: absolute;
-  top: 903px; left: 1055px; width: 106px; height: 77px;
-  background: url("../assets/images/star2.png") center/contain no-repeat;
+  top: 804px; left: 977px; width: 150px; height: 129px;
+  background: url("../../assets/images/star1.png") center/contain no-repeat;
+  pointer-events: none;
+  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.8));
+}
+
+/* 피그마 기준: 왼쪽 소형 별 (image 567) */
+.star3 {
+  position: absolute;
+  top: 903px; left: 822px; width: 106px; height: 77.35px;
+  transform: rotate(13.779deg);
+  background: url("../../assets/images/star2.png") center/contain no-repeat;
+  pointer-events: none;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.8));
+}
+
+/* 피그마 기준: 오른쪽 소형 별 (image 569) */
+.star4 {
+  position: absolute;
+  top: 903px; left: 1324px; width: 106px; height: 77.35px;
+  transform: rotate(13.779deg);
+  background: url("../../assets/images/star2.png") center/contain no-repeat;
+  pointer-events: none;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.8));
 }
