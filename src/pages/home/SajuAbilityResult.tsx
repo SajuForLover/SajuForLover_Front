@@ -1,4 +1,6 @@
 import { ResultLayout } from "./ResultLayout";
+import star1 from "../../assets/images/star1.png";
+import star2 from "../../assets/images/star2.png";
 import styles from "./SajuAbilityResult.module.css";
 
 interface StatData {
@@ -63,6 +65,11 @@ export function SajuAbilityResult({ stats = DEFAULT_STATS }: Props) {
     <ResultLayout activeTab="능력치">
       <div className={styles.bottomGradient} />
 
+      {/* 반짝이 */}
+      <img src={star1} alt="" className={styles.spark1} />
+      <img src={star2} alt="" className={styles.spark2} />
+      <img src={star1} alt="" className={styles.spark3} />
+
       <svg className={styles.chartSvg} viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
         <polygon points={polyPoints(CX, CY, LEVELS[0])} fill="white" />
 
@@ -71,8 +78,9 @@ export function SajuAbilityResult({ stats = DEFAULT_STATS }: Props) {
             key={i}
             points={polyPoints(CX, CY, r)}
             fill="none"
-            stroke="rgba(230, 160, 180, 0.4)"
+            stroke="rgba(200,160,175,0.7)"
             strokeWidth="1"
+            strokeDasharray="4 4"
           />
         ))}
 
@@ -84,7 +92,8 @@ export function SajuAbilityResult({ stats = DEFAULT_STATS }: Props) {
               x1={CX} y1={CY}
               x2={CX + MAX_R * Math.cos(a)}
               y2={CY + MAX_R * Math.sin(a)}
-              stroke="white" strokeWidth="1"
+              stroke="rgba(200,160,175,0.5)" strokeWidth="1"
+              strokeDasharray="4 4"
             />
           );
         })}
@@ -92,7 +101,8 @@ export function SajuAbilityResult({ stats = DEFAULT_STATS }: Props) {
         <polygon
           points={statPoints(stats, CX, CY, MAX_R)}
           fill="rgba(250, 140, 174, 0.6)"
-          stroke="none"
+          stroke="#FF78A6"
+          strokeWidth="2"
         />
 
         {statValues.map((v, i) => {
