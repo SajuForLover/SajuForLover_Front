@@ -109,6 +109,8 @@ export function PersonalityTest() {
 
       <div className={styles.star1} />
       <div className={styles.star2} />
+      <div className={styles.star3} />
+      <div className={styles.star4} />
     </div>
   );
 }

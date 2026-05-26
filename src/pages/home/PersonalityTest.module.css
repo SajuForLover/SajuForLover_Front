@@ -15,7 +15,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("../../assets/images/background3.png");
+  background-image: url("../../assets/images/background1.png");
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -40,7 +40,7 @@
   font-style: normal;
   font-weight: 600;
   margin: 0;
-  line-height: normal;
+  line-height: 1;
 }
 
 .notice {
@@ -59,15 +59,18 @@
 }
 
 .scenarioBox {
-  display: inline-flex;
-  padding: 49px 211px 49px 212px;
+  display: flex;
+  width: 875px;
+  height: 302px;
+  box-sizing: border-box;
+  padding: 49px 212px;
   justify-content: center;
   align-items: center;
   background: rgba(255, 255, 255, 0.60);
   border-radius: 20px;
   border: 2px solid #FFF;
   box-shadow: 0 14px 75.2px -16px rgba(247, 143, 170, 0.85);
-  margin-bottom: 132px; /* 상단 783px 위치를 위한 마진 계산: 783 - (349 + 302) = 132px */
+  margin-bottom: 132px; /* 버튼 y=783: 349(content시작) + 302(box높이) + 132 = 783 */
   text-align: center;
 }
 
@@ -97,9 +100,9 @@
 }
 
 .optionBtn {
-  display: flex; 
-  width: 415px; /* 버튼 크기 고정 */
-  height: 170px; /* 버튼 높이 고정 */
+  display: flex;
+  width: 445px; /* 피그마 기준 */
+  height: 171px; /* 피그마 기준 */
   padding: 0; /* 고정 크기이므로 패딩 대신 중앙 정렬 사용 */
   box-sizing: border-box;
   justify-content: center;
@@ -126,14 +129,44 @@
   line-height: 130%; /* 추가 */
 }
 
+/* 피그마 기준: 버튼 왼쪽 대형 별 (image 568) */
 .star1 {
   position: absolute;
-  top: 804px; left: 726px; width: 150px; height: 129px;
+  z-index: 10;
+  top: 720px; left: 352px; width: 150px; height: 129px;
   background: url("../../assets/images/star1.png") center/contain no-repeat;
+  pointer-events: none;
+  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.8));
 }
 
+/* 피그마 기준: 버튼 오른쪽 대형 별 (image 570) */
 .star2 {
   position: absolute;
-  top: 903px; left: 1055px; width: 106px; height: 77px;
+  z-index: 10;
+  top: 720px; left: 992px; width: 150px; height: 129px;
+  background: url("../../assets/images/star1.png") center/contain no-repeat;
+  pointer-events: none;
+  filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.8));
+}
+
+/* 피그마 기준: 왼쪽 소형 별 (image 569) */
+.star3 {
+  position: absolute;
+  z-index: 10;
+  top: 878px; left: 805px; width: 106px; height: 77.35px;
+  transform: rotate(13.779deg);
   background: url("../../assets/images/star2.png") center/contain no-repeat;
+  pointer-events: none;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.8));
+}
+
+/* 피그마 기준: 오른쪽 소형 별 (image 571) */
+.star4 {
+  position: absolute;
+  z-index: 10;
+  top: 878px; left: 1445px; width: 106px; height: 77.35px;
+  transform: rotate(13.779deg);
+  background: url("../../assets/images/star2.png") center/contain no-repeat;
+  pointer-events: none;
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.8));
 }
