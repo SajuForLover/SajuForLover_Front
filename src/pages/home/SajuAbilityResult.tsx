@@ -105,19 +105,22 @@ export function SajuAbilityResult({ stats = DEFAULT_STATS }: Props) {
           strokeWidth="2"
         />
 
-        {statValues.map((v, i) => {
+        {/* 오각형 꼭짓점 원 */}
+        {Array.from({ length: 5 }, (_, i) => {
           const a = toRad(-90 + 72 * i);
-          const r = (v / 100) * MAX_R;
           return (
             <ellipse
               key={i}
-              cx={CX + r * Math.cos(a)}
-              cy={CY + r * Math.sin(a)}
-              rx={11} ry={11.5}
-              fill="#FF8DAE"
+              cx={CX + MAX_R * Math.cos(a)}
+              cy={CY + MAX_R * Math.sin(a)}
+              rx={11.5} ry={11.5}
+              fill="#FF8DB0"
+              stroke="#5E3535"
+              strokeWidth="1"
             />
           );
         })}
+
 
         {LABELS.map((lb, i) => (
           <text
