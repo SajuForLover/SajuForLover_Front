@@ -1,4 +1,5 @@
 import logoImg from "../../assets/images/Group 88.png";
+import pinkEffect from "../../assets/images/pinkEffect.png";
 import styles from "./SajuBoosterResult.module.css";
 
 interface ColorSwatch {
@@ -111,6 +112,7 @@ export function SajuBoosterResult({
           <p className={styles.foodReason}>{luckyFood.reason}</p>
         </div>
       </div>
+      <img src={pinkEffect} alt="" className={styles.pinkEffect} />
     </div>
   );
 }

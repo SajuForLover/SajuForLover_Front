@@ -1,4 +1,5 @@
 import logoImg from "../../assets/images/Group 88.png";
+import pinkEffect from "../../assets/images/pinkEffect.png";
 import styles from "./SajuFortuneResult.module.css";
 
 // 바 데이터 (피그마 절대 좌표 기준)
@@ -19,6 +20,12 @@ const GRID_YS = [512, 610, 706, 803, 887];
 
 // 도트 중심 좌표 (바 상단)
 const DOT_CENTERS: [number, number][] = BARS.map((b) => [b.x + 35, b.y]);
+
+// 상단 반원 막대 path (border-radius: 53px 53px 0 0 → 유효 r=35)
+function barPath(x: number, y: number, h: number): string {
+  const r = 35; // 70px 너비에서 53+53>70이므로 35로 클램핑
+  return `M ${x},${y + h} L ${x},${y + r} A ${r},${r} 0 0 1 ${x + 70},${y + r} L ${x + 70},${y + h} Z`;
+}
 
 // SVG 스무스 커브 path 생성
 function smoothPath(pts: [number, number][]): string {
@@ -65,7 +72,8 @@ export function SajuFortuneResult() {
         {/* 카드 배경 */}
         <rect
           x={115} y={350} width={1728} height={649}
-          fill="rgba(255,255,255,0.8)" rx={50}
+          fill="rgba(255,255,255,0.80)" rx={40}
+          stroke="#E78EB3" strokeWidth={2}
         />
 
         {/* 수평 격자선 */}
@@ -73,38 +81,42 @@ export function SajuFortuneResult() {
           <line
             key={i}
             x1={178} y1={y} x2={1733} y2={y}
-            stroke="rgba(200,160,175,0.35)"
+            stroke="#FFAEC1"
             strokeWidth={1}
-            strokeDasharray={i < GRID_YS.length - 1 ? "5 5" : undefined}
           />
         ))}
 
-        {/* 바 */}
+        {/* 그라데이션 면적 (막대 뒤) */}
+        <defs>
+          <linearGradient id="areaGradient" x1="712.734" y1="435.728" x2="712.734" y2="-1.56974" gradientUnits="userSpaceOnUse">
+            <stop stopColor="white" stopOpacity="0" />
+            <stop offset="1" stopColor="#FFB3C5" stopOpacity="0.66" />
+          </linearGradient>
+        </defs>
+        <g transform="translate(273, 447.164)">
+          <path
+            d="M350.5 107.836C186.359 235.795 57.2587 169.477 0 86.792V435.727H1480V319.228C1421 86.3358 1185.97 -44.3916 1084 284.228C1060.69 359.336 992.901 333.66 929.226 247.545C637 -147.664 450.412 29.9491 350.5 107.836Z"
+            fill="url(#areaGradient)"
+          />
+        </g>
+
+        {/* 바 (상단 반원, border-radius: 53px 53px 0 0) */}
         {BARS.map((bar, i) => (
-          <rect
+          <path
             key={i}
-            x={bar.x} y={bar.y} width={70} height={bar.h}
-            fill="rgba(255, 150, 180, 0.75)"
-            rx={8}
+            d={barPath(bar.x, bar.y, bar.h)}
+            fill="#FF7998"
           />
         ))}
 
-        {/* 꺾은선 그래프 */}
-        <path
-          d={smoothPath(DOT_CENTERS)}
-          fill="none"
-          stroke="#FF78A6"
-          strokeWidth={2.5}
-          strokeLinejoin="round"
-        />
-
-        {/* 도트 마커 (24x24 사각형) */}
+        {/* 도트 마커 (24x24 원형) */}
         {DOT_CENTERS.map(([cx, cy], i) => (
-          <rect
+          <circle
             key={i}
-            x={cx - 12} y={cy - 12} width={24} height={24}
-            fill="#FF78A6"
-            rx={4}
+            cx={cx} cy={cy} r={12}
+            fill="#FEC0CE"
+            stroke="#FF7998"
+            strokeWidth={3}
           />
         ))}
 
@@ -132,6 +144,7 @@ export function SajuFortuneResult() {
       <div className={`${styles.bubble} ${styles.bubble2}`}>
         <span className={styles.bubbleText}>존버해야 할 때!</span>
       </div>
+      <img src={pinkEffect} alt="" className={styles.pinkEffect} />
     </div>
   );
 }

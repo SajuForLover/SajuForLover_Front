@@ -1,4 +1,5 @@
 import logoImg from "../../assets/images/Group 88.png";
+import pinkEffect from "../../assets/images/pinkEffect.png";
 import styles from "./ResultLayout.module.css";
 
 const TABS = ["캐릭터", "능력치", "라이프", "부스터", "운의 흐름"] as const;
@@ -25,6 +26,7 @@ export function ResultLayout({ activeTab, children }: Props) {
         ))}
       </nav>
       {children}
+      <img src={pinkEffect} alt="" className={styles.pinkEffect} />
     </div>
   );
 }

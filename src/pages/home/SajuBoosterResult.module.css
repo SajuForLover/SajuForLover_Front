@@ -231,3 +231,12 @@
   color: #5E3535;
   text-align: center;
 }
+
+.pinkEffect {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 1920px;
+  pointer-events: none;
+  z-index: 15;
+}
