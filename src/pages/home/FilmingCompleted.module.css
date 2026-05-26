@@ -129,6 +129,7 @@
 /* 피그마 기준: 버튼 왼쪽 대형 별 (image 565) */
 .star1 {
   position: absolute;
+  z-index: 10;
   top: 804px; left: 475px; width: 150px; height: 129px;
   background: url("../../assets/images/star1.png") center/contain no-repeat;
   pointer-events: none;
@@ -138,6 +139,7 @@
 /* 피그마 기준: 버튼 오른쪽 대형 별 (image 568) */
 .star2 {
   position: absolute;
+  z-index: 10;
   top: 804px; left: 977px; width: 150px; height: 129px;
   background: url("../../assets/images/star1.png") center/contain no-repeat;
   pointer-events: none;
@@ -147,6 +149,7 @@
 /* 피그마 기준: 왼쪽 소형 별 (image 567) */
 .star3 {
   position: absolute;
+  z-index: 10;
   top: 903px; left: 822px; width: 106px; height: 77.35px;
   transform: rotate(13.779deg);
   background: url("../../assets/images/star2.png") center/contain no-repeat;
@@ -157,6 +160,7 @@
 /* 피그마 기준: 오른쪽 소형 별 (image 569) */
 .star4 {
   position: absolute;
+  z-index: 10;
   top: 903px; left: 1324px; width: 106px; height: 77.35px;
   transform: rotate(13.779deg);
   background: url("../../assets/images/star2.png") center/contain no-repeat;
