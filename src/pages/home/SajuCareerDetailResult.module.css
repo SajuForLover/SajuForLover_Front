@@ -214,7 +214,7 @@
 
 .modalSubtitle {
   position: absolute;
-  top: 82px; left: 0;
+  top: 76px; left: 0;
   margin: 0;
   height: 32px;
   align-self: stretch;
@@ -228,7 +228,7 @@
 
 .modalBody {
   position: absolute;
-  top: 155px; left: 0;
+  top: 143px; left: 0;
   margin: 0;
   width: 442px;
   height: 197px;
@@ -243,7 +243,7 @@
 
 .modalButton {
   position: absolute;
-  top: 354px; left: 0;
+  top: 349px; left: 0;
   width: 1244px; height: 67px;
   background: #fff;
   border-radius: 178px;
