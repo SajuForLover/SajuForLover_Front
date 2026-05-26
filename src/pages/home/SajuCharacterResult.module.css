@@ -19,9 +19,12 @@
 }
 
 .characterCircle {
-  width: 303px; height: 303px;
-  border-radius: 50%;
-  background: #ffffff;
+  align-self: stretch;
+  height: 303px;
+  border-radius: 444px;
+  border: 3px solid #E78EB3;
+  background: #FFF;
+  box-shadow: 0 0 64.4px 2px rgba(231, 142, 179, 0.25);
   overflow: hidden;
   flex-shrink: 0;
 }
@@ -55,12 +58,17 @@
 }
 
 .tag {
-  width: 144px; height: 60px;
   display: flex;
-  align-items: center;
+  width: 144px;
+  height: 60px;
+  padding: 10px;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.8);
+  align-items: center;
+  gap: 10px;
   border-radius: 100px;
+  border: 2px solid #E78EB3;
+  background: rgba(255, 255, 255, 0.80);
+  box-sizing: border-box;
   font-family: 'Paperlogy';
   font-size: 24px;
   font-weight: 500;
@@ -72,8 +80,9 @@
   position: absolute;
   left: 571px; top: 811px;
   width: 729px; height: 122px;
-  background: #ffffff;
-  border-radius: 40px;
+  border-radius: 57px;
+  border: 1px solid #E78EB3;
+  background: #FFF;
   display: flex;
   align-items: center;
   padding: 29px 81px 29px 121px;
