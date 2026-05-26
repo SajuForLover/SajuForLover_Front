@@ -2,27 +2,30 @@ import { useState } from "react";
 import styles from "./SajuOhaengInfoResult.module.css";
 
 const ELEMENTS = [
-  { label: "흙",      sub: "50.0%", cx: 350, cy: 579, color: "#D4AA70", textColor: "#fff" },
-  { label: "금(식상)", sub: "25.0%", cx: 510, cy: 697, color: "#C0C0C0", textColor: "#5E3535" },
-  { label: "수(재성)", sub: "25.0%", cx: 450, cy: 886, color: "#7BAEC7", textColor: "#fff" },
-  { label: "목(관성)", sub: "0.0%",  cx: 250, cy: 886, color: "#8BBF8B", textColor: "#fff" },
-  { label: "화(인성)", sub: "0.0%",  cx: 188, cy: 697, color: "#E09090", textColor: "#fff" },
+  { label: "흙",      sub: "50.0%", cx: 350, cy: 579 },
+  { label: "금(식상)", sub: "25.0%", cx: 510, cy: 697 },
+  { label: "수(재성)", sub: "25.0%", cx: 450, cy: 886 },
+  { label: "목(관성)", sub: "0.0%",  cx: 250, cy: 886 },
+  { label: "화(인성)", sub: "0.0%",  cx: 188, cy: 697 },
 ];
 
-const SHENG_IDX: [number, number][] = [[0,1],[1,2],[2,3],[3,4],[4,0]];
-const KE_IDX: [number, number][] = [[0,2],[2,4],[4,1],[1,3],[3,0]];
+// 생(生) 화살표 — 피그마 absoluteTransform 실좌표, 파랑
+const SHENG_ARROWS = [
+  { x1: 488, y1: 776, x2: 473, y2: 811 },
+  { x1: 368, y1: 887, x2: 329, y2: 887 },
+  { x1: 221, y1: 812, x2: 211, y2: 771 },
+  { x1: 253, y1: 651, x2: 285, y2: 626 },
+  { x1: 419, y1: 620, x2: 453, y2: 642 },
+];
 
-function arrowPoints(from: typeof ELEMENTS[0], to: typeof ELEMENTS[0], r = 74) {
-  const dx = to.cx - from.cx;
-  const dy = to.cy - from.cy;
-  const dist = Math.sqrt(dx * dx + dy * dy);
-  return {
-    x1: from.cx + (dx / dist) * r,
-    y1: from.cy + (dy / dist) * r,
-    x2: to.cx - (dx / dist) * r,
-    y2: to.cy - (dy / dist) * r,
-  };
-}
+// 극(剋) 화살표 — 피그마 absoluteTransform 실좌표, 빨강
+const KE_ARROWS = [
+  { x1: 268, y1: 720, x2: 427, y2: 720 },
+  { x1: 355, y1: 661, x2: 401, y2: 816 },
+  { x1: 429, y1: 729, x2: 303, y2: 822 },
+  { x1: 397, y1: 819, x2: 268, y2: 726 },
+  { x1: 297, y1: 819, x2: 346, y2: 666 },
+];
 
 const TABLE_ROWS = [
   { el: "흙",   pct: "66.7 %", trait: "압도적인 자존감과 고집, 듬직함" },
@@ -71,17 +74,19 @@ export function SajuOhaengInfoResult() {
       {/* SVG: 오행 다이어그램 + 표 */}
       <svg className={styles.chartSvg} viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <marker id="arrow-sheng-oi" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
-            <path d="M0,0 L7,3 L0,6 Z" fill="rgba(94,53,53,0.55)" />
+          {/* markerUnits="userSpaceOnUse" → 픽셀 단위 고정, strokeWidth 배율 없음 */}
+          <marker id="arrow-sheng" markerWidth="14" markerHeight="10" refX="14" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M0,0 L14,5 L0,10 Z" fill="rgb(0,95,255)" />
           </marker>
-          <marker id="arrow-ke-oi" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
-            <path d="M0,0 L7,3 L0,6 Z" fill="rgba(94,53,53,0.35)" />
+          <marker id="arrow-ke" markerWidth="14" markerHeight="10" refX="14" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M0,0 L14,5 L0,10 Z" fill="rgb(255,84,73)" />
           </marker>
         </defs>
 
         {/* 표 배경 */}
-        <rect x={696} y={537} width={1114} height={433} fill="rgba(255,255,255,0.82)" rx={25} />
-        <rect x={696} y={537} width={1114} height={73}  fill="rgba(255,200,215,0.55)" />
+        <rect x={696} y={537} width={1114} height={433} fill="rgba(253,253,253,1)" rx={25} />
+        {/* 표 헤더 배경 — 상단 모서리만 rx=25 */}
+        <path d="M721,537 Q696,537 696,562 L696,610 L1810,610 L1810,562 Q1810,537 1785,537 Z" fill="rgba(255,213,225,1)" />
         {/* 표 수직 구분선 */}
         <line x1={903}  y1={537} x2={903}  y2={970} stroke="rgba(200,160,175,0.5)" strokeWidth={1} />
         <line x1={1103} y1={537} x2={1103} y2={970} stroke="rgba(200,160,175,0.5)" strokeWidth={1} />
@@ -102,42 +107,38 @@ export function SajuOhaengInfoResult() {
           </g>
         ))}
 
-        {/* 극(剋) 화살표 - 점선 */}
-        {KE_IDX.map(([f, t], i) => {
-          const { x1, y1, x2, y2 } = arrowPoints(ELEMENTS[f], ELEMENTS[t]);
-          return (
-            <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
-              stroke="rgba(94,53,53,0.35)" strokeWidth={2}
-              strokeDasharray="8 5" markerEnd="url(#arrow-ke-oi)" />
-          );
-        })}
+        {/* 극(剋) 화살표 — 빨강 실선 */}
+        {KE_ARROWS.map((a, i) => (
+          <line key={i} x1={a.x1} y1={a.y1} x2={a.x2} y2={a.y2}
+            stroke="rgb(255,84,73)" strokeWidth={4}
+            markerEnd="url(#arrow-ke)" />
+        ))}
 
-        {/* 생(生) 화살표 - 실선 */}
-        {SHENG_IDX.map(([f, t], i) => {
-          const { x1, y1, x2, y2 } = arrowPoints(ELEMENTS[f], ELEMENTS[t]);
-          return (
-            <line key={i} x1={x1} y1={y1} x2={x2} y2={y2}
-              stroke="rgba(94,53,53,0.55)" strokeWidth={2.5}
-              markerEnd="url(#arrow-sheng-oi)" />
-          );
-        })}
+        {/* 생(生) 화살표 — 파랑 실선 */}
+        {SHENG_ARROWS.map((a, i) => (
+          <line key={i} x1={a.x1} y1={a.y1} x2={a.x2} y2={a.y2}
+            stroke="rgb(0,95,255)" strokeWidth={4}
+            markerEnd="url(#arrow-sheng)" />
+        ))}
 
-        {/* 오행 원 */}
+        {/* 오행 원 — 흰색 배경, 핑크 테두리 */}
         {ELEMENTS.map((el, i) => (
           <g key={i}>
-            <circle cx={el.cx} cy={el.cy} r={72} fill={el.color} stroke="rgba(255,255,255,0.7)" strokeWidth={4} />
-            <text x={el.cx} y={el.cy - 8} textAnchor="middle" fontSize={22} fontFamily="Paperlogy,sans-serif"
-              fill={el.textColor} fontWeight={700}>{el.label}</text>
-            <text x={el.cx} y={el.cy + 20} textAnchor="middle" fontSize={20} fontFamily="Paperlogy,sans-serif"
-              fill={el.textColor} opacity={0.9}>{el.sub}</text>
+            <circle cx={el.cx} cy={el.cy} r={72} fill="#fff" stroke="rgb(255,31,124)" strokeWidth={2} />
+            <text x={el.cx} y={el.cy - 10} textAnchor="middle" fontSize={25} fontFamily="Paperlogy,sans-serif"
+              fill="#5E3535" fontWeight={600}>{el.label}</text>
+            <text x={el.cx} y={el.cy + 22} textAnchor="middle" fontSize={25} fontFamily="Paperlogy,sans-serif"
+              fill="#5E3535" fontWeight={600}>{el.sub}</text>
           </g>
         ))}
 
         {/* 범례 */}
-        <line x1={1689} y1={460} x2={1734} y2={460} stroke="rgba(94,53,53,0.55)" strokeWidth={2.5} markerEnd="url(#arrow-sheng-oi)" />
-        <text x={1752} y={466} fontSize={24} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={600}>생</text>
-        <line x1={1689} y1={497} x2={1734} y2={497} stroke="rgba(94,53,53,0.35)" strokeWidth={2} strokeDasharray="8 5" markerEnd="url(#arrow-ke-oi)" />
-        <text x={1753} y={503} fontSize={24} fontFamily="Paperlogy,sans-serif" fill="#5E3535" fontWeight={600}>극</text>
+        <line x1={1689} y1={460} x2={1720} y2={460}
+          stroke="rgb(0,95,255)" strokeWidth={3} markerEnd="url(#arrow-sheng)" />
+        <text x={1748} y={467} fontSize={24} fontFamily="Paperlogy,sans-serif" fill="rgba(31,69,60,1)" fontWeight={600}>생</text>
+        <line x1={1689} y1={497} x2={1720} y2={497}
+          stroke="rgb(255,84,73)" strokeWidth={3} markerEnd="url(#arrow-ke)" />
+        <text x={1748} y={504} fontSize={24} fontFamily="Paperlogy,sans-serif" fill="rgba(31,69,60,1)" fontWeight={600}>극</text>
       </svg>
 
       {/* 화이트 딤 오버레이 + 모달 */}
