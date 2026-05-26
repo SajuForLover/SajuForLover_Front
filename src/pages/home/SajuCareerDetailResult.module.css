@@ -66,9 +66,9 @@
   position: absolute;
   left: 122px;
   width: 1675px;
-  border-radius: 9999px;
-  background: #fff;
-  border: 1px solid #E78EB3;
+  border-radius: 10000px;
+  border: 3px solid #E78EB3;
+  background: #FFF;
   display: flex;
   align-items: center;
   z-index: 10;

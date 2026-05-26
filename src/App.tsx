@@ -12,12 +12,6 @@ import { SajuAbilityResult } from "./pages/home/SajuAbilityResult";
 import { SajuLifeResult } from "./pages/home/SajuLifeResult";
 import { SajuBoosterResult } from "./pages/home/SajuBoosterResult";
 import { SajuFortuneResult } from "./pages/home/SajuFortuneResult";
-import { SajuOhaengResult } from "./pages/home/SajuOhaengResult";
-import { SajuAbilityDetailResult } from "./pages/home/SajuAbilityDetailResult";
-import { SajuCareerResult } from "./pages/home/SajuCareerResult";
-import { SajuCareerDetailResult } from "./pages/home/SajuCareerDetailResult";
-import { SajuAbilityInfoResult } from "./pages/home/SajuAbilityInfoResult";
-import { SajuOhaengInfoResult } from "./pages/home/SajuOhaengInfoResult";
 import { SajuInfoScrollPage } from "./pages/home/SajuInfoScrollPage";
 
 function App() {
@@ -37,13 +31,7 @@ function App() {
         <Route path="/saju-life" element={<SajuLifeResult />} />
         <Route path="/saju-booster" element={<SajuBoosterResult />} />
         <Route path="/saju-fortune" element={<SajuFortuneResult />} />
-        {/* <Route path="/c" element={<SajuOhaengResult />} /> */}
-        {/* <Route path="/saju-ability-detail" element={<SajuAbilityDetailResult />} /> */}
-        {/* <Route path="/saju-career" element={<SajuCareerResult />} /> */}
-        <Route path="/saju-career-detail" element={<SajuCareerDetailResult />} />
-        <Route path="/saju-ability-info" element={<SajuAbilityInfoResult />} />
         <Route path="/saju-ohaeng-info" element={<SajuInfoScrollPage />} />
-        <Route path="/saju-info" element={<SajuInfoScrollPage />} />
       </Routes>
     </Router>
   );
