@@ -2,6 +2,7 @@ import pinkEffect from "../../assets/images/pinkEffect.png";
 import { SajuOhaengInfoResult } from "./SajuOhaengInfoResult";
 import { SajuAbilityInfoResult } from "./SajuAbilityInfoResult";
 import { SajuCareerDetailResult } from "./SajuCareerDetailResult";
+import { SajuCharacterResult } from "./SajuCharacterResult";
 import styles from "./SajuInfoScrollPage.module.css";
 
 export function SajuInfoScrollPage() {
@@ -17,6 +18,7 @@ export function SajuInfoScrollPage() {
         <SajuOhaengInfoResult hideBg />
         <SajuAbilityInfoResult hideBg />
         <SajuCareerDetailResult hideBg />
+        <SajuCharacterResult />
       </div>
     </div>
   );
