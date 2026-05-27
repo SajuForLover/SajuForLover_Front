@@ -6,6 +6,7 @@ import countNum3 from "@/assets/images/count_3.png";
 import countNum4 from "@/assets/images/count_4.png";
 import countNum5 from "@/assets/images/count_5.png";
 import {
+  SOOHOO_FRAME_SRC,
   loadPhotos,
   nextEmptySlot,
   PHOTO_BOOTH_HEIGHT,
@@ -17,7 +18,6 @@ import {
   RESULT_PHOTO_HEIGHT,
   RESULT_PHOTO_WIDTH,
   savePhotos,
-  SOOHOO_FRAME_SRC,
 } from "./photoShootData";
 import styles from "../yoon-sea-photo-shoot/YoonSeaPhotoShootPage.module.css";
 

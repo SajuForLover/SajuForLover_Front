@@ -1,7 +1,7 @@
-import soohooFrame1 from "@/assets/images/Soohoo_1.png";
-import soohooFrame2 from "@/assets/images/Soohoo_2.png";
-import soohooFrame3 from "@/assets/images/Soohoo_3.png";
-import soohooFrame4 from "@/assets/images/Soohoo_4.png";
+import soohooFrame1 from "@/assets/images/soohoo_1.png";
+import soohooFrame2 from "@/assets/images/soohoo_2.png";
+import soohooFrame3 from "@/assets/images/soohoo_3.png";
+import soohooFrame4 from "@/assets/images/soohoo_4.png";
 
 export const STORAGE_KEY = "soohooPhotoShoot.photos.v1";
 export const PHOTO_COUNT = 4;

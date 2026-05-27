@@ -281,6 +281,31 @@
   background: var(--frame-accent-color);
 }
 
+.nextButtonBox {
+  position: absolute;
+  right: 125px;
+  bottom: 75px;
+  width: 338px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0 31px 0;
+  border-radius: 20px;
+  border: 2px solid #fff;
+  background: linear-gradient(180deg, #F0C3DC 0%, #E78EB3 100%);
+  box-shadow: 0 0 73.6px 0 rgba(247, 143, 170, 0.6);
+  box-sizing: border-box;
+}
+
+.nextButtonText {
+  color: #fff;
+  font-family: Paperlogy, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
 .bottomLogo {
   display: block;
   width: 212px;

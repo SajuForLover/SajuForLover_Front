@@ -150,7 +150,7 @@ export function ChanyoungPhotoShootPage() {
 
   useEffect(() => {
     if (phase !== null || nextSlot < 4) return;
-    navigate("/chanyoung-photo-shoot/result", { replace: true });
+    navigate("/jaehyun-photo-shoot/result", { replace: true });
   }, [navigate, nextSlot, phase]);
 
   /** 카메라 준비 후 각 컷이 짧은 간격으로 자동 카운트다운됩니다. */

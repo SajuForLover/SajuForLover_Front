@@ -1,4 +1,4 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { Fragment, type CSSProperties, useState } from "react";
 import resultLogo from "@/assets/images/result_logo.png";
 import resultLogo2 from "@/assets/images/result_logo2.png";
@@ -8,6 +8,7 @@ import { loadPhotos } from "@/pages/haram-photo-shoot/photoShootData";
 import styles from "../yoon-sea-photo-shoot-result/YoonSeaPhotoShootResultPage.module.css";
 
 export function HaramPhotoShootResultPage() {
+  const navigate = useNavigate();
   const photos = loadPhotos();
   const [frameAccentColor, setFrameAccentColor] = useState("#fff");
   const completedPhotos = photos.filter(
@@ -87,6 +88,9 @@ export function HaramPhotoShootResultPage() {
             ) : null}
           </Fragment>
         ))}
+      </div>
+      <div className={styles.nextButtonBox} role="button" onClick={() => navigate("/email-input")} style={{ cursor: "pointer" }}>
+        <span className={styles.nextButtonText}>다음</span>
       </div>
       <div className={styles.bottomWhiteBox}>
         <img

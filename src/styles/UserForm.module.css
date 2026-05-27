@@ -1,0 +1,429 @@
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.root {
+  background-image: url("../assets/images/background1.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  background-attachment: fixed;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 전체 요소를 수평 중앙 정렬 */
+  position: relative;
+  animation: pageFadeIn 1s ease-in-out forwards; /* 페이지 진입 시 1초 동안 부드럽게 나타남 */
+}
+
+/* 상단 영역 - 배경색/이미지 제거하여 투명하게 유지 */
+.headerContainer {
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.title {
+  color: #5E3535;
+  font-family: 'Paperlogy';
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 600;
+  margin: 0;        /* 기본 여백 제거 */
+  margin-top: 116px; 
+  line-height: 1;   /* 글자 높이를 80px로 고정 */
+}
+
+.notice {
+  color: rgba(94, 53, 53, 0.51);
+  font-family: 'Paperlogy';
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+  margin: 0;        /* 기본 여백 제거 */
+  /* 242(공지 위치) - 116(타이틀 위치) - 80(타이틀 높이) = 46px */
+  margin-top: 46px; 
+  line-height: 1;   /* 글자 높이를 30px로 고정 */
+  text-align: center;
+  width: auto;
+}
+
+.fixedPinkEffect {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1920px;
+  z-index: 0;
+  pointer-events: none;
+  object-fit: contain;
+}
+
+.form {
+  /* 344(이름 위치) - 242(공지 위치) - 30(공지 높이) = 72px */
+  margin-top: 72px; 
+  width: 546px;      /* 1080px 디자인 기준 입력창 너비 */
+  display: flex;
+  flex-direction: column;
+  gap: 72px;         /* 피그마 기준 그룹 간 간격 72px */
+  position: relative;
+  padding-bottom: 450px; /* 피그마 입력완료버전 스크롤 한계 맞춤 */
+}
+
+/* 성별 그룹 간격 - 피그마 기준 24px (동일 적용) */
+.form > .inputGroup:nth-child(2) {
+  gap: 24px;
+}
+
+.inputGroup { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 24px; 
+  position: relative;
+}
+.label {
+  color: #5E3535;
+  font-family: 'Paperlogy';
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.input {
+  display: inline-flex;
+  height: 99px;
+  width: 100%;     /* 부모인 .form의 너비(546px)를 따름 */
+  padding: 33px 40px; /* 오른쪽 패딩을 40px로 조정하여 텍스트 잘림 방지 */
+  align-items: center;
+  border-radius: 20px;
+  border: 2px solid #FFF;
+  background: rgba(255, 255, 255, 0.6); /* 피그마 기준 60% 투명도 */
+  box-shadow: 0 14px 75.2px -16px rgba(247, 143, 170, 0.85);
+  box-sizing: border-box;
+  font-family: 'Paperlogy';
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  outline: none;
+  color: rgba(72, 72, 72, 0.42);
+  transition: border 0.2s ease, color 0.2s ease;
+}
+
+/* 입력창 클릭 시 테두리 변경 */
+.input:focus {
+  border: 3px solid #E78EB3;
+}
+
+/* 정보 입력 시(플레이스홀더가 안 보일 때) 글자색 및 굵기 변경 */
+.input:not(:placeholder-shown) {
+  color: #E78EB3;
+  font-weight: 600;
+}
+
+.input::placeholder {
+  color: rgba(72, 72, 72, 0.42);
+}
+
+/* 커스텀 셀렉트 트리거 (기존 .select 대체) */
+.selectTrigger {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 99px;
+  padding: 0 40px;
+  border-radius: 20px;
+  border: 2px solid #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.6); /* 다른 입력창과 동일 */
+  box-sizing: border-box;
+  font-family: 'Paperlogy';
+  font-size: 28px;
+  font-weight: 400;
+  color: rgba(72, 72, 72, 0.42);
+  cursor: pointer;
+  box-shadow: 0px 14px 75.2px -16px rgba(247, 143, 170, 0.85);
+  transition: all 0.2s ease;
+}
+
+.selectTrigger.hasValue {
+  color: #E78EB3;
+  font-weight: 600;
+  border: 3px solid #E78EB3;
+}
+
+/* 드롭다운 열린 상태: 트리거 위 모서리만 둥글게, 불투명 배경, 그림자 제거 */
+.activeWrapper .selectTrigger {
+  border-radius: 20px 20px 0 0;
+  background-color: #FDEDF2;
+  box-shadow: none;
+}
+
+/* 도시 드롭다운 열린 상태: 입력창 위 모서리만 둥글게 */
+.activeWrapper .input {
+  border-radius: 20px 20px 0 0;
+  background: #FDEDF2;
+  box-shadow: none;
+}
+
+/* 둥둥 떠 있는 리스트박스 스타일 */
+.floatingListbox {
+  position: absolute;
+  top: 97px; /* 트리거 높이(99px) - 하단 테두리(2px) = 97px → 틈 없이 연결 */
+  left: 0;
+  width: 546px;
+  height: 384px; /* 피그마 Frame48 총 483px - 트리거 99px */
+  border-radius: 0 0 20px 20px; /* 아래 모서리만 둥글게 */
+  border: 2px solid #FFF;
+  border-top: none; /* 트리거와 경계선 제거 */
+  background: #FDEDF2;
+  box-shadow: 0 14px 75.2px -16px rgba(247, 143, 170, 0.85);
+  box-sizing: border-box;
+  z-index: 5000;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.listItem {
+  width: 100%;
+  padding: 30px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: rgba(72, 72, 72, 0.42);
+  font-family: 'Paperlogy';
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+}
+
+.itemDivider {
+  width: 488px;
+  height: 1px;
+  background: #D9D9D9;
+  flex-shrink: 0;
+}
+
+.selectIcon {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  width: 43px;
+  height: 43px;
+  transform: translateY(-50%) rotate(0deg); /* 평소에는 기본 방향 유지 */
+  transition: transform 0.2s ease;
+  aspect-ratio: 1 / 1;
+  pointer-events: none;  /* 아이콘 클릭 시에도 select가 열리도록 설정 */
+}
+
+/* 태어난 시간 클릭(활성화) 시 화살표가 아래를 향하도록 설정 */
+.selectIcon.rotated {
+  transform: translateY(-50%) rotate(0deg); 
+}
+
+.genderContainer { display: flex; gap: 14px; }
+.genderBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 266px;
+  height: 99px;
+  padding: 33px 0;
+  box-sizing: border-box;
+  border-radius: 20px;
+  border: 2px solid #FFF;
+  background: rgba(255, 255, 255, 0.6); /* 피그마 기준 60% 투명도 */
+  box-shadow: 0 3px 67.4px -16px rgba(247, 143, 170, 0.85);
+  color: rgba(72, 72, 72, 0.42); 
+  font-family: 'Paperlogy';
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal; 
+  cursor: pointer;
+}
+
+.genderBtn.active {
+  border: 3px solid #E78EB3;
+  color: #E78EB3;
+  font-weight: 600;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+  z-index: 5;
+}
+
+/* 드롭다운이 열렸을 때 부모 컨테이너를 최상단으로 올림 */
+.activeWrapper {
+  z-index: 5000 !important;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 43px; /* down.svg와 동일한 크기 유지 */
+  height: 43px;
+  color: rgba(72, 72, 72, 0.42);
+  pointer-events: none;
+}
+
+.cityDropdown {
+  position: absolute;
+  top: 97px;
+  left: 0;
+  width: 546px;
+  height: 186px; /* 피그마 기준: 285px 전체 - 99px 입력창 = 186px */
+  border-radius: 0 0 20px 20px;
+  border: 2px solid #FFFFFF;
+  border-top: none;
+  background: #FDEDF2;
+  box-sizing: border-box;
+  box-shadow: 0 14px 75.2px -16px rgba(247, 143, 170, 0.85);
+  z-index: 5000;
+  overflow: hidden;
+}
+
+/* 상단 가이드 텍스트 */
+.cityGuide {
+  position: absolute;
+  top: 33px;
+  left: 40px;
+  font-family: 'Paperlogy';
+  font-size: 28px;
+  color: rgba(72, 72, 72, 0.42);
+  font-weight: 400;
+}
+
+/* 박스 내부 구분선 */
+.innerDivider {
+  position: absolute;
+  top: 88px;
+  left: 29px; /* (546 - 488) / 2 = 29px (중앙 정렬) */
+  width: 488px;
+  height: 1px;
+  background: #D9D9D9;
+}
+
+/* 하단 안내 문구 */
+.cityNotice {
+  position: absolute;
+  top: 111px;
+  left: 40px;
+  font-family: 'Paperlogy';
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 160%;
+  color: rgba(106, 101, 101, 0.52);
+}
+
+/* 검색 결과 리스트 컨테이너 */
+.cityResultList {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  padding: 20px 0;
+}
+
+.cityResultItem {
+  width: 100%;
+  padding: 15px 40px;
+  font-family: 'Paperlogy';
+  font-size: 24px;
+  color: rgba(72, 72, 72, 0.42);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.cityResultItem:hover {
+  background: rgba(231, 142, 179, 0.05);
+}
+
+/* 검색 결과 중 도시 이름 부분 (핑크색 강조) */
+.cityResultText {
+  color: #FF8DA1;
+  font-weight: 500;
+}
+
+.fixedButtonContainer {
+  position: fixed;
+  bottom: 88px; /* 피그마 기준: 1080-893-99=88px */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3000;
+  width: 651px;
+}
+
+/* 우측 구분선 (피그마 Rectangle 26) */
+.rightDivider {
+  position: fixed;
+  right: 22px; /* 1920-1889-9=22px */
+  top: 79px;
+  width: 9px;
+  height: 320px;
+  background: rgba(179, 167, 171, 0.8);
+  border-radius: 100px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* 스파클 별 이미지 */
+.star1 {
+  position: fixed;
+  left: 572px;
+  bottom: 121px; /* 1080-830-129=121px */
+  width: 150px;
+  height: 129px;
+  pointer-events: none;
+  z-index: 4000;
+}
+
+.star2 {
+  position: fixed;
+  left: 1231px;
+  bottom: 73px; /* 1080-930-77=73px */
+  width: 106px;
+  height: 77px;
+  pointer-events: none;
+  z-index: 4000;
+}
+
+.submitBtn {
+  display: flex;
+  width: 651px;
+  padding: 30px 0 31px 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border: 2px solid #FFF;
+  background: linear-gradient(180deg, #F0C3DC 0%, #E78EB3 100%);
+  box-shadow: 0 0 73.6px 0 rgba(247, 143, 170, 0.85);
+  
+  /* 텍스트 스타일 */
+  color: #FFF;
+  font-family: 'Paperlogy';
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  cursor: pointer;
+  outline: none;
+}

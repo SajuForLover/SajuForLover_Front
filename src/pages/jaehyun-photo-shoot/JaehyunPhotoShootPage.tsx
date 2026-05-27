@@ -6,7 +6,6 @@ import countNum3 from "@/assets/images/count_3.png";
 import countNum4 from "@/assets/images/count_4.png";
 import countNum5 from "@/assets/images/count_5.png";
 import {
-  JAEHYUN_FRAME_SRC,
   loadPhotos,
   nextEmptySlot,
   PHOTO_BOOTH_HEIGHT,
@@ -18,6 +17,7 @@ import {
   RESULT_PHOTO_HEIGHT,
   RESULT_PHOTO_WIDTH,
   savePhotos,
+  JAEHYUN_FRAME_SRC,
 } from "./photoShootData";
 import styles from "../yoon-sea-photo-shoot/YoonSeaPhotoShootPage.module.css";
 
@@ -47,6 +47,7 @@ export function JaehyunPhotoShootPage() {
   const [phase, setPhase] = useState<5 | 4 | 3 | 2 | 1 | null>(null);
   const pendingRef = useRef<number | null>(null);
   const countingRef = useRef(false);
+  const navigatedRef = useRef(false);
   const photosRef = useRef(photos);
   const phaseRef = useRef(phase);
   photosRef.current = photos;
@@ -150,7 +151,9 @@ export function JaehyunPhotoShootPage() {
 
   useEffect(() => {
     if (phase !== null || nextSlot < 4) return;
-    navigate("/jaehyun-photo-shoot/result", { replace: true });
+    if (navigatedRef.current) return;
+    navigatedRef.current = true;
+    navigate("/soohoo-photo-shoot/result", { replace: true });
   }, [navigate, nextSlot, phase]);
 
   /** 카메라 준비 후 각 컷이 짧은 간격으로 자동 카운트다운됩니다. */

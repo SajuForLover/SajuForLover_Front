@@ -1,0 +1,279 @@
+/* ============================
+   로딩 화면
+   ============================ */
+.loadingRoot {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../assets/images/background2.png");
+  background-size: cover;
+  color: #5E3535;
+}
+
+.loadingSpinner {
+  width: 80px;
+  height: 80px;
+  border: 8px solid rgba(231, 142, 179, 0.2);
+  border-top: 8px solid #E78EB3;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 30px;
+}
+
+@keyframes spin {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loadingText {
+  font-size: 28px;
+  font-weight: 500;
+  font-family: 'Paperlogy';
+}
+
+/* ============================
+   메인 결과 화면 (1920x1115 고정)
+   ============================ */
+.root {
+  width: 1920px;
+  height: 1115px;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Paperlogy';
+  background-image: url("../assets/images/background3.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+}
+
+/* 하단 핑크 그라데이션 오버레이 */
+.bottomGradient {
+  position: absolute;
+  left: 0;
+  top: 699px;
+  width: 100%;
+  height: 416px;
+  background: linear-gradient(180deg, rgba(247, 143, 170, 0) 0%, rgba(247, 143, 170, 0.5) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================
+   타이틀
+   ============================ */
+.resultTitle {
+  position: absolute;
+  top: 123px;
+  left: 157px;
+  margin: 0;
+  color: #5E3535;
+  font-family: 'Paperlogy';
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 147%;
+  letter-spacing: -0.8px;
+  z-index: 10;
+}
+
+/* ============================
+   왼쪽 상중하정 섹션
+   ============================ */
+.guideSection {
+  position: absolute;
+  left: 118px;
+  width: 438px;
+  height: 191px;
+  display: flex;
+  align-items: center;
+  padding-left: 170px;
+  box-sizing: border-box;
+  z-index: 5;
+}
+
+/* 섹션 배경 그라데이션 */
+.guideBg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(270deg, rgba(255, 87, 153, 0.083) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+/* 섹션 상단 경계선 */
+.guideTopLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #F34A71 100%);
+}
+
+/* 섹션 하단 경계선 */
+.guideBottomLine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #F34A71 100%);
+}
+
+.guideText {
+  position: relative;
+  color: #FF4D76;
+  font-family: 'Paperlogy';
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  z-index: 1;
+}
+
+/* ============================
+   중앙 얼굴 이미지
+   ============================ */
+.imageContainer {
+  position: absolute;
+  top: 231px;
+  left: 557px;
+  width: 750px;
+  height: 738px;
+  border-radius: 25px;
+  border: 3px solid #E78EB3;
+  overflow: hidden;
+  box-shadow: 0 1px 17.9px 0 rgba(255, 121, 152, 0.16);
+  background-color: #f0d0d8;
+  z-index: 10;
+}
+
+.capturedImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* ============================
+   SVG 오버레이: 대각선 연결선 + 도트
+   ============================ */
+.arrowSvg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1920px;
+  height: 1115px;
+  z-index: 18;
+  pointer-events: none;
+  overflow: visible;
+}
+
+/* ============================
+   얼굴 라벨 버블
+   ============================ */
+.faceLabel {
+  position: absolute;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.94);
+  border: 3px solid #FF7998;
+  border-radius: 67px;
+  color: #5E3535;
+  font-family: 'Paperlogy';
+  font-size: 23px;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 20;
+}
+
+/* 결혼운: 테두리 색상 다름 (피그마: rgb(231,142,179)) */
+.faceLabelAlt {
+  border-color: #E78EB3;
+}
+
+/* ============================
+   분석 번호 도트 (1~4)
+   ============================ */
+.dotGroup {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 25;
+}
+
+.dotCircle {
+  width: 10px;
+  height: 10px;
+  background: #FF4B74;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.dotNum {
+  color: #FF4B74;
+  font-family: 'Paperlogy';
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+/* ============================
+   오른쪽 분석 패널
+   ============================ */
+
+/* 구분 라인 (x:1308, w:104) */
+.rightDivider {
+  position: absolute;
+  left: 1308px;
+  width: 104px;
+  height: 1px;
+  background: linear-gradient(90deg, #FFF 0%, #F34A71 100%);
+  z-index: 10;
+}
+
+/* 불릿 도트 */
+.rightBullet {
+  position: absolute;
+  left: 1422px;
+  width: 10px;
+  height: 10px;
+  background: #FF4B74;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+/* 텍스트 섹션 */
+.rightSection {
+  position: absolute;
+  left: 1442px;
+  width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  z-index: 10;
+}
+
+.rightTitle {
+  margin: 0;
+  color: #FF4B74;
+  font-family: 'Paperlogy';
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 147%;
+  letter-spacing: -0.6px;
+}
+
+.rightDesc {
+  margin: 0;
+  color: #5E3535;
+  font-family: 'Paperlogy';
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 155%;
+  letter-spacing: -0.42px;
+  white-space: pre-line;
+}
