@@ -1,0 +1,23 @@
+/* HomePage.module.css */
+.root {
+  width: 100vw;
+  height: 100vh;    /* 화면 꽉 차게 해서 어디서든 마우스 감지되게 함 */
+  margin: 0;
+  padding: 0;
+  display: flex; /* 이미지가 위아래로 꽉 차게 하기 위해 필요할 수 있습니다 */
+  overflow: hidden;
+  transition: opacity 0.8s ease-in-out, filter 0.8s ease-in-out;
+  opacity: 1;
+}
+
+.leaving {
+  opacity: 0;
+  filter: blur(10px); /* 사라질 때 살짝 흐려지는 효과 */
+}
+
+.root img {
+  width: 100vw;    /* 화면 가로 너비(Viewport Width)에 맞춤 */
+  height: auto;    /* 비율에 맞게 높이 조절 */
+  display: block;  /* 이미지 하단의 미세한 여백 제거 */
+  object-fit: cover; /* 이미지가 잘리더라도 영역을 꽉 채우게 함 */
+}

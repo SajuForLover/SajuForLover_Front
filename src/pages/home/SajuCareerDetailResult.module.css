@@ -1,0 +1,274 @@
+.root {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Paperlogy';
+  background-color: #FBEBEE;
+}
+
+.bgImage {
+  position: absolute;
+  top: 0; left: 0;
+  width: 1919px; height: 1080px;
+  background-image: url("../../assets/images/background2.png");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.48;
+  z-index: 0;
+}
+
+.midSection {
+  position: absolute;
+  left: 0; top: 616px;
+  width: 1924px; height: 463px;
+  background: linear-gradient(180deg, rgba(247,143,170,0) 0%, rgba(247,143,170,0.5) 100%);
+  z-index: 1;
+}
+
+.rightDivider {
+  position: absolute;
+  left: 1879px; top: 599px;
+  width: 9px; height: 320px;
+  background: rgba(179,167,171,0.8);
+  border-radius: 100px;
+  z-index: 10;
+}
+
+/* 섹션 타이틀 */
+.sectionTitle {
+  position: absolute;
+  left: 102px; top: 128px;
+  margin: 0;
+  font-family: 'Paperlogy';
+  font-size: 40px;
+  font-weight: 600;
+  color: #5E3535;
+  z-index: 10;
+}
+
+/* 돋보기 아이콘 */
+.searchIcon {
+  position: absolute;
+  left: 507px; top: 131px;
+  width: 41px; height: 41px;
+  background: #5E3535;
+  border-radius: 50%;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* 정보 바 공통 */
+.infoBar {
+  position: absolute;
+  left: 122px;
+  width: 1675px;
+  border-radius: 10000px;
+  border: 3px solid #E78EB3;
+  background: #FFF;
+  display: flex;
+  align-items: center;
+  z-index: 10;
+}
+
+.bar1 { top: 282px; height: 84px; }
+.bar2 { top: 406px; height: 86px; }
+.bar3 { top: 532px; height: 84px; }
+
+.infoLabel {
+  position: absolute;
+  left: 86px;
+  font-family: 'Paperlogy';
+  font-size: 25px;
+  font-weight: 600;
+  color: #5E3535;
+  white-space: nowrap;
+}
+
+.barDivider {
+  position: absolute;
+  left: 304px;
+  width: 1px;
+  height: 40px;
+  background: rgba(94,53,53,0.3);
+}
+
+.infoValue {
+  position: absolute;
+  left: 856px;
+  font-family: 'Paperlogy';
+  font-size: 25px;
+  font-weight: 600;
+  color: #5E3535;
+}
+
+/* 최고의 파트너 */
+.partnerTitleLeft {
+  position: absolute;
+  left: 122px; top: 765px;
+  margin: 0;
+  font-family: 'Paperlogy';
+  font-size: 40px;
+  font-weight: 600;
+  color: #5E3535;
+  z-index: 10;
+}
+
+.partnerImgLeft {
+  position: absolute;
+  left: 132px; top: 865px;
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  background: #D9D9D9;
+  border: 1px solid #ffffff;
+  z-index: 10;
+}
+
+.partnerDescLeft {
+  position: absolute;
+  left: 291px; top: 860px;
+  margin: 0;
+  font-family: 'Paperlogy';
+  font-size: 32px;
+  font-weight: 500;
+  color: #5E3535;
+  white-space: pre-line;
+  line-height: 1.55;
+  z-index: 10;
+}
+
+/* 조심할 파트너 */
+.partnerTitleRight {
+  position: absolute;
+  left: 1015px; top: 771px;
+  margin: 0;
+  font-family: 'Paperlogy';
+  font-size: 40px;
+  font-weight: 600;
+  color: #5E3535;
+  z-index: 10;
+}
+
+.partnerImgRight {
+  position: absolute;
+  left: 1018px; top: 865px;
+  width: 109px; height: 109px;
+  border-radius: 50%;
+  background: #D9D9D9;
+  border: 1px solid #ffffff;
+  z-index: 10;
+}
+
+.partnerDescRight {
+  position: absolute;
+  left: 1186px; top: 860px;
+  margin: 0;
+  font-family: 'Paperlogy';
+  font-size: 32px;
+  font-weight: 500;
+  color: #5E3535;
+  white-space: pre-line;
+  line-height: 1.55;
+  z-index: 10;
+}
+
+/* 화이트 딤 오버레이 */
+.dimOverlay {
+  position: absolute;
+  left: 0; top: 0;
+  width: 1924px; height: 1079px;
+  background: rgba(255,255,255,0.45);
+  z-index: 20;
+}
+
+/* 모달 */
+.modal {
+  position: absolute;
+  left: 272px; top: 249px;
+  width: 1380px; height: 535px;
+  background: #5E3535;
+  border-radius: 25px;
+  z-index: 30;
+}
+
+.modalInner {
+  position: absolute;
+  left: 58px; top: 54px;
+  width: 1244px; height: 423px;
+}
+
+.modalTitle {
+  margin: 0;
+  height: 41px;
+  align-self: stretch;
+  font-family: 'Paperlogy';
+  font-size: 38px;
+  font-style: normal;
+  font-weight: 600;
+  color: #fff;
+  line-height: normal;
+}
+
+.modalSubtitle {
+  position: absolute;
+  top: 76px; left: 0;
+  margin: 0;
+  height: 32px;
+  align-self: stretch;
+  font-family: 'Paperlogy';
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 500;
+  color: #fff;
+  line-height: normal;
+}
+
+.modalBody {
+  position: absolute;
+  top: 143px; left: 0;
+  margin: 0;
+  width: 442px;
+  height: 197px;
+  font-family: 'Paperlogy';
+  font-size: 23px;
+  font-style: normal;
+  font-weight: 400;
+  color: #fff;
+  white-space: pre;
+  line-height: 185.6%;
+}
+
+.modalButton {
+  position: absolute;
+  top: 349px; left: 0;
+  width: 1244px; height: 67px;
+  background: #fff;
+  border-radius: 178px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.modalButtonText {
+  font-family: 'Paperlogy';
+  font-size: 28px;
+  font-weight: 600;
+  color: #5E3535;
+}
+
+/* 닫기 버튼 */
+.closeBtn {
+  position: absolute;
+  right: 48px; top: 54px;
+  width: 30px; height: 28px;
+  color: #fff;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
