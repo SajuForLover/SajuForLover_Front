@@ -91,7 +91,6 @@ export function Camera() {
         ) : (
           <>
             <video ref={videoRef} autoPlay playsInline className={styles.video} />
-            <div className={styles.faceGuide} /> {/* 얼굴 위치 가이드 */}
           </>
         )}
       </div>
