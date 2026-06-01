@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../../styles/Camera.module.css";
+import styles from "../../../styles/Camera.module.css";
 
 export function Camera() {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -22,7 +22,11 @@ export function Camera() {
 
       try {
         const mediaStream = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: "user" }, // 전면 카메라 사용
+          video: {
+            facingMode: "user",
+            width: { ideal: 1920 },
+            height: { ideal: 1080 },
+          }, // 전면 카메라 사용
           audio: false,
         });
         setStream(mediaStream);
