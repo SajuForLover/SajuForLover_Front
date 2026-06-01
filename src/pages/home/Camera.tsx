@@ -91,7 +91,10 @@ export function Camera() {
         ) : (
           <>
             <video ref={videoRef} autoPlay playsInline className={styles.video} />
-            <div className={styles.faceGuide} /> {/* 얼굴 위치 가이드 */}
+            <div className={styles.faceGuideOverlay}>
+              <div className={styles.faceGuideOval} />
+              <p className={styles.faceGuideText}>얼굴을 원 안에 맞춰주세요</p>
+            </div>
           </>
         )}
       </div>
