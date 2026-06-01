@@ -2,23 +2,21 @@
 
 .viewport {
   width: 100vw;
-  height: 100vh;
   height: 100dvh;
   overflow: hidden;
   position: relative;
   background: var(--canvas-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .stage {
-  position: absolute;
-  left: 50%;
-  top: 50%;
   width: var(--canvas-width);
   height: var(--canvas-height);
-  margin-left: calc(var(--canvas-width) / -2);
-  margin-top: calc(var(--canvas-height) / -2);
   transform: scale(var(--stage-scale, 1));
   transform-origin: center center;
+  flex-shrink: 0;
 }
 
 .canvas {

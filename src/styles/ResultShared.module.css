@@ -1,0 +1,121 @@
+.bottomGradient {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 480px;
+  background: linear-gradient(180deg, rgba(251, 230, 238, 0) 0%, #fbe6ee 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.sectionTitle {
+  position: absolute;
+  top: 263px;
+  left: 178px;
+  color: #5e3535;
+  font-family: Paperlogy, sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.characterCircle {
+  position: absolute;
+  top: 194px;
+  left: 178px;
+  width: 290px;
+  height: 290px;
+  border-radius: 50%;
+  background: #d9d9d9;
+  border: 5px solid #fff;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.charName {
+  position: absolute;
+  top: 231px;
+  left: 178px;
+  color: #5e3535;
+  font-family: Paperlogy, sans-serif;
+  font-size: 45px;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.charSub {
+  position: absolute;
+  top: 301px;
+  left: 178px;
+  color: #5e3535;
+  font-family: Paperlogy, sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  z-index: 1;
+}
+
+.charDesc {
+  position: absolute;
+  top: 388px;
+  left: 178px;
+  width: 800px;
+  color: #5e3535;
+  font-family: Paperlogy, sans-serif;
+  font-size: 24px;
+  line-height: 140%;
+  z-index: 1;
+}
+
+.searchIcon {
+  position: absolute;
+  top: 482px;
+  left: 318px;
+  cursor: pointer;
+  display: flex;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: #e78eb3;
+  z-index: 2;
+}
+
+.mbtiLabel {
+  position: absolute;
+  top: 231px;
+  right: 178px;
+  color: #5e3535;
+  font-family: Paperlogy, sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  z-index: 1;
+  text-align: right;
+}
+
+.mbtiBadges {
+  position: absolute;
+  top: 298px;
+  right: 178px;
+  display: flex;
+  gap: 14px;
+  z-index: 1;
+}
+
+.mbtiBadge {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+  border: 3px solid #e78eb3;
+  background: rgba(255, 255, 255, 0.8);
+  box-sizing: border-box;
+  color: #5e3535;
+  font-family: Paperlogy, sans-serif;
+  font-size: 26px;
+  font-weight: 600;
+}
