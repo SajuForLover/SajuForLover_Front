@@ -22,7 +22,7 @@ export function DesignCanvas({ children }: DesignCanvasProps) {
   useLayoutEffect(() => {
     function update() {
       setScale(
-        Math.min(window.innerWidth / DESIGN_W, window.innerHeight / DESIGN_H)
+        Math.max(window.innerWidth / DESIGN_W, window.innerHeight / DESIGN_H)
       );
     }
     update();
