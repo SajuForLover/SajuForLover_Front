@@ -37,16 +37,32 @@
 /* ============================
    메인 결과 화면 (1920x1115 고정)
    ============================ */
-.root {
-  width: 1920px;
-  height: 1115px;
-  position: relative;
-  overflow: hidden;
-  font-family: 'Paperlogy';
+.viewport {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
   background-image: url("../assets/images/background3.png");
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
+}
+
+.canvas {
+  width: 1920px;
+  min-height: 1115px;
+  height: calc(100vh / var(--scale));
+  transform: scale(var(--scale, 1));
+  transform-origin: top left;
+}
+
+.root {
+  width: 1920px;
+  min-height: 1115px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Paperlogy';
 }
 
 /* 하단 핑크 그라데이션 오버레이 */
@@ -276,4 +292,33 @@
   line-height: 155%;
   letter-spacing: -0.42px;
   white-space: pre-line;
+}
+
+.buttonWrapper {
+  position: absolute;
+  bottom: 80px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+}
+
+.navButton {
+  z-index: 9999;
+  display: flex;
+  width: 651px;
+  padding: 30px 0 31px 0;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border: 2px solid #FFF;
+  background: linear-gradient(180deg, #F0C3DC 0%, #E78EB3 100%);
+  box-shadow: 0 0 73.6px 0 rgba(247, 143, 170, 0.85);
+  box-sizing: border-box;
+  cursor: pointer;
+  color: #FFF;
+  font-family: Paperlogy;
+  font-size: 32px;
+  font-weight: 500;
 }
