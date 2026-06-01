@@ -40,7 +40,11 @@ export function Filming() {
 
       try {
         const mediaStream = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: "user" }, // 전면 카메라 사용
+          video: {
+            facingMode: "user",
+            width: { ideal: 1920 },
+            height: { ideal: 1080 },
+          }, // 전면 카메라 사용
           audio: false,
         });
         setStream(mediaStream);
@@ -109,7 +113,10 @@ export function Filming() {
         ) : (
           <>
             <video ref={videoRef} autoPlay playsInline className={styles.video} />
-            <div className={styles.faceGuide} /> {/* 얼굴 위치 가이드 */}
+            <div className={styles.faceGuideOverlay}>
+              <div className={styles.faceGuideOval} />
+              <p className={styles.faceGuideText}>얼굴을 원 안에 맞춰주세요</p>
+            </div>
             <div className={styles.countdown}>{countdown}</div>
             <img src={star2} className={styles.countdownStar} alt="" />
           </>
