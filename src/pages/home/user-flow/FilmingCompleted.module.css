@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("../../../../assets/images/background2.png");
+  background-image: url("../../assets/images/background2.png");
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -31,17 +31,29 @@
   font-weight: 600;
   font-style: normal;
   line-height: 1;
-  margin: 126px 0 0 0; /* 촬영 ?�이지?� ?�일???�단 ?�백 */
+<<<<<<< Updated upstream:src/pages/home/FilmingCompleted.module.css
+  margin: 126px 0 0 0; /* 촬영 페이지와 동일한 상단 여백 */
+=======
+  margin: 126px 0 0 0; /* 촬영 ?�이지?� ?�일???�단 ?�백 */
+>>>>>>> Stashed changes:src/pages/home/user-flow/FilmingCompleted.module.css
 }
 
 .notice {
   color: rgba(94, 53, 53, 0.51);
   font-family: 'Paperlogy';
-  font-size: 30px; /* 촬영 ?�이지?� ?�일???�기 */
+<<<<<<< Updated upstream:src/pages/home/FilmingCompleted.module.css
+  font-size: 30px; /* 촬영 페이지와 동일한 크기 */
   font-weight: 400;
   font-style: normal;
   line-height: 1;
-  margin-top: 46px; /* ?�단 252px ?�치�??�한 마진: 252 - (126 + 80) */
+  margin-top: 46px; /* 상단 252px 위치를 위한 마진: 252 - (126 + 80) */
+=======
+  font-size: 30px; /* 촬영 ?�이지?� ?�일???�기 */
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1;
+  margin-top: 46px; /* ?�단 252px ?�치�??�한 마진: 252 - (126 + 80) */
+>>>>>>> Stashed changes:src/pages/home/user-flow/FilmingCompleted.module.css
 }
 
 .cameraContainer {
@@ -55,7 +67,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 58px; /* ?�단 340px ?�치�??�한 마진: 340 - (252 + 30) */
+  margin-top: 58px; /* 상단 340px 위치를 위한 마진: 340 - (252 + 30) */
   box-shadow: 0 0 40px 0 rgba(247, 143, 170, 0.4);
 }
 
@@ -63,6 +75,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: scale(1.4);
 }
 
 .faceGuide {
@@ -70,10 +83,14 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 70%;
-  height: 60%;
-  border: 2px dashed rgba(255, 255, 255, 0.5);
+  width: 65%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  border: 3px dashed rgba(255, 255, 255, 0.85);
   border-radius: 50%;
+  box-shadow:
+    0 0 0 9999px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 2px rgba(255, 200, 220, 0.5);
   pointer-events: none;
 }
 
@@ -87,7 +104,11 @@
 .buttonContainer {
   display: flex;
   gap: 164px;
-  margin-top: 83px; /* ?�단 867px ?�치�??�한 마진: 867 - (340 + 444) */
+<<<<<<< Updated upstream:src/pages/home/FilmingCompleted.module.css
+  margin-top: 83px; /* 상단 867px 위치를 위한 마진: 867 - (340 + 444) */
+=======
+  margin-top: 83px; /* ?�단 867px ?�치�??�한 마진: 867 - (340 + 444) */
+>>>>>>> Stashed changes:src/pages/home/user-flow/FilmingCompleted.module.css
   z-index: 5;
   justify-content: center;
   width: 100%;
@@ -126,44 +147,60 @@
   line-height: normal;
 }
 
-/* ?�그�?기�?: 버튼 ?�쪽 ?�??�?(image 565) */
+<<<<<<< Updated upstream:src/pages/home/FilmingCompleted.module.css
+/* 피그마 기준: 버튼 왼쪽 대형 별 (image 565) */
+=======
+/* ?�그�?기�?: 버튼 ?�쪽 ?�??�?(image 565) */
+>>>>>>> Stashed changes:src/pages/home/user-flow/FilmingCompleted.module.css
 .star1 {
   position: absolute;
   z-index: 10;
   top: 804px; left: 475px; width: 150px; height: 129px;
-  background: url("../../../../assets/images/star1.png") center/contain no-repeat;
+  background: url("../../assets/images/star1.png") center/contain no-repeat;
   pointer-events: none;
   filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.8));
 }
 
-/* ?�그�?기�?: 버튼 ?�른�??�??�?(image 568) */
+<<<<<<< Updated upstream:src/pages/home/FilmingCompleted.module.css
+/* 피그마 기준: 버튼 오른쪽 대형 별 (image 568) */
+=======
+/* ?�그�?기�?: 버튼 ?�른�??�??�?(image 568) */
+>>>>>>> Stashed changes:src/pages/home/user-flow/FilmingCompleted.module.css
 .star2 {
   position: absolute;
   z-index: 10;
   top: 804px; left: 977px; width: 150px; height: 129px;
-  background: url("../../../../assets/images/star1.png") center/contain no-repeat;
+  background: url("../../assets/images/star1.png") center/contain no-repeat;
   pointer-events: none;
   filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.8));
 }
 
-/* ?�그�?기�?: ?�쪽 ?�형 �?(image 567) */
+<<<<<<< Updated upstream:src/pages/home/FilmingCompleted.module.css
+/* 피그마 기준: 왼쪽 소형 별 (image 567) */
+=======
+/* ?�그�?기�?: ?�쪽 ?�형 �?(image 567) */
+>>>>>>> Stashed changes:src/pages/home/user-flow/FilmingCompleted.module.css
 .star3 {
   position: absolute;
   z-index: 10;
   top: 903px; left: 822px; width: 106px; height: 77.35px;
   transform: rotate(13.779deg);
-  background: url("../../../../assets/images/star2.png") center/contain no-repeat;
+  background: url("../../assets/images/star2.png") center/contain no-repeat;
   pointer-events: none;
   filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.8));
 }
 
-/* ?�그�?기�?: ?�른�??�형 �?(image 569) */
+<<<<<<< Updated upstream:src/pages/home/FilmingCompleted.module.css
+/* 피그마 기준: 오른쪽 소형 별 (image 569) */
+=======
+/* ?�그�?기�?: ?�른�??�형 �?(image 569) */
+>>>>>>> Stashed changes:src/pages/home/user-flow/FilmingCompleted.module.css
 .star4 {
   position: absolute;
   z-index: 10;
   top: 903px; left: 1324px; width: 106px; height: 77.35px;
   transform: rotate(13.779deg);
-  background: url("../../../../assets/images/star2.png") center/contain no-repeat;
+  background: url("../../assets/images/star2.png") center/contain no-repeat;
   pointer-events: none;
   filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.8));
 }

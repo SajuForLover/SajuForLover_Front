@@ -1,12 +1,12 @@
-import { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "@/styles/Camera.module.css";
+import styles from "../../styles/Camera.module.css";
 
 export function Camera() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [_stream, setStream] = useState<MediaStream | null>(null);
-  const [_capturedImage, setCapturedImage] = useState<string | null>(null);
+  const [stream, setStream] = useState<MediaStream | null>(null);
+  const [capturedImage, setCapturedImage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const navigate = useNavigate();
@@ -52,26 +52,28 @@ export function Camera() {
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const handleCapture = async () => {
+  const handleCapture = () => {
     if (videoRef.current && canvasRef.current) {
       const video = videoRef.current;
       const canvas = canvasRef.current;
       
+      // 비디오의 실제 해상도를 사용하여 캔버스 크기 설정
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
       
       const context = canvas.getContext("2d");
       if (context) {
+        // 좌우 반전 처리를 위해 context 변환 (셀카 모드 대응)
         context.translate(canvas.width, 0);
         context.scale(-1, 1);
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
-        
         const imageData = canvas.toDataURL("image/png");
-        setCapturedImage(imageData);
-        sessionStorage.setItem("capturedImage", imageData);
+        setCapturedImage(imageData); // 캡처된 이미지 데이터 저장 (현재는 사용되지 않음)
+        // 여기에서 imageData를 서버로 전송하거나 다른 처리를 할 수 있습니다.
+        console.log("사진이 촬영되었지만 저장되지 않습니다.");
 
-        // 촬영 후 분석(Filming) 페이지로 이동 (API 요청은 여기서 하지 않음)
-        navigate("/filming", { state: { capturedImage: imageData } });
+        // 촬영 후 분석(Filming) 페이지로 이동
+        navigate("/filming");
       }
     }
   };
@@ -89,6 +91,10 @@ export function Camera() {
         ) : (
           <>
             <video ref={videoRef} autoPlay playsInline className={styles.video} />
+            <div className={styles.faceGuideOverlay}>
+              <div className={styles.faceGuideOval} />
+              <p className={styles.faceGuideText}>얼굴을 원 안에 맞춰주세요</p>
+            </div>
           </>
         )}
       </div>
