@@ -141,10 +141,10 @@ export function CoronalResults({ inlineMode = false }: CoronalResultsProps) {
           </React.Fragment>
         ))}
         
-        <div style={{ position: 'absolute', bottom: '50px', left: '0', right: '0', display: 'flex', justifyContent: 'center' }}>
+        <div className={styles.buttonWrapper}>
           <button 
             onClick={() => navigate('/character/haram')}
-            style={{ padding: '20px 40px', fontSize: '24px', borderRadius: '50px', border: 'none', background: '#E78EB3', color: 'white', cursor: 'pointer', zIndex: 30 }}
+            className={styles.navButton}
           >
             캐릭터 궁합 보러가기
           </button>
