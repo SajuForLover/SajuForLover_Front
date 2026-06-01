@@ -363,6 +363,54 @@
   font-weight: 500;
 }
 
+.privacyCheckRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: -40px; /* form gap 72px에서 32px 간격이 되도록 보정 */
+}
+
+.privacyCheckbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+  border-radius: 6.316px;
+  border: 2px solid #613637;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+.privacyCheckbox:checked {
+  background: #613637;
+}
+
+.privacyCheckbox:checked::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 9px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: translate(-50%, -60%) rotate(45deg);
+}
+
+.privacyLabel {
+  color: #613637;
+  font-family: Paperlogy;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 134.18%;
+  cursor: pointer;
+}
+
 .fixedButtonContainer {
   position: fixed;
   bottom: 88px; /* 피그마 기준: 1080-893-99=88px */

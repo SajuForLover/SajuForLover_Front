@@ -19,6 +19,7 @@ export function UserForm() {
   const [birthDate, setBirthDate] = useState("");
   const [citySearch, setCitySearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isPrivacyAgreed, setIsPrivacyAgreed] = useState(false);
 
   const navigate = useNavigate();
 
@@ -426,6 +427,19 @@ export function UserForm() {
     )}
   </div>
 </div>
+        {/* 개인정보 동의 체크박스 */}
+        <div className={styles.privacyCheckRow}>
+          <input
+            type="checkbox"
+            id="privacy-agree"
+            className={styles.privacyCheckbox}
+            checked={isPrivacyAgreed}
+            onChange={(e) => setIsPrivacyAgreed(e.target.checked)}
+          />
+          <label htmlFor="privacy-agree" className={styles.privacyLabel}>
+            개인정보 사용에 동의합니다.
+          </label>
+        </div>
       </form>
 
       <div className={styles.fixedButtonContainer}>
