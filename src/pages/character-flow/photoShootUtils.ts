@@ -48,14 +48,13 @@ export async function createFourCutComposite(photos: string[], frameColor: strin
   const ctx = canvas.getContext("2d");
   if (!ctx) throw new Error("Failed to get canvas context");
 
-  // 네컷 사진 규격 설정 (용량 최적화를 위해 약간 축소: 가로 800px)
-  const stripWidth = 800;
-  const stripHeight = 2560; // 4장 + 여백
-  const photoW = 700;
-  const photoH = 500;
+  const stripWidth = 1000;
+  const stripHeight = 3200; // 4장 + 여백
+  const photoW = 880;
+  const photoH = 620;
   const marginX = (stripWidth - photoW) / 2;
-  const startY = 60;
-  const gapY = 30;
+  const startY = 80;
+  const gapY = 40;
 
   canvas.width = stripWidth;
   canvas.height = stripHeight;
@@ -80,10 +79,10 @@ export async function createFourCutComposite(photos: string[], frameColor: strin
 
   // 3. 하단 여백 및 브랜드 텍스트
   ctx.fillStyle = frameColor === "#000" || frameColor === "#5e3535" ? "#fff" : "#5e3535";
-  ctx.font = "bold 32px Paperlogy";
+  ctx.font = "bold 40px Paperlogy";
   ctx.textAlign = "center";
-  ctx.fillText("애인사주오!", stripWidth / 2, stripHeight - 80);
+  ctx.fillText("애인 사주오!", stripWidth / 2, stripHeight - 10);
   
   // PNG 대신 JPEG 사용 및 품질 조절 (0.8) 로 용량 대폭 절감
-  return canvas.toDataURL("image/jpeg", 0.8);
+  return canvas.toDataURL("image/jpeg", 1.0);
 }

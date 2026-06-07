@@ -14,8 +14,22 @@ export async function fetchCharacterInfo(characterId: CharacterId): Promise<Char
  */
 export async function fetchCompatibility(userId: string): Promise<CompatibilityData> {
   const data = await apiClient.post<any>("/api/character", { userId });
+  return transformCompatibilityData(data);
+}
 
-  // 백엔드 응답 형식을 CompatibilityData 형식으로 변환
+/**
+ * 이미 생성된 궁합 결과가 있는지 확인합니다. (없으면 null 반환)
+ */
+export async function fetchExistingCompatibility(userId: string): Promise<CompatibilityData | null> {
+  const data = await apiClient.get<any>(`/api/character/${userId}`);
+  if (!data) return null;
+  return transformCompatibilityData(data);
+}
+
+/**
+ * 백엔드 원본 데이터를 CompatibilityData 형식으로 변환합니다.
+ */
+function transformCompatibilityData(data: any): CompatibilityData {
   return {
     characterId: data.characterId as CharacterId,
     totalScore: data.overallScore,

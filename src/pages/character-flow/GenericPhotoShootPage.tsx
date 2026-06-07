@@ -123,7 +123,7 @@ export function GenericPhotoShootPage() {
 
       photoCtx.drawImage(boothCanvas, 0, 0, resultWidth, resultHeight);
 
-      const dataUrl = photoCanvas.toDataURL("image/jpeg", 0.9);
+      const dataUrl = photoCanvas.toDataURL("image/jpeg", 1.0);
       setPhotos((prev) => {
         const next = [...prev];
         next[slotIndex] = dataUrl;
@@ -203,8 +203,8 @@ export function GenericPhotoShootPage() {
         const s = await navigator.mediaDevices.getUserMedia({
           video: {
             facingMode: "user",
-            width: { ideal: 1280 },
-            height: { ideal: 720 },
+            width: { ideal: 1920 },
+            height: { ideal: 1080 },
           },
           audio: false,
         });

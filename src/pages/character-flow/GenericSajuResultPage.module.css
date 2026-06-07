@@ -7,6 +7,7 @@
 
 .loadingContainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100%;
@@ -14,6 +15,36 @@
   font-size: 32px;
   color: #5e3535;
   background-color: #fbe6ee;
+  text-align: center;
+  gap: 20px;
+}
+
+.loadingInner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.loadingSub {
+  font-size: 20px;
+  color: rgba(94, 53, 53, 0.6);
+}
+
+.homeButton, .retryButton {
+  padding: 15px 40px;
+  border-radius: 12px;
+  border: 2px solid #E78EB3;
+  background: white;
+  color: #E78EB3;
+  font-size: 20px;
+  font-family: Paperlogy;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.homeButton:hover, .retryButton:hover {
+  background: #E78EB3;
+  color: white;
 }
 
 .scrollTrack {
