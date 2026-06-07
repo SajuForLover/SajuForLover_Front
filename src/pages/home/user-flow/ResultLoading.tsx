@@ -33,8 +33,8 @@ export function ResultLoading() {
         } catch (err) {
           console.error("사주 분석 결과 조회 실패:", err);
         }
-        // 2초마다 폴링
-        await new Promise(resolve => setTimeout(resolve, 2000));
+        // 3초마다 폴링
+        await new Promise(resolve => setTimeout(resolve, 3000));
         setProgress(p => Math.min(p + 5, 95));
       }
     }

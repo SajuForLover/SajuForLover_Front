@@ -18,7 +18,7 @@ export function GenericSajuResultPage() {
   const stateData = location.state?.compatibilityData as CompatibilityData | undefined;
   
   // 데이터가 있으면 훅 실행 안함 (userId를 null로 전달)
-  const { data: fetchedData, loading } = useCompatibility(!stateData ? userId : null);
+  const { data: fetchedData, loading, error } = useCompatibility(!stateData ? userId : null);
 
   const compatibilityData = stateData || fetchedData;
   const charId = (compatibilityData?.characterId || characterId) as CharacterId;
@@ -38,6 +38,7 @@ export function GenericSajuResultPage() {
   // characterId가 다르면 URL 업데이트
   useEffect(() => {
     if (compatibilityData && compatibilityData.characterId !== characterId) {
+      console.log(`매칭된 캐릭터가 변경되었습니다: ${characterId} -> ${compatibilityData.characterId}`);
       navigate(`/character/${compatibilityData.characterId}`, { 
         replace: true,
         state: location.state // 상태 유지
@@ -45,11 +46,36 @@ export function GenericSajuResultPage() {
     }
   }, [compatibilityData, characterId, navigate, location.state]);
 
+  if (!userId) {
+    return (
+      <div className={styles.viewport}>
+        <div className={styles.loadingContainer}>
+          <p>사용자 정보를 찾을 수 없습니다. 처음부터 다시 시도해주세요.</p>
+          <button onClick={() => navigate("/")} className={styles.homeButton}>홈으로</button>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={styles.viewport}>
+        <div className={styles.loadingContainer}>
+          <p>궁합 분석 중 오류가 발생했습니다.</p>
+          <button onClick={() => window.location.reload()} className={styles.retryButton}>다시 시도</button>
+        </div>
+      </div>
+    );
+  }
+
   if (!config || (loading && !compatibilityData)) {
     return (
       <div className={styles.viewport}>
         <div className={styles.loadingContainer}>
-          <p>궁합을 분석하고 있어요...</p>
+          <div className={styles.loadingInner}>
+            <p>궁합을 분석하고 있어요...</p>
+            <p className={styles.loadingSub}>AI가 당신과 가장 잘 어울리는 캐릭터를 찾고 있습니다.</p>
+          </div>
         </div>
       </div>
     );
