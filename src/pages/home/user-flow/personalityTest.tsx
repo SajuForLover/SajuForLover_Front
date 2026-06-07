@@ -1,6 +1,7 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./PersonalityTest.module.css";
 import { useState } from "react";
+import { fetchCompatibility } from "@/api/characters";
 
 export function PersonalityTest() {
   const navigate = useNavigate();
@@ -19,7 +20,13 @@ export function PersonalityTest() {
     if (step < 3) {
       setStep(step + 1);
     } else {
-      // 마지막 질문 답변 시 결과 생성 로딩 페이지로 이동
+      // 1. 백그라운드에서 캐릭터 궁합 분석 시작 (응답을 기다리지 않음)
+      const userId = localStorage.getItem("saju_user_id");
+      if (userId) {
+        void fetchCompatibility(userId);
+      }
+
+      // 2. 마지막 질문 답변 시 결과 생성 로딩 페이지로 이동
       navigate("/result-loading", {
         state: {
           capturedImage,

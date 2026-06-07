@@ -16,7 +16,6 @@
   animation: pageFadeIn 1s ease-in-out forwards;
 }
 
-/* ?ºÍ∑∏Îß?Í∏∞Ï?: x=626, y=458, w=669, h=94 ???òÌèâ Ï§ëÏïô Í≥†Ï†ï */
 .title {
   position: absolute;
   top: 458px;
@@ -33,7 +32,6 @@
   white-space: nowrap;
 }
 
-/* ?ºÍ∑∏Îß?Í∏∞Ï?: x=698, y=624, w=525, h=14 */
 .progressTrack {
   position: absolute;
   top: 624px;
@@ -45,11 +43,10 @@
   overflow: hidden;
 }
 
-/* ?ºÍ∑∏Îß?Í∏∞Ï?: gradient #F0C3DC ??#E78EB3, cornerRadius=100 */
 .progressFill {
   height: 100%;
   border-radius: 100px;
   background: linear-gradient(90deg, #F0C3DC 0%, #E78EB3 100%);
-  transition: width 0.1s linear;
+  transition: width 0.5s linear;
 }
 
