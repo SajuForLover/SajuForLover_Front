@@ -19,6 +19,7 @@ export function UserForm() {
   const [birthDate, setBirthDate] = useState("");
   const [citySearch, setCitySearch] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isPrivacyAgreed, setIsPrivacyAgreed] = useState(false);
 
   const navigate = useNavigate();
 
@@ -242,6 +243,11 @@ export function UserForm() {
       alert("모든 사주 정보를 입력해 주세요.");
       return;
     }
+    
+    if (!isPrivacyAgreed) {
+      alert("개인정보 사용에 동의해 주세요.");
+      return;
+    }
 
     setIsLoading(true);
 
@@ -262,8 +268,8 @@ export function UserForm() {
       const response = await analyzeSaju(requestData);
       
       // 4. 결과 처리
-      console.log("분석 시작, 사용자 ID:", response.data?.user_id);
-      localStorage.setItem("saju_user_id", response.data?.user_id);
+      console.log("분석 시작, 사용자 ID:", response.user_id);
+      localStorage.setItem("saju_user_id", response.user_id);
       
       // 5. 다음 단계로 이동
       navigate("/camera");
@@ -426,6 +432,19 @@ export function UserForm() {
     )}
   </div>
 </div>
+        {/* 개인정보 동의 체크박스 */}
+        <div className={styles.privacyCheckRow}>
+          <input
+            type="checkbox"
+            id="privacy-agree"
+            className={styles.privacyCheckbox}
+            checked={isPrivacyAgreed}
+            onChange={(e) => setIsPrivacyAgreed(e.target.checked)}
+          />
+          <label htmlFor="privacy-agree" className={styles.privacyLabel}>
+            개인정보 사용에 동의합니다.
+          </label>
+        </div>
       </form>
 
       <div className={styles.fixedButtonContainer}>

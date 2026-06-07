@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { analyzePhysiognomy } from "@/api/saju";
 import styles from "./FilmingCompleted.module.css";
+import cameraStyles from "@/styles/Camera.module.css";
 
 // dataURL을 Blob으로 변환하는 헬퍼 함수
 function dataURLtoBlob(dataurl: string) {
@@ -70,7 +71,10 @@ export function FilmingCompleted() {
         ) : (
           <div className={styles.errorMessage}>이미지를 불러올 수 없습니다.</div>
         )}
-        <div className={styles.faceGuide} />
+        <div className={cameraStyles.faceGuideOverlay}>
+          <div className={cameraStyles.faceGuideOval} />
+          <p className={cameraStyles.faceGuideText}>얼굴을 원 안에 맞춰주세요</p>
+        </div>
       </div>
 
       <div className={styles.buttonContainer}>

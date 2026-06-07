@@ -55,36 +55,26 @@ export interface UserSajuData {
  * 관상 분석 데이터
  */
 export interface CoronalData {
-  analysis_id: string;
-  user_id: string;
-  image_url: string;
-  physiognomy: {
-    facial_features:[
-      eyes: {
-        shape: string;
-        meaning: string;
-      },
-      forehead: {
-        shape: string;
-        meaning: string;
-      },
-      nose: {
-        shape: string;
-        meaning: string;
-      },
-      mouth: {
-        shape: string;
-        meaning: string;
-      },
-    ];
-    fortune_prediction: object;
-    overall_analysis: {
-      element_description: string;
-      five_elements: string;
-      impression: string;
-    }
-  }[];
-  overall_desc: string;
+  overall_analysis: {
+    impression: string;
+    five_elements: string;
+    element_description: string;
+  };
+  facial_features: {
+    forehead: { shape: string; meaning: string };
+    eyes: { shape: string; meaning: string };
+    nose: { shape: string; meaning: string };
+    mouth: { shape: string; meaning: string };
+  };
+  fortune_prediction: {
+    wealth: { score: number; description: string };
+    romance: { score: number; description: string };
+    career: { score: number; description: string };
+    academic: { score: number; description: string };
+    health: { score: number; description: string };
+  };
+  summary_advice: string;
+  image_url?: string;
 }
 
 /**

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ResponsiveLayout } from "@/components/results/ResponsiveLayout";
 import { fetchCoronalAnalysis } from "@/api/saju";
+import { fetchCompatibility } from "@/api/characters";
 import type { CoronalData } from "@/types/api";
 import styles from "@/styles/CoronalResults.module.css";
 
@@ -135,15 +136,19 @@ export function CoronalResults({ inlineMode = false }: CoronalResultsProps) {
             <div className={styles.rightDivider} style={{ top: DIVIDER_Y[i] }} />
             <div className={styles.rightBullet} style={{ top: DIVIDER_Y[i] - 5 }} />
             <div className={styles.rightSection} style={{ top: sectionTop }}>
-              <p className={styles.rightTitle}>{`${i + 1}. ${result.physiognomy.facial_features[ITEM_NAME[i]].shape ?? '정보 없음'}`}</p>
-              <p className={styles.rightDesc}>{result.physiognomy.facial_features[ITEM_NAME[i]].meaning ?? ''}</p>
+              <p className={styles.rightTitle}>{`${i + 1}. ${result.facial_features[ITEM_NAME[i]].shape ?? '정보 없음'}`}</p>
+              <p className={styles.rightDesc}>{result.facial_features[ITEM_NAME[i]].meaning ?? ''}</p>
             </div>
           </React.Fragment>
         ))}
         
         <div className={styles.buttonWrapper}>
           <button 
-            onClick={() => navigate('/character/haram')}
+            onClick={() => {
+              // 즉시 페이지 이동하여 GenericSajuResultPage의 로딩 화면을 보여줌
+              // 실제 분석은 이동한 페이지에서 진행됨
+              navigate('/character/choiharam'); 
+            }}
             className={styles.navButton}
           >
             캐릭터 궁합 보러가기
