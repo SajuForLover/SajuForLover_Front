@@ -123,7 +123,7 @@ export function GenericPhotoShootPage() {
 
       photoCtx.drawImage(boothCanvas, 0, 0, resultWidth, resultHeight);
 
-      const dataUrl = photoCanvas.toDataURL("image/png");
+      const dataUrl = photoCanvas.toDataURL("image/jpeg", 0.9);
       setPhotos((prev) => {
         const next = [...prev];
         next[slotIndex] = dataUrl;

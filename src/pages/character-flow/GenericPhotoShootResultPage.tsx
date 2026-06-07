@@ -5,7 +5,7 @@ import resultLogo2 from "@/assets/images/result_logo2.png";
 import resultLogo3 from "@/assets/images/result_logo3.png";
 import resultLogo4 from "@/assets/images/result_logo4.png";
 import { type CharacterId, CHARACTERS } from "@/constants/characters";
-import { loadPhotos } from "./photoShootUtils";
+import { loadPhotos, createFourCutComposite } from "./photoShootUtils";
 import styles from "./GenericPhotoShootResultPage.module.css";
 
 export function GenericPhotoShootResultPage() {
@@ -17,10 +17,32 @@ export function GenericPhotoShootResultPage() {
 
   const photos = loadPhotos(charId);
   const [frameAccentColor, setFrameAccentColor] = useState("#fff");
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const completedPhotos = photos.filter(
     (photo): photo is string => photo !== null
   );
+
+  const handleNext = async () => {
+    if (completedPhotos.length < 4) return;
+
+    setIsProcessing(true);
+    try {
+      // 1. 네컷 합성 이미지 생성
+      const compositePhoto = await createFourCutComposite(completedPhotos, frameAccentColor);
+      
+      // 2. localStorage에 최종 이미지 저장 (이메일 전송용)
+      localStorage.setItem("final_four_cut_photo", compositePhoto);
+      
+      // 3. 다음 단계로 이동
+      navigate("/email-input");
+    } catch (err) {
+      console.error("합성 이미지 생성 실패:", err);
+      alert("이미지 처리 중 오류가 발생했습니다.");
+    } finally {
+      setIsProcessing(false);
+    }
+  };
 
   const resultLogoSrc =
     frameAccentColor === "#ff85b8"
@@ -106,10 +128,10 @@ export function GenericPhotoShootResultPage() {
       <div
         className={styles.nextButtonBox}
         role="button"
-        onClick={() => navigate("/email-input")}
-        style={{ cursor: "pointer" }}
+        onClick={handleNext}
+        style={{ cursor: isProcessing ? "wait" : "pointer", opacity: isProcessing ? 0.7 : 1 }}
       >
-        <span className={styles.nextButtonText}>다음</span>
+        <span className={styles.nextButtonText}>{isProcessing ? "처리 중..." : "다음"}</span>
       </div>
       <div className={styles.bottomWhiteBox}>
         <img

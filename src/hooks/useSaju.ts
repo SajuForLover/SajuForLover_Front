@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchUserSaju, fetchCoronalAnalysis } from "@/api/saju";
+import { fetchSajuAnalysis, fetchCoronalAnalysis } from "@/api/saju";
 import type { UserSajuData, CoronalData } from "@/types/api";
 
 export function useSaju(userId: string | null) {
@@ -14,11 +14,11 @@ export function useSaju(userId: string | null) {
     async function loadData() {
       setLoading(true);
       try {
-        const [saju, coronal] = await Promise.all([
-          fetchUserSaju(userId),
-          fetchCoronalAnalysis(userId),
+        const [sajuRes, coronal] = await Promise.all([
+          fetchSajuAnalysis(userId!),
+          fetchCoronalAnalysis(userId!),
         ]);
-        setSajuData(saju);
+        setSajuData(sajuRes.saju);
         setCoronalData(coronal);
       } catch (err) {
         setError(err as Error);

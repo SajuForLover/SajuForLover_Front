@@ -15,7 +15,7 @@ export function loadPhotos(characterId: CharacterId): (string | null)[] {
   if (!config) return Array.from({ length: PHOTO_COUNT }, () => null);
 
   try {
-    const raw = localStorage.getItem(config.storageKey);
+    const raw = sessionStorage.getItem(config.storageKey);
     if (!raw) return Array.from({ length: PHOTO_COUNT }, () => null);
 
     const parsed = JSON.parse(raw) as unknown;
@@ -32,10 +32,58 @@ export function loadPhotos(characterId: CharacterId): (string | null)[] {
 export function savePhotos(characterId: CharacterId, photos: (string | null)[]) {
   const config = CHARACTERS[characterId];
   if (!config) return;
-  localStorage.setItem(config.storageKey, JSON.stringify(photos));
+  sessionStorage.setItem(config.storageKey, JSON.stringify(photos));
 }
 
 export function nextEmptySlot(photos: (string | null)[]) {
   const index = photos.findIndex((photo) => !photo);
   return index === -1 ? PHOTO_COUNT : index;
+}
+
+/**
+ * 4장의 사진을 하나의 네컷 이미지로 합성합니다.
+ */
+export async function createFourCutComposite(photos: string[], frameColor: string): Promise<string> {
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("Failed to get canvas context");
+
+  // 네컷 사진 규격 설정 (용량 최적화를 위해 약간 축소: 가로 800px)
+  const stripWidth = 800;
+  const stripHeight = 2560; // 4장 + 여백
+  const photoW = 700;
+  const photoH = 500;
+  const marginX = (stripWidth - photoW) / 2;
+  const startY = 60;
+  const gapY = 30;
+
+  canvas.width = stripWidth;
+  canvas.height = stripHeight;
+
+  // 1. 배경색(프레임 색상) 채우기
+  ctx.fillStyle = frameColor;
+  ctx.fillRect(0, 0, stripWidth, stripHeight);
+
+  // 2. 사진 4장 그리기
+  for (let i = 0; i < 4; i++) {
+    if (!photos[i]) continue;
+    const img = new Image();
+    img.src = photos[i];
+    await new Promise((resolve, reject) => {
+      img.onload = resolve;
+      img.onerror = reject;
+    });
+
+    const y = startY + i * (photoH + gapY);
+    ctx.drawImage(img, marginX, y, photoW, photoH);
+  }
+
+  // 3. 하단 여백 및 브랜드 텍스트
+  ctx.fillStyle = frameColor === "#000" || frameColor === "#5e3535" ? "#fff" : "#5e3535";
+  ctx.font = "bold 32px Paperlogy";
+  ctx.textAlign = "center";
+  ctx.fillText("애인사주오!", stripWidth / 2, stripHeight - 80);
+  
+  // PNG 대신 JPEG 사용 및 품질 조절 (0.8) 로 용량 대폭 절감
+  return canvas.toDataURL("image/jpeg", 0.8);
 }
