@@ -243,6 +243,11 @@ export function UserForm() {
       alert("모든 사주 정보를 입력해 주세요.");
       return;
     }
+    
+    if (!isPrivacyAgreed) {
+      alert("개인정보 사용에 동의해 주세요.");
+      return;
+    }
 
     setIsLoading(true);
 
@@ -263,8 +268,8 @@ export function UserForm() {
       const response = await analyzeSaju(requestData);
       
       // 4. 결과 처리
-      console.log("분석 시작, 사용자 ID:", response.data?.user_id);
-      localStorage.setItem("saju_user_id", response.data?.user_id);
+      console.log("분석 시작, 사용자 ID:", response.user_id);
+      localStorage.setItem("saju_user_id", response.user_id);
       
       // 5. 다음 단계로 이동
       navigate("/camera");

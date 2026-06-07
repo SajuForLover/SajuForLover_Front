@@ -35,7 +35,7 @@ import sajuNayeon from "@/assets/images/saju-result-nayeon.png";
 import sajuSoohoo from "@/assets/images/saju-result-soohoo.png";
 import sajuYoonsea from "@/assets/images/saju-result-YoonSea.png";
 
-export type CharacterId = 'chanyoung' | 'haram' | 'jaehyun' | 'nayeon' | 'soohoo' | 'yoon-sea';
+export type CharacterId = 'seongchanyeong' | 'choiharam' | 'kimjaehyun' | 'kwaknayun' | 'ansuho' | 'yunseah';
 
 export interface ScoreItem {
   label: string;
@@ -63,8 +63,8 @@ export interface CharacterConfig {
 }
 
 export const CHARACTERS: Record<CharacterId, CharacterConfig> = {
-  chanyoung: {
-    id: 'chanyoung',
+  seongchanyeong: {
+    id: 'seongchanyeong',
     name: '성찬영',
     age: '19세',
     birth: '2008년 3월 12일, 오후 12시 30분',
@@ -102,8 +102,8 @@ export const CHARACTERS: Record<CharacterId, CharacterConfig> = {
     sajuResultImg: sajuChanyoung,
     storageKey: 'chanyoungPhotoShoot.photos.v1',
   },
-  haram: {
-    id: 'haram',
+  choiharam: {
+    id: 'choiharam',
     name: '최하람',
     age: '18세',
     birth: '2009년 9월 8일, 오후 3시 20분',
@@ -141,8 +141,8 @@ export const CHARACTERS: Record<CharacterId, CharacterConfig> = {
     sajuResultImg: sajuHaram,
     storageKey: 'haramPhotoShoot.photos.v1',
   },
-  jaehyun: {
-    id: 'jaehyun',
+  kimjaehyun: {
+    id: 'kimjaehyun',
     name: '김재현',
     age: '18세',
     birth: '2009년 5월 8일, 오전 11시 10분',
@@ -180,8 +180,8 @@ export const CHARACTERS: Record<CharacterId, CharacterConfig> = {
     sajuResultImg: sajuJaehyun,
     storageKey: 'jaehyunPhotoShoot.photos.v1',
   },
-  nayeon: {
-    id: 'nayeon',
+  kwaknayun: {
+    id: 'kwaknayun',
     name: '곽나연',
     age: '19세',
     birth: '2008년 1월 30일, 오전 6시 00분',
@@ -219,8 +219,8 @@ export const CHARACTERS: Record<CharacterId, CharacterConfig> = {
     sajuResultImg: sajuNayeon,
     storageKey: 'nayeonPhotoShoot.photos.v1',
   },
-  soohoo: {
-    id: 'soohoo',
+  ansuho: {
+    id: 'ansuho',
     name: '안수호',
     age: '17세',
     birth: '2010년 7월 17일, 오후 9시 52분',
@@ -258,8 +258,8 @@ export const CHARACTERS: Record<CharacterId, CharacterConfig> = {
     sajuResultImg: sajuSoohoo,
     storageKey: 'soohooPhotoShoot.photos.v1',
   },
-  'yoon-sea': {
-    id: 'yoon-sea',
+  yunseah: {
+    id: 'yunseah',
     name: '윤세아',
     age: '17세',
     birth: '2010년 10월 25일, 오후 3시 57분',

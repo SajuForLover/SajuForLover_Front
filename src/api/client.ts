@@ -18,13 +18,21 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
     headers,
   });
 
+  const responseData = await response.json();
+
   if (!response.ok) {
-    const errorData = await response.json();
-    console.error("API Error:", errorData);
+    console.error("API Error:", responseData);
+    throw new Error(responseData?.message || "API 요청 중 오류가 발생했습니다.");
   }
-  const data = await response.json();
-  console.log(`API Response from ${endpoint}:`, data);
-  return data;
+
+  console.log(`API Response from ${endpoint}:`, responseData);
+  
+  // 백엔드 TransformInterceptor에 의해 { success, status, data } 구조로 오는 경우 data만 반환
+  if (responseData && typeof responseData === "object" && "success" in responseData && "data" in responseData) {
+    return responseData.data;
+  }
+  
+  return responseData;
 }
 
 export const apiClient = {

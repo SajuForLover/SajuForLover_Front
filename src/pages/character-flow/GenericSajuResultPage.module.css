@@ -5,6 +5,17 @@
   overflow-x: hidden;
 }
 
+.loadingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-family: Paperlogy;
+  font-size: 32px;
+  color: #5e3535;
+  background-color: #fbe6ee;
+}
+
 .scrollTrack {
   width: 100vw;
   height: calc(3412px * var(--scale, 1));
