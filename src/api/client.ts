@@ -22,7 +22,7 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
 
   if (!response.ok) {
     console.error("API Error:", responseData);
-    throw new Error(responseData?.message || "API 요청 중 오류가 발생했습니다.");
+    throw new Error(`[${response.status}] ${responseData?.message || "API 요청 중 오류가 발생했습니다."}`);
   }
 
   console.log(`API Response from ${endpoint}:`, responseData);
