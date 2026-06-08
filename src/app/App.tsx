@@ -1,7 +1,9 @@
-import { Outlet, Route, Routes } from "react-router-dom";
+import { Outlet, Route, Routes, useLocation } from "react-router-dom";
 import { DesignCanvas } from "@/layouts/DesignCanvas";
+import { useEffect } from "react";
 
 // soyoung pages
+// ... (나머지 임포트 동일)
 import { HomePage } from "@/pages/home/user-flow/HomePage";
 import { UserForm } from "@/pages/home/user-flow/UserForm";
 import { Camera } from "@/pages/home/user-flow/Camera";
@@ -27,9 +29,18 @@ function DesignCanvasLayout() {
 }
 
 export function App() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // 홈페이지("/")로 이동 시 또는 페이지 리로드(새로고침) 시 세션 초기화
+    if (location.pathname === "/") {
+      sessionStorage.clear();
+    }
+  }, [location]);
+
   return (
     <Routes>
-      {/* ── soyoung flow: 메인 → 사용자 정보 → 촬영 → 성격 테스트 → 결과 생성 ── */}
+      {/* ... (기존 Routes 동일) */}
       <Route path="/" element={<HomePage />} />
       <Route path="/user-form" element={<UserForm />} />
       <Route path="/camera" element={<Camera />} />
