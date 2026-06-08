@@ -13,7 +13,8 @@
 .title {
   position: absolute;
   top: 116px;
-  left: 670px;
+  left: 50%;
+  transform: translateX(-50%);
   color: #5E3535;
   font-family: Paperlogy;
   font-size: 80px;

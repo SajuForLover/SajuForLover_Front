@@ -206,7 +206,7 @@ export function UserForm() {
     { label: "사시 (09:30 ~ 11:29)", value: "sa" },
     { label: "오시 (11:30 ~ 13:29)", value: "o" },
     { label: "미시 (13:30 ~ 15:29)", value: "mi" },
-    { label: "신시 (15:30 ~ 17:29)", value: "shin" },
+    { label: "신시 (15:30 ~ 17:29)", value: "sin" },
     { label: "유시 (17:30 ~ 19:29)", value: "yu" },
     { label: "술시 (19:30 ~ 21:29)", value: "sul" },
     { label: "해시 (21:30 ~ 23:29)", value: "hae" },
