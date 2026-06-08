@@ -1,7 +1,7 @@
 /**
  * 기본 API 클라이언트 세팅
  */
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://api.example.com";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
 async function request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
   const headers = new Headers(options.headers);
