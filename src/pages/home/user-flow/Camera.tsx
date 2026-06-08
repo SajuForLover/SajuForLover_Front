@@ -108,9 +108,9 @@ export function Camera() {
           <span className={styles.captureText}>촬영하기</span>
         </button>
       </div>
-      <div className={styles.star1} /> {/* star1.png 배치 */}
-      <div className={styles.star2} /> {/* star2.png 배치 */}
-      <canvas ref={canvasRef} style={{ display: "none" }} /> {/* 캡처용 캔버스 (화면에 보이지 않음) */}
+      <div className={styles.star1} />
+      <div className={styles.star2} />
+      <canvas ref={canvasRef} style={{ display: "none" }} />
     </div>
   );
 }
