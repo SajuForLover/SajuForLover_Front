@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import pinkEffect from "@/assets/images/pinkEffect.png";
 import { ResponsiveLayout } from "@/components/results/ResponsiveLayout";
@@ -9,6 +9,7 @@ import {
   SajuBoosterDetailResult,
 } from "./SajuDetailResults";
 import { fetchSajuAnalysis } from "@/api/saju";
+import { initiateCompatibilityAnalysis } from "@/api/characters";
 import type { UserSajuData } from "@/types/api";
 import styles from "./SajuInfoScrollPage.module.css";
 
@@ -32,6 +33,31 @@ export function SajuInfoScrollPage() {
       }
     }
     loadData();
+  }, [sajuData]);
+
+  const hasRequestedRef = useRef(false);
+
+  useEffect(() => {
+    if (!sajuData || hasRequestedRef.current) return;
+
+    const userId = localStorage.getItem("saju_user_id");
+    console.log("SajuInfoScrollPage - Attempting to request compatibility. userId:", userId, "sajuData:", sajuData);
+    if (!userId) return;
+
+    async function requestCompatibility() {
+      hasRequestedRef.current = true;
+      try {
+        console.log("SajuInfoScrollPage - Sending POST request to /api/character");
+        // 무조건 분석 요청(POST)을 보냅니다.
+        await initiateCompatibilityAnalysis(userId!);
+        console.log("궁합 분석 요청 성공");
+      } catch (err) {
+        console.error("궁합 분석 요청 실패:", err);
+      }
+    }
+    
+    // 이 컴포넌트가 마운트되고 sajuData가 준비되면 딱 한 번 요청
+    requestCompatibility();
   }, [sajuData]);
 
   if (loading || !sajuData) return null;

@@ -10,9 +10,9 @@ export async function fetchCharacterInfo(characterId: CharacterId): Promise<Char
 }
 
 /**
- * 사용자 정보와 캐릭터의 사주 궁합 결과를 가져오거나 생성합니다.
+ * 사용자 정보와 캐릭터의 사주 궁합 결과를 생성(분석) 요청합니다.
  */
-export async function fetchCompatibility(userId: string): Promise<CompatibilityData> {
+export async function initiateCompatibilityAnalysis(userId: string): Promise<CompatibilityData> {
   const data = await apiClient.post<any>("/api/character", { userId });
   return transformCompatibilityData(data);
 }
