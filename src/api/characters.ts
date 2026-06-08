@@ -21,9 +21,18 @@ export async function fetchCompatibility(userId: string): Promise<CompatibilityD
  * 이미 생성된 궁합 결과가 있는지 확인합니다. (없으면 null 반환)
  */
 export async function fetchExistingCompatibility(userId: string): Promise<CompatibilityData | null> {
-  const data = await apiClient.get<any>(`/api/character/${userId}`);
-  if (!data) return null;
-  return transformCompatibilityData(data);
+  try {
+    const data = await apiClient.get<any>(`/api/character/${userId}`);
+    if (!data) return null;
+    return transformCompatibilityData(data);
+  } catch (err) {
+    // 404 Not Found인 경우 데이터가 아직 없는 것이므로 null 반환
+    if (err instanceof Error && err.message.includes("404")) {
+      return null;
+    }
+    // 그 외의 에러는 그대로 전파
+    throw err;
+  }
 }
 
 /**
