@@ -9,7 +9,7 @@ export function Filming() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [_stream, setStream] = useState<MediaStream | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [countdown, setCountdown] = useState(10);
+  const [countdown, setCountdown] = useState(5);
 
   const navigate = useNavigate();
 
