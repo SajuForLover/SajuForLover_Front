@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ResponsiveLayout } from "@/components/results/ResponsiveLayout";
 import { fetchCoronalAnalysis } from "@/api/saju";
-import { fetchCompatibility } from "@/api/characters";
 import type { CoronalData } from "@/types/api";
 import styles from "@/styles/CoronalResults.module.css";
 

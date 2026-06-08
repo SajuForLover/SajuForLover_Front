@@ -46,6 +46,7 @@ export function GenericPhotoShootPage() {
   const config = CHARACTERS[charId];
 
   const videoRef = useRef<HTMLVideoElement>(null);
+  const streamRef = useRef<MediaStream | null>(null); // 컴포넌트 스코프로 이동
   const [cameraError, setCameraError] = useState<string | null>(null);
   const [streamReady, setStreamReady] = useState(false);
   const [photos, setPhotos] = useState<(string | null)[]>(() =>
@@ -190,7 +191,6 @@ export function GenericPhotoShootPage() {
 
   useEffect(() => {
     let cancelled = false;
-    let stream: MediaStream | null = null;
     let videoEl: HTMLVideoElement | null = null;
     let onMeta: (() => void) | undefined;
 
@@ -212,7 +212,7 @@ export function GenericPhotoShootPage() {
           s.getTracks().forEach((t) => t.stop());
           return;
         }
-        stream = s;
+        streamRef.current = s;
         const el = videoRef.current;
         if (el) {
           videoEl = el;
@@ -226,7 +226,7 @@ export function GenericPhotoShootPage() {
           setCameraError(null);
         } else {
           s.getTracks().forEach((t) => t.stop());
-          stream = null;
+          streamRef.current = null;
         }
       } catch {
         if (!cancelled) {
@@ -242,7 +242,7 @@ export function GenericPhotoShootPage() {
       setStreamReady(false);
       if (videoEl && onMeta)
         videoEl.removeEventListener("loadedmetadata", onMeta);
-      stream?.getTracks().forEach((t) => t.stop());
+      streamRef.current?.getTracks().forEach((t) => t.stop());
       if (videoEl) videoEl.srcObject = null;
     };
   }, []);
