@@ -84,5 +84,5 @@ export async function createFourCutComposite(photos: string[], frameColor: strin
   ctx.fillText("애인 사주오!", stripWidth / 2, stripHeight - 10);
   
   // PNG 대신 JPEG 사용 및 품질 조절 (0.8) 로 용량 대폭 절감
-  return canvas.toDataURL("image/jpeg", 1.0);
+  return canvas.toDataURL("image/jpeg", 0.8);
 }
