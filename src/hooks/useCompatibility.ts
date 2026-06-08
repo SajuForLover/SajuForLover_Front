@@ -56,8 +56,15 @@ export function useCompatibility(userId: string | null) {
         }
       } catch (err) {
         if (isMounted) {
-          setError(err as Error);
-          setLoading(false);
+          // 404 에러는 이미 fetchExistingCompatibility에서 null로 처리되므로, 
+          // 여기서 잡히는 것은 실제 에러들입니다. 
+          // 혹시 모를 404 예외 처리를 여기서도 방어적으로 추가합니다.
+          if (err instanceof Error && err.message.startsWith("[404]")) {
+            // 이 케이스는 도달하지 않아야 하지만, 안전을 위해 에러 세팅 안함
+          } else {
+            setError(err as Error);
+            setLoading(false);
+          }
         }
       }
     }
