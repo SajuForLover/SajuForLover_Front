@@ -27,7 +27,7 @@ export async function fetchExistingCompatibility(userId: string): Promise<Compat
     return transformCompatibilityData(data);
   } catch (err) {
     // 404 Not Found인 경우 데이터가 아직 없는 것이므로 null 반환
-    if (err instanceof Error && err.message.includes("404")) {
+    if (err instanceof Error && err.message.startsWith("[404]")) {
       return null;
     }
     // 그 외의 에러는 그대로 전파
