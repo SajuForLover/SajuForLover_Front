@@ -5,8 +5,6 @@ import styles from "../../../styles/Camera.module.css";
 export function Camera() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [stream, setStream] = useState<MediaStream | null>(null);
-  const [capturedImage, setCapturedImage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const navigate = useNavigate();
@@ -29,7 +27,7 @@ export function Camera() {
           }, // 전면 카메라 사용
           audio: false,
         });
-        setStream(mediaStream);
+        // setStream(mediaStream);
         if (videoRef.current) {
           videoRef.current.srcObject = mediaStream;
         }
@@ -72,7 +70,7 @@ export function Camera() {
         context.scale(-1, 1);
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
         const imageData = canvas.toDataURL("image/png");
-        setCapturedImage(imageData); // 캡처된 이미지 데이터 저장 (현재는 사용되지 않음)
+        // setCapturedImage(imageData); // 캡처된 이미지 데이터 저장 (현재는 사용되지 않음)
         // 여기에서 imageData를 서버로 전송하거나 다른 처리를 할 수 있습니다.
         console.log("사진이 촬영되었지만 저장되지 않습니다.");
 
