@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { analyzePhysiognomy } from "@/api/saju";
-import styles from "./FilmingCompleted.module.css";
+import styles from "@/styles/FilmingCompleted.module.css";
 import cameraStyles from "@/styles/Camera.module.css";
 
 // dataURL을 Blob으로 변환하는 헬퍼 함수
