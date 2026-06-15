@@ -3,7 +3,7 @@
   height: 100vh;
   overflow: hidden;
   position: relative;
-  background-image: url("../../../../assets/images/background_result.png");
+  background-image: url("../assets/images/background_result.png");
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;

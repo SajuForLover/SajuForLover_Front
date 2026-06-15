@@ -11,7 +11,7 @@ import {
 import { fetchSajuAnalysis } from "@/api/saju";
 import { initiateCompatibilityAnalysis } from "@/api/characters";
 import type { UserSajuData } from "@/types/api";
-import styles from "./SajuInfoScrollPage.module.css";
+import styles from "@/styles/SajuInfoScrollPage.module.css";
 
 export function SajuInfoScrollPage() {
   const location = useLocation();

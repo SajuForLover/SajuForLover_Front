@@ -19,7 +19,7 @@ import {
   RESULT_PHOTO_WIDTH,
   savePhotos,
 } from "./photoShootUtils";
-import styles from "./GenericPhotoShootPage.module.css";
+import styles from "@/styles/GenericPhotoShootPage.module.css";
 
 const COUNT_NUM_SRC: Record<5 | 4 | 3 | 2 | 1, string> = {
   5: countNum5,

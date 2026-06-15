@@ -6,7 +6,7 @@ import resultLogo3 from "@/assets/images/result_logo3.png";
 import resultLogo4 from "@/assets/images/result_logo4.png";
 import { type CharacterId, CHARACTERS } from "@/constants/characters";
 import { loadPhotos, createFourCutComposite } from "./photoShootUtils";
-import styles from "./GenericPhotoShootResultPage.module.css";
+import styles from "@/styles/GenericPhotoShootResultPage.module.css";
 
 export function GenericPhotoShootResultPage() {
   const { characterId } = useParams<{ characterId: string }>();

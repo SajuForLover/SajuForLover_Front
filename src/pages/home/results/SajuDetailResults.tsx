@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ResultModal } from "@/components/results/ResultModal";
 import type { UserSajuData } from "@/types/api";
-import styles from "./SajuDetailResults.module.css";
+import styles from "@/styles/SajuDetailResults.module.css";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Shared Profile Header Component (Left Aligned, No Avatar)
