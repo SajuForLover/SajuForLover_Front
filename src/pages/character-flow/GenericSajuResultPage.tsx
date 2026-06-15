@@ -3,7 +3,7 @@ import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { type CharacterId, CHARACTERS } from "@/constants/characters";
 import { useCompatibility } from "@/hooks/useCompatibility";
 import type { CompatibilityData } from "@/types/api";
-import styles from "./GenericSajuResultPage.module.css";
+import styles from "@/styles/GenericSajuResultPage.module.css";
 
 const DESIGN_W = 1920;
 

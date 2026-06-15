@@ -3,7 +3,7 @@
   height: 100%;
   margin: 0;
   background-color: #fbe6ee;
-  background-image: url("../../assets/images/background.png");
+  background-image: url("../assets/images/background.png");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -95,7 +95,7 @@
   height: 113.265px;
   aspect-ratio: 37 / 27;
   transform: rotate(13.779deg);
-  background: transparent url("../../assets/images/count.png") -15.403px -30.829px /
+  background: transparent url("../assets/images/count.png") -15.403px -30.829px /
     108.667% 148.654% no-repeat;
 }
 

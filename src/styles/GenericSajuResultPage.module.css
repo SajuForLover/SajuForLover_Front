@@ -61,7 +61,7 @@
   height: 3412px;
   transform: scale(var(--scale, 1));
   transform-origin: top left;
-  background-image: url("../../assets/images/saju-result-background.png");
+  background-image: url("../assets/images/saju-result-background.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;

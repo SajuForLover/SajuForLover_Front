@@ -15,7 +15,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url("../../../../assets/images/background1.png");
+  background-image: url("../assets/images/background1.png");
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -135,7 +135,7 @@
   position: absolute;
   z-index: 10;
   top: 720px; left: 352px; width: 150px; height: 129px;
-  background: url("../../../../assets/images/star1.png") center/contain no-repeat;
+  background: url("../assets/images/star1.png") center/contain no-repeat;
   pointer-events: none;
   filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.8));
 }
@@ -145,7 +145,7 @@
   position: absolute;
   z-index: 10;
   top: 720px; left: 992px; width: 150px; height: 129px;
-  background: url("../../../../assets/images/star1.png") center/contain no-repeat;
+  background: url("../assets/images/star1.png") center/contain no-repeat;
   pointer-events: none;
   filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.8));
 }
@@ -156,7 +156,7 @@
   z-index: 10;
   top: 878px; left: 805px; width: 106px; height: 77.35px;
   transform: rotate(13.779deg);
-  background: url("../../../../assets/images/star2.png") center/contain no-repeat;
+  background: url("../assets/images/star2.png") center/contain no-repeat;
   pointer-events: none;
   filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.8));
 }
@@ -167,7 +167,7 @@
   z-index: 10;
   top: 878px; left: 1445px; width: 106px; height: 77.35px;
   transform: rotate(13.779deg);
-  background: url("../../../../assets/images/star2.png") center/contain no-repeat;
+  background: url("../assets/images/star2.png") center/contain no-repeat;
   pointer-events: none;
   filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.8));
 }
