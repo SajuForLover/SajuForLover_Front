@@ -29,7 +29,7 @@ export function GenericPhotoShootResultPage() {
     setIsProcessing(true);
     try {
       // 1. 네컷 합성 이미지 생성
-      const compositePhoto = await createFourCutComposite(completedPhotos, frameAccentColor);
+      const compositePhoto = await createFourCutComposite(completedPhotos, frameAccentColor, resultLogoSrc);
       
       // 2. localStorage에 최종 이미지 저장 (이메일 전송용)
       localStorage.setItem("final_four_cut_photo", compositePhoto);

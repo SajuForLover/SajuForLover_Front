@@ -122,7 +122,22 @@ export function GenericPhotoShootPage() {
       const photoCtx = photoCanvas.getContext("2d");
       if (!photoCtx) return;
 
-      photoCtx.drawImage(boothCanvas, 0, 0, resultWidth, resultHeight);
+      // 비율 유지 cover: boothCanvas 비율과 resultPhoto 비율이 미세하게 달라도 찌그러지지 않도록 처리
+      const boothAspect = boothCanvas.width / boothCanvas.height;
+      const photoAspect = resultWidth / resultHeight;
+      let bsx: number, bsy: number, bsw: number, bsh: number;
+      if (boothAspect > photoAspect) {
+        bsh = boothCanvas.height;
+        bsw = bsh * photoAspect;
+        bsx = (boothCanvas.width - bsw) / 2;
+        bsy = 0;
+      } else {
+        bsw = boothCanvas.width;
+        bsh = bsw / photoAspect;
+        bsx = 0;
+        bsy = (boothCanvas.height - bsh) / 2;
+      }
+      photoCtx.drawImage(boothCanvas, bsx, bsy, bsw, bsh, 0, 0, resultWidth, resultHeight);
 
       const dataUrl = photoCanvas.toDataURL("image/jpeg", 0.8);
       setPhotos((prev) => {
