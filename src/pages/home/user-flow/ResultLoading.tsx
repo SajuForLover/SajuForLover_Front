@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { fetchSajuAnalysis } from "@/api/saju";
-import styles from "./ResultLoading.module.css";
+import styles from "../../../styles/ResultLoading.module.css";
 
 export function ResultLoading() {
   const navigate = useNavigate();
