@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../../../styles/HomePage.module.css";
+import styles from "@/styles/HomePage.module.css";
 import mainImg from "@/assets/images/MainCover.png"; // 실제 배경 이미지 경로로 확인해 주세요
 
 export function HomePage() {

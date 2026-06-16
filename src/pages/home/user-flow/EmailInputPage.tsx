@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { sendResultEmail } from "@/api/transmission";
-import styles from "../../../styles/EmailInputPage.module.css";
+import styles from "@/styles/EmailInputPage.module.css";
 
 export function EmailInputPage() {
   const navigate = useNavigate();
