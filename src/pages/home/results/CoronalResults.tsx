@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ResponsiveLayout } from "@/components/results/ResponsiveLayout";
 import { fetchCoronalAnalysis } from "@/api/saju";
@@ -62,6 +62,8 @@ export function CoronalResults({ inlineMode = false }: CoronalResultsProps) {
   const navigate = useNavigate();
   const [result, setResult] = useState<CoronalData | null>(null);
   const [loading, setLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
+  const progressTimer = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     async function loadData() {
@@ -82,12 +84,32 @@ export function CoronalResults({ inlineMode = false }: CoronalResultsProps) {
     loadData();
   }, [navigate, inlineMode]);
 
+  useEffect(() => {
+    if (!loading) {
+      setProgress(100);
+      return;
+    }
+    progressTimer.current = setInterval(() => {
+      setProgress(p => Math.min(p + 4, 90));
+    }, 2000);
+    return () => {
+      if (progressTimer.current) clearInterval(progressTimer.current);
+    };
+  }, [loading]);
+
   const capturedImage =
     location.state?.capturedImage ||
     sessionStorage.getItem("capturedImage") ||
     result?.image_url;
 
-  if (loading) return <div className={styles.loadingRoot}><div className={styles.loadingSpinner} /><p className={styles.loadingText}>얼굴을 분석하고 있어요...</p></div>;
+  if (loading) return (
+    <div className={styles.loadingRoot}>
+      <h1 className={styles.loadingTitle}>분석하고 있어요</h1>
+      <div className={styles.progressTrack}>
+        <div className={styles.progressFill} style={{ width: `${progress}%` }} />
+      </div>
+    </div>
+  );
   if (!result) return null;
 
   return (

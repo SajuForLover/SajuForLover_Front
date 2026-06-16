@@ -1,37 +1,52 @@
 /* ============================
    로딩 화면
    ============================ */
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 .loadingRoot {
   width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  gap: 32px;
   background-image: url("../assets/images/background2.png");
+  background-repeat: no-repeat;
+  background-position: center top;
   background-size: cover;
+  background-attachment: fixed;
+  animation: pageFadeIn 1s ease-in-out forwards;
+}
+
+.loadingTitle {
+  text-align: center;
   color: #5E3535;
-}
-
-.loadingSpinner {
-  width: 80px;
-  height: 80px;
-  border: 8px solid rgba(231, 142, 179, 0.2);
-  border-top: 8px solid #E78EB3;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-bottom: 30px;
-}
-
-@keyframes spin {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.loadingText {
-  font-size: 28px;
-  font-weight: 500;
   font-family: 'Paperlogy';
+  font-size: clamp(36px, 5.5vw, 80px);
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.progressTrack {
+  width: min(525px, 80vw);
+  height: 14px;
+  border-radius: 100px;
+  background: rgba(217, 217, 217, 0.51);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 100px;
+  background: linear-gradient(90deg, #F0C3DC 0%, #E78EB3 100%);
+  transition: width 2s linear;
 }
 
 /* ============================
