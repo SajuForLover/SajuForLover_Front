@@ -30,6 +30,21 @@
   color: rgba(94, 53, 53, 0.6);
 }
 
+.progressTrack {
+  width: min(525px, 80vw);
+  height: 14px;
+  border-radius: 100px;
+  background: rgba(217, 217, 217, 0.51);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 100px;
+  background: linear-gradient(90deg, #F0C3DC 0%, #E78EB3 100%);
+  transition: width 2s linear;
+}
+
 .homeButton, .retryButton {
   padding: 15px 40px;
   border-radius: 12px;

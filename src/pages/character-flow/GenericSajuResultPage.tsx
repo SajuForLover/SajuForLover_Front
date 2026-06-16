@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState, type CSSProperties, useEffect } from "react";
+import { useLayoutEffect, useState, type CSSProperties, useEffect, useRef } from "react";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { type CharacterId, CHARACTERS } from "@/constants/characters";
 import { useCompatibility } from "@/hooks/useCompatibility";
@@ -25,6 +25,22 @@ export function GenericSajuResultPage() {
   const config = CHARACTERS[charId];
 
   const [scale, setScale] = useState(() => window.innerWidth / DESIGN_W);
+  const [progress, setProgress] = useState(0);
+  const progressTimer = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    if (!loading) {
+      setProgress(100);
+      if (progressTimer.current) clearInterval(progressTimer.current);
+      return;
+    }
+    progressTimer.current = setInterval(() => {
+      setProgress(p => Math.min(p + 4, 90));
+    }, 2000);
+    return () => {
+      if (progressTimer.current) clearInterval(progressTimer.current);
+    };
+  }, [loading]);
 
   useLayoutEffect(() => {
     function update() {
@@ -75,6 +91,9 @@ export function GenericSajuResultPage() {
           <div className={styles.loadingInner}>
             <p>궁합을 분석하고 있어요...</p>
             <p className={styles.loadingSub}>AI가 당신과 가장 잘 어울리는 캐릭터를 찾고 있습니다.</p>
+          </div>
+          <div className={styles.progressTrack}>
+            <div className={styles.progressFill} style={{ width: `${progress}%` }} />
           </div>
         </div>
       </div>

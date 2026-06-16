@@ -206,6 +206,35 @@ interface BoosterDetailProps {
 	fortune: UserSajuData["fortune"];
 }
 
+function getSwatchBg(colorName: string): string {
+	const n = colorName.toLowerCase();
+	if (n.includes("red") || n.includes("빨")) return "#e53935";
+	if (n.includes("green") || n.includes("초록") || n.includes("녹")) return "#43a047";
+	if (n.includes("blue") || n.includes("파랑") || n.includes("파란") || n.includes("청")) return "#1e88e5";
+	if (n.includes("sky") || n.includes("하늘")) return "#29b6f6";
+	if (n.includes("navy") || n.includes("남")) return "#0d47a1";
+	if (n.includes("purple") || n.includes("보라")) return "#8e24aa";
+	if (n.includes("pink") || n.includes("분홍")) return "#e91e8c";
+	if (n.includes("orange") || n.includes("주황")) return "#f57c00";
+	if (n.includes("gold") || n.includes("금색")) return "#FFD700";
+	if (n.includes("yellow") || n.includes("노랑") || n.includes("노란") || n.includes("황")) return "#fdd835";
+	if (n.includes("brown") || n.includes("갈")) return "#8B4513";
+	if (n.includes("silver") || n.includes("은")) return "#9e9e9e";
+	if (n.includes("mint") || n.includes("민트")) return "#26a69a";
+	if (n.includes("beige") || n.includes("베이지")) return "#d7c5a0";
+	if (n.includes("white") || n.includes("흰") || n.includes("하얀") || n.includes("백")) return "#f5f5f5";
+	if (n.includes("black") || n.includes("검") || n.includes("흑")) return "#212121";
+	return "#FF68A7";
+}
+
+function getSwatchTextColor(colorName: string): string {
+	const n = colorName.toLowerCase();
+	const isLight = n.includes("white") || n.includes("흰") || n.includes("하얀") || n.includes("백")
+		|| n.includes("yellow") || n.includes("노랑") || n.includes("노란") || n.includes("황")
+		|| n.includes("gold") || n.includes("금색") || n.includes("beige") || n.includes("베이지");
+	return isLight ? "#5E3535" : "#fff";
+}
+
 export function SajuBoosterDetailResult({ fortune }: BoosterDetailProps) {
 	return (
 		<div className={styles.root}>
@@ -219,8 +248,8 @@ export function SajuBoosterDetailResult({ fortune }: BoosterDetailProps) {
 					<div className={styles.boosterCard}>
 						<div className={styles.swatchGroup}>
 							{fortune.lucky_colors.map((color, i) => (
-								<div key={i} className={styles.swatch} style={{ background: color.includes("황") ? "#FFD700" : color.includes("갈") ? "#8B4513" : "#FF68A7" }}>
-									<span className={styles.swatchLabel} style={{ color: "#fff" }}>{color}</span>
+								<div key={i} className={styles.swatch} style={{ background: getSwatchBg(color) }}>
+									<span className={styles.swatchLabel} style={{ color: getSwatchTextColor(color) }}>{color}</span>
 								</div>
 							))}
 						</div>
