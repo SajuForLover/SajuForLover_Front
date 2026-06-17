@@ -8,11 +8,17 @@ export function HomePage() {
   const isNavigating = useRef(false); // 이동 중인지 체크하는 깃발
   const [isLeaving, setIsLeaving] = useState(false); // 화면을 떠나는 중인지 상태
   const [canMove, setCanMove] = useState(false); // 마우스 감지 활성화 여부
+  const divRef = useRef<HTMLDivElement>(null);
 
   // 접속 직후 아주 짧은 시간만 대기 (즉시 실행 에러 방지)
   useEffect(() => {
     const timer = setTimeout(() => setCanMove(true), 200);
     return () => clearTimeout(timer);
+  }, []);
+
+  // 마운트 시 div에 포커스를 줘서 키보드 이벤트 감지
+  useEffect(() => {
+    divRef.current?.focus();
   }, []);
 
   // 마우스가 움직이면 실행되는 함수
@@ -30,6 +36,7 @@ export function HomePage() {
 
   return (
     <div
+      ref={divRef}
       className={`${styles.root} ${isLeaving ? styles.leaving : ""}`}
       onClick={handleMouseMove}
       onKeyDown={handleMouseMove}
