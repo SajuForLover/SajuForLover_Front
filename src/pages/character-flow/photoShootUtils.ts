@@ -35,6 +35,7 @@ export function savePhotos(characterId: CharacterId, photos: (string | null)[]) 
   sessionStorage.setItem(config.storageKey, JSON.stringify(photos));
 }
 
+
 export function nextEmptySlot(photos: (string | null)[]) {
   const index = photos.findIndex((photo) => !photo);
   return index === -1 ? PHOTO_COUNT : index;
@@ -44,7 +45,7 @@ export function nextEmptySlot(photos: (string | null)[]) {
  * object-fit: cover 방식으로 이미지를 캔버스 슬롯에 그립니다.
  * 원본 비율을 유지한 채 슬롯을 꽉 채우고, 넘치는 부분은 중앙 기준으로 잘라냅니다.
  */
-function drawImageCover(
+export function drawImageCover(
   ctx: CanvasRenderingContext2D,
   img: HTMLImageElement,
   dx: number, dy: number, dw: number, dh: number
