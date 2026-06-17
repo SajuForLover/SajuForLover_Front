@@ -29,7 +29,12 @@ export function HomePage() {
   };
 
   return (
-    <div className={`${styles.root} ${isLeaving ? styles.leaving : ""}`} onMouseMove={handleMouseMove}>
+    <div
+      className={`${styles.root} ${isLeaving ? styles.leaving : ""}`}
+      onClick={handleMouseMove}
+      onKeyDown={handleMouseMove}
+      tabIndex={0}
+    >
       <img src={mainImg} alt="홈페이지 메인" />
     </div>
   );
