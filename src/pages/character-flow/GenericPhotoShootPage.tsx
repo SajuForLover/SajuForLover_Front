@@ -7,6 +7,7 @@ import countNum4 from "@/assets/images/count_4.png";
 import countNum5 from "@/assets/images/count_5.png";
 import { type CharacterId, CHARACTERS } from "@/constants/characters";
 import {
+  drawImageCover,
   loadPhotos,
   nextEmptySlot,
   PHOTO_BOOTH_HEIGHT,
@@ -105,13 +106,8 @@ export function GenericPhotoShootPage() {
         const frameImage = await loadImage(
           config.frames[Math.min(slotIndex, config.frames.length - 1)]
         );
-        boothCtx.drawImage(
-          frameImage,
-          frameLeft,
-          frameTop,
-          frameWidth,
-          frameHeight
-        );
+        // CSS의 object-fit: cover와 동일하게 비율 유지하며 그리기
+        drawImageCover(boothCtx, frameImage, frameLeft, frameTop, frameWidth, frameHeight);
       } catch {
         // Keep the camera capture even if the frame asset fails to load.
       }

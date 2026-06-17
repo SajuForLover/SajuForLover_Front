@@ -27,13 +27,18 @@ export function GenericSajuResultPage() {
   const [scale, setScale] = useState(() => window.innerWidth / DESIGN_W);
   const [progress, setProgress] = useState(0);
   const progressTimer = useRef<ReturnType<typeof setInterval> | null>(null);
+  const hasBeenLoading = useRef(false);
 
   useEffect(() => {
     if (!loading) {
-      setProgress(100);
+      if (hasBeenLoading.current) {
+        setProgress(100);
+      }
       if (progressTimer.current) clearInterval(progressTimer.current);
       return;
     }
+    hasBeenLoading.current = true;
+    setProgress(0);
     progressTimer.current = setInterval(() => {
       setProgress(p => Math.min(p + 4, 90));
     }, 2000);
