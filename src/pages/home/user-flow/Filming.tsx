@@ -114,7 +114,145 @@ export function Filming() {
           <>
             <video ref={videoRef} autoPlay playsInline className={styles.video} />
             <div className={styles.faceGuideOverlay}>
-              <div className={styles.faceGuideOval} />
+              <div className={styles.faceGuideOval}>
+                <svg
+                  viewBox="0 0 100 100"
+                  className={styles.faceGuideLines}
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g stroke="rgba(255,255,255,0.55)" strokeWidth="0.45" fill="none">
+                    <polyline points="50,5 35,9 22,22 17,44 20,58 26,72 41,88 50,92 59,88 74,72 80,58 83,44 78,22 65,9 50,5" />
+                    <line x1="50" y1="5" x2="38" y2="17" />
+                    <line x1="50" y1="5" x2="62" y2="17" />
+                    <line x1="35" y1="9" x2="38" y2="17" />
+                    <line x1="65" y1="9" x2="62" y2="17" />
+                    <line x1="38" y1="17" x2="62" y2="17" />
+                    <line x1="38" y1="17" x2="22" y2="22" />
+                    <line x1="62" y1="17" x2="78" y2="22" />
+                    <line x1="38" y1="17" x2="29" y2="33" />
+                    <line x1="62" y1="17" x2="71" y2="33" />
+                    <line x1="22" y1="22" x2="29" y2="33" />
+                    <line x1="78" y1="22" x2="71" y2="33" />
+                    <line x1="29" y1="33" x2="33" y2="41" />
+                    <line x1="71" y1="33" x2="67" y2="41" />
+                    <line x1="29" y1="33" x2="17" y2="44" />
+                    <line x1="71" y1="33" x2="83" y2="44" />
+                    <line x1="33" y1="41" x2="17" y2="44" />
+                    <line x1="67" y1="41" x2="83" y2="44" />
+                    <line x1="38" y1="17" x2="50" y2="37" />
+                    <line x1="62" y1="17" x2="50" y2="37" />
+                    <line x1="33" y1="41" x2="50" y2="37" />
+                    <line x1="67" y1="41" x2="50" y2="37" />
+                    <line x1="29" y1="33" x2="50" y2="37" />
+                    <line x1="71" y1="33" x2="50" y2="37" />
+                    <line x1="33" y1="41" x2="27" y2="52" />
+                    <line x1="67" y1="41" x2="73" y2="52" />
+                    <line x1="17" y1="44" x2="27" y2="52" />
+                    <line x1="83" y1="44" x2="73" y2="52" />
+                    <line x1="20" y1="58" x2="27" y2="52" />
+                    <line x1="80" y1="58" x2="73" y2="52" />
+                    <line x1="50" y1="37" x2="44" y2="57" />
+                    <line x1="50" y1="37" x2="56" y2="57" />
+                    <line x1="44" y1="57" x2="50" y2="60" />
+                    <line x1="56" y1="57" x2="50" y2="60" />
+                    <line x1="27" y1="52" x2="44" y2="57" />
+                    <line x1="73" y1="52" x2="56" y2="57" />
+                    <line x1="27" y1="52" x2="38" y2="65" />
+                    <line x1="73" y1="52" x2="62" y2="65" />
+                    <line x1="44" y1="57" x2="38" y2="65" />
+                    <line x1="56" y1="57" x2="62" y2="65" />
+                    <line x1="50" y1="60" x2="38" y2="65" />
+                    <line x1="50" y1="60" x2="62" y2="65" />
+                    <line x1="27" y1="52" x2="26" y2="72" />
+                    <line x1="73" y1="52" x2="74" y2="72" />
+                    <line x1="20" y1="58" x2="26" y2="72" />
+                    <line x1="80" y1="58" x2="74" y2="72" />
+                    <line x1="38" y1="65" x2="26" y2="72" />
+                    <line x1="62" y1="65" x2="74" y2="72" />
+                    <line x1="50" y1="71" x2="26" y2="72" />
+                    <line x1="50" y1="71" x2="74" y2="72" />
+                    <line x1="38" y1="65" x2="36" y2="80" />
+                    <line x1="62" y1="65" x2="64" y2="80" />
+                    <line x1="50" y1="71" x2="36" y2="80" />
+                    <line x1="50" y1="71" x2="64" y2="80" />
+                    <line x1="26" y1="72" x2="36" y2="80" />
+                    <line x1="74" y1="72" x2="64" y2="80" />
+                    <line x1="36" y1="80" x2="41" y2="88" />
+                    <line x1="64" y1="80" x2="59" y2="88" />
+                    <line x1="36" y1="80" x2="50" y2="81" />
+                    <line x1="64" y1="80" x2="50" y2="81" />
+                    <line x1="50" y1="71" x2="50" y2="81" />
+                    <line x1="50" y1="81" x2="41" y2="88" />
+                    <line x1="50" y1="81" x2="59" y2="88" />
+                    <line x1="50" y1="81" x2="50" y2="92" />
+                  </g>
+                  <g fill="rgba(255,255,255,0.75)">
+                    <circle cx="50" cy="5" r="1.2" />
+                    <circle cx="35" cy="9" r="1.1" />
+                    <circle cx="65" cy="9" r="1.1" />
+                    <circle cx="22" cy="22" r="1.1" />
+                    <circle cx="78" cy="22" r="1.1" />
+                    <circle cx="17" cy="44" r="1.1" />
+                    <circle cx="83" cy="44" r="1.1" />
+                    <circle cx="20" cy="58" r="1.1" />
+                    <circle cx="80" cy="58" r="1.1" />
+                    <circle cx="26" cy="72" r="1.1" />
+                    <circle cx="74" cy="72" r="1.1" />
+                    <circle cx="41" cy="88" r="1.1" />
+                    <circle cx="59" cy="88" r="1.1" />
+                    <circle cx="50" cy="92" r="1.2" />
+                    <circle cx="38" cy="17" r="1" />
+                    <circle cx="62" cy="17" r="1" />
+                    <circle cx="29" cy="33" r="1" />
+                    <circle cx="71" cy="33" r="1" />
+                    <circle cx="27" cy="52" r="1" />
+                    <circle cx="73" cy="52" r="1" />
+                    <circle cx="44" cy="57" r="1" />
+                    <circle cx="56" cy="57" r="1" />
+                    <circle cx="50" cy="60" r="1" />
+                    <circle cx="38" cy="65" r="1" />
+                    <circle cx="62" cy="65" r="1" />
+                    <circle cx="50" cy="71" r="1" />
+                    <circle cx="36" cy="80" r="1" />
+                    <circle cx="64" cy="80" r="1" />
+                    <circle cx="50" cy="81" r="1" />
+                    <circle cx="33" cy="41" r="1.5" fill="rgba(255,255,255,0.9)" />
+                    <circle cx="67" cy="41" r="1.5" fill="rgba(255,255,255,0.9)" />
+                    <circle cx="50" cy="37" r="1.2" fill="rgba(255,255,255,0.85)" />
+                  </g>
+                  <g stroke="rgba(255,255,255,0.9)" strokeWidth="0.9" fill="none">
+                    <line x1="30" y1="41" x2="36" y2="41" />
+                    <line x1="33" y1="38" x2="33" y2="44" />
+                    <line x1="64" y1="41" x2="70" y2="41" />
+                    <line x1="67" y1="38" x2="67" y2="44" />
+                    <line x1="41" y1="53" x2="47" y2="53" />
+                    <line x1="44" y1="50" x2="44" y2="56" />
+                    <line x1="53" y1="53" x2="59" y2="53" />
+                    <line x1="56" y1="50" x2="56" y2="56" />
+                  </g>
+                  <g fill="rgba(255,255,255,0.5)">
+                    <rect x="38.5" y="64" width="2.3" height="1.7" />
+                    <rect x="41.8" y="64" width="2.3" height="1.7" />
+                    <rect x="45.1" y="64" width="2.3" height="1.7" />
+                    <rect x="48.4" y="64" width="2.3" height="1.7" />
+                    <rect x="51.7" y="64" width="2.3" height="1.7" />
+                    <rect x="55" y="64" width="2.3" height="1.7" />
+                    <rect x="38.5" y="66.5" width="2.3" height="1.7" />
+                    <rect x="41.8" y="66.5" width="2.3" height="1.7" />
+                    <rect x="45.1" y="66.5" width="2.3" height="1.7" />
+                    <rect x="48.4" y="66.5" width="2.3" height="1.7" />
+                    <rect x="51.7" y="66.5" width="2.3" height="1.7" />
+                    <rect x="55" y="66.5" width="2.3" height="1.7" />
+                    <rect x="38.5" y="69" width="2.3" height="1.7" />
+                    <rect x="41.8" y="69" width="2.3" height="1.7" />
+                    <rect x="45.1" y="69" width="2.3" height="1.7" />
+                    <rect x="48.4" y="69" width="2.3" height="1.7" />
+                    <rect x="51.7" y="69" width="2.3" height="1.7" />
+                    <rect x="55" y="69" width="2.3" height="1.7" />
+                  </g>
+                </svg>
+              </div>
               <p className={styles.faceGuideText}>얼굴을 원 안에 맞춰주세요</p>
             </div>
             <div className={styles.countdown}>{countdown}</div>
