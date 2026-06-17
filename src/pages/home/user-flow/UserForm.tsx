@@ -22,6 +22,7 @@ export function UserForm() {
   const [isPrivacyAgreed, setIsPrivacyAgreed] = useState(false);
 
   const navigate = useNavigate();
+  const isComposing = useRef(false);
 
   // 드롭다운 외부 클릭 시 닫기 위한 Ref
   const timeRef = useRef<HTMLDivElement>(null);
@@ -249,6 +250,29 @@ export function UserForm() {
       return;
     }
 
+    if (!/^\d{8}$/.test(birthDate)) {
+      alert("생년월일은 숫자 8자리로 입력해 주세요. (예: 19950101)");
+      return;
+    }
+
+    const year = parseInt(birthDate.slice(0, 4), 10);
+    const month = parseInt(birthDate.slice(4, 6), 10);
+    const day = parseInt(birthDate.slice(6, 8), 10);
+    const date = new Date(year, month - 1, day);
+    if (
+      date.getFullYear() !== year ||
+      date.getMonth() + 1 !== month ||
+      date.getDate() !== day
+    ) {
+      alert("유효하지 않은 날짜입니다. 올바른 생년월일을 입력해 주세요.");
+      return;
+    }
+
+    if (/^\s*$/.test(userName) || /^[ㄱ-ㅎㅏ-ㅣ\s]+$/.test(userName)) {
+      alert("이름은 공백이나 자음/모음만으로 입력할 수 없습니다.");
+      return;
+    }
+
     setIsLoading(true);
 
     try {
@@ -301,12 +325,23 @@ export function UserForm() {
       <form id="user-info-form" className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.inputGroup}>
           <label className={styles.label}>이름</label>
-          <input 
-            type="text" 
-            placeholder="이름을 입력해 주세요" 
-            className={styles.input} 
+          <input
+            type="text"
+            placeholder="이름을 입력해 주세요"
+            className={styles.input}
             value={userName}
-            onChange={(e) => setUserName(e.target.value)}
+            onCompositionStart={() => { isComposing.current = true; }}
+            onCompositionEnd={(e) => {
+              isComposing.current = false;
+              const val = (e.target as HTMLInputElement).value.replace(/\s/g, "").replace(/[ㄱ-ㅎㅏ-ㅣ]/g, "");
+              setUserName(val);
+            }}
+            onChange={(e) => {
+              const val = isComposing.current
+                ? e.target.value
+                : e.target.value.replace(/\s/g, "").replace(/[ㄱ-ㅎㅏ-ㅣ]/g, "");
+              setUserName(val);
+            }}
           />
         </div>
 
@@ -337,7 +372,10 @@ export function UserForm() {
             placeholder="생년월일 8자리를 입력해 주세요 (예: 20080731)" 
             className={`${styles.input} ${styles.birthInput}`}
             value={birthDate}
-            onChange={(e) => setBirthDate(e.target.value)}
+            onChange={(e) => {
+              const val = e.target.value.replace(/\D/g, "").slice(0, 8);
+              setBirthDate(val);
+            }}
           />
         </div>
 
