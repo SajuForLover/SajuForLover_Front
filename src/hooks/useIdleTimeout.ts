@@ -1,7 +1,8 @@
 import { useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useIdleTimeoutContext } from "@/context/IdleTimeoutContext";
 
-const IDLE_TIMEOUT_MS = 3 * 60 * 1000; // 3분
+const IDLE_TIMEOUT_MS = 3 * 60 * 1000;
 const HOME_PATH = "/";
 const EVENTS: (keyof WindowEventMap)[] = [
   "click",
@@ -14,10 +15,17 @@ const EVENTS: (keyof WindowEventMap)[] = [
 export function useIdleTimeout() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { disabled } = useIdleTimeoutContext();
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    if (location.pathname === HOME_PATH) return;
+    if (location.pathname === HOME_PATH || disabled) {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+        timerRef.current = null;
+      }
+      return;
+    }
 
     const reset = () => {
       if (timerRef.current) clearTimeout(timerRef.current);
@@ -33,5 +41,5 @@ export function useIdleTimeout() {
       if (timerRef.current) clearTimeout(timerRef.current);
       EVENTS.forEach((event) => window.removeEventListener(event, reset));
     };
-  }, [location.pathname, navigate]);
+  }, [location.pathname, navigate, disabled]);
 }
