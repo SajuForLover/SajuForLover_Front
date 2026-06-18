@@ -2,9 +2,12 @@ import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "@/styles/Camera.module.css";
 import star2 from "@/assets/images/star2.png";
+import { useDisableIdleTimeout } from "@/context/IdleTimeoutContext";
 
 
 export function Filming() {
+  useDisableIdleTimeout();
+
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [_stream, setStream] = useState<MediaStream | null>(null);

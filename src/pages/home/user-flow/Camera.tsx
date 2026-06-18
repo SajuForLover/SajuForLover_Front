@@ -69,7 +69,7 @@ export function Camera() {
         context.translate(canvas.width, 0);
         context.scale(-1, 1);
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
-        const imageData = canvas.toDataURL("image/png");
+        canvas.toDataURL("image/png");
         // setCapturedImage(imageData); // 캡처된 이미지 데이터 저장 (현재는 사용되지 않음)
         // 여기에서 imageData를 서버로 전송하거나 다른 처리를 할 수 있습니다.
         console.log("사진이 촬영되었지만 저장되지 않습니다.");

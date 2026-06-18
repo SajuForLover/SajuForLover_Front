@@ -2,8 +2,11 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { fetchSajuAnalysis } from "@/api/saju";
 import styles from "@/styles/ResultLoading.module.css";
+import { useDisableIdleTimeout } from "@/context/IdleTimeoutContext";
 
 export function ResultLoading() {
+  useDisableIdleTimeout();
+
   const navigate = useNavigate();
   const location = useLocation();
   const [progress, setProgress] = useState(0);

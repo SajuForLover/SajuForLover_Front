@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { useDisableIdleTimeout } from "@/context/IdleTimeoutContext";
 import countNum1 from "@/assets/images/count_1.png";
 import countNum2 from "@/assets/images/count_2.png";
 import countNum3 from "@/assets/images/count_3.png";
@@ -54,6 +55,7 @@ export function GenericPhotoShootPage() {
     loadPhotos(charId)
   );
   const [phase, setPhase] = useState<5 | 4 | 3 | 2 | 1 | null>(null);
+  useDisableIdleTimeout(phase !== null);
   const pendingRef = useRef<number | null>(null);
   const countingRef = useRef(false);
   const photosRef = useRef(photos);
