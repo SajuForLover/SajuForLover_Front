@@ -1,6 +1,7 @@
 import { Outlet, Route, Routes, useLocation } from "react-router-dom";
 import { DesignCanvas } from "@/layouts/DesignCanvas";
 import { useEffect } from "react";
+import { useIdleTimeout } from "@/hooks/useIdleTimeout";
 
 // soyoung pages
 // ... (나머지 임포트 동일)
@@ -30,6 +31,7 @@ function DesignCanvasLayout() {
 
 export function App() {
   const location = useLocation();
+  useIdleTimeout();
 
   useEffect(() => {
     // 홈페이지("/")로 이동 시 또는 페이지 리로드(새로고침) 시 세션 초기화
